@@ -1,4 +1,4 @@
-# lacade-front
+<!-- # lacade-front
 Frontend para Rooftop Academy
 
 # Instrucciones de instalación
@@ -31,4 +31,4 @@ Al utilizar SSH realizar los siguientes pasos de configuración: ``https://help.
 1. Ingresar al directorio raíz del proyecto
 2. Abrir un terminal y ejecutar el comando ``yarn start`` lo que hará que se inicie el servidor en el puerto ``:3003``
 3. Si la aplicación compila sin errores, abrir el navegador web de preferencia e ingresar a ``localhost:3003``
-4. Para apagar el servidor solo apretar ``ctrl + c`` en la terminal donde levantamos el servidor. 
+4. Para apagar el servidor solo apretar ``ctrl + c`` en la terminal donde levantamos el servidor.  -->
