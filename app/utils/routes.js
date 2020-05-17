@@ -1,23 +1,34 @@
 import Login from "@material-ui/icons/LockOpen";
+import Settings from '@material-ui/icons/Settings';
 // core components/views for Admin layout
-import LoginPage from "../pages/LoginPage/Index.jsx";
-import SignUpPage from "../pages/SignUpPage/Index";
+import LoginPage from "../containers/Login/LoginPage.jsx";
 
 const dashboardRoutes = [
   {
-    path: "/login",
-    name: "Login Page",
-    icon: Login,
-    component: LoginPage,
-    layout: "/auth"
+    path: '/user-account',
+    name: 'User account',
+    icon: Settings,
+    component: UserAccount,
+    layout: '/dashboard-website',
+    rol: 'headhunter',
   },
   {
-    path: "/signup",
-    name: "SignUp Page",
+    path: '/login-page',
+    name: 'Logout',
     icon: Login,
-    component: SignUpPage,
-    layout: "/auth"
+    component: LoginPage,
+    layout: '/auth',
+    rol: 'headhunter',
+  },
+  {
+    path: '/error',
+    name: 'Error',
+    icon: Login,
+    component: ErrorPage,
+    layout: '/auth',
+    rol: '',
   }
+
 ];
 
 export default dashboardRoutes;
