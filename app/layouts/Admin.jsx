@@ -6,15 +6,15 @@ import { connect } from 'react-redux';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 // core components
-import Navbar from '../components/organisms/Navbars/Navbar.jsx';
-import Footer from '../components/organisms/Footer/Footer.jsx';
+import Header from '../components/molecules/Navbars/Navbar.jsx';
+import Footer from '../components/molecules/Footer/Footer.jsx';
 import Sidebar from '../components/organisms/Sidebar/Sidebar.jsx';
 import authStorageService from '../services/localStorage/authStorage';
 import routes from '../utils/routes.js';
 
-import dashboardStyle from '../styles/jss/material-dashboard-react/layouts/dashboardStyle.jsx';
+import dashboardStyle from '../styles/dashboard/layouts/dashboardStyle.jsx';
 
-import logo from '../static/img/zeep-logo.png';
+import logo from '../static/img/logos/favicon.png';
 import { pages, redirectTo } from '../utils/helpers/redirectTo';
 import Loader from '../components/organisms/Loader/Loader';
 import { renewToken } from '../actions/LoginActions';
@@ -27,7 +27,7 @@ class Admin extends React.Component {
     super(props);
     this.state = {
       image: '',
-      color: 'rooftopOrange',
+      color: 'zeepOrange',
       hasImage: true,
       fixedClasses: 'dropdown show',
       mobileOpen: false,
@@ -87,12 +87,12 @@ class Admin extends React.Component {
             {...rest}
           />
           <div className={classes.mainPanel} ref="mainPanel">
-            <Navbar routes={routes} handleDrawerToggle={this.handleDrawerToggle} color={'rooftopBlue'} {...rest} />
+            <Header routes={routes} handleDrawerToggle={this.handleDrawerToggle} color={'primary'} {...rest} />
             <div className={classes.content}>
               <div className={classes.container}>
                 <Switch>
                   {routes.map((prop, key) => {
-                    if (prop.layout === '/dashboard-website') {
+                    if (prop.layout === '/dashboard') {
                       return (
                         <Route
                           path={prop.layout + prop.path}

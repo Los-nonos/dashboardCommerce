@@ -1,7 +1,10 @@
 import Login from "@material-ui/icons/LockOpen";
 import Settings from '@material-ui/icons/Settings';
+
 // core components/views for Admin layout
 import LoginPage from "../containers/Login/LoginPage.jsx";
+import UserAccount from "../containers/UserAccount/UserAccount";
+import ErrorPage from "../containers/Error/ErrorPage";
 
 const dashboardRoutes = [
   {
@@ -9,16 +12,16 @@ const dashboardRoutes = [
     name: 'User account',
     icon: Settings,
     component: UserAccount,
-    layout: '/dashboard-website',
-    rol: 'headhunter',
+    layout: '/dashboard',
+    rol: '',
   },
   {
-    path: '/login-page',
+    path: '/login',
     name: 'Logout',
     icon: Login,
     component: LoginPage,
     layout: '/auth',
-    rol: 'headhunter',
+    rol: '',
   },
   {
     path: '/error',
@@ -27,8 +30,7 @@ const dashboardRoutes = [
     component: ErrorPage,
     layout: '/auth',
     rol: '',
-  }
-
+  },
 ];
 
 export default dashboardRoutes;

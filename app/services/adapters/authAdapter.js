@@ -6,13 +6,14 @@ class AuthAdapter {
     const { status, data } = response;
 
     if (!isError(status)) {
-      const { token } = data.data;
-      delete data.data.token;
+      console.log(data);
+      const { token } = data;
+      delete data.token;
 
       return {
         type: actionNames.loggedIn,
         token,
-        user: data.data,
+        user: data.user,
       };
     }
     const { code, details } = data.errors;

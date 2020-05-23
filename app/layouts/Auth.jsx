@@ -7,21 +7,23 @@ import { connect } from 'react-redux';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 // core components
-import Footer from '../components/organisms/Footer/AuthFooter.jsx';
+import Footer from '../components/molecules/Footer/AuthFooter.jsx';
 
 // eslint-disable-next-line import/no-cycle
 import routes from '../utils/routes.js';
 
 import pagesStyle from '../styles/dashboard/layouts/authStyle.jsx';
 
-import backgroundImage from '../static/img/loginBackground.png';
+import backgroundImage from '../static/img/bg2.jpg';
 import LoadingOverlay from 'react-loading-overlay';
 
 const switchRoutes = (
     <Switch>
         {routes.map((prop, key) => {
             if (prop.layout === '/auth') {
-                return <Route path={prop.layout + prop.path} component={prop.component} key={key} />;
+              console.log(prop.path);
+              console.log(typeof prop.component);
+              return <Route path={prop.layout + prop.path} component={prop.component} key={key} />;
             }
             return null;
         })}

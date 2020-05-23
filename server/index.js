@@ -2,7 +2,7 @@
 
 const express = require('express');
 const { resolve } = require('path');
-const logger = require('./util//logger');
+const logger = require('./util/logger');
 
 const argv = require('./util/argv');
 const port = require('./util/port');

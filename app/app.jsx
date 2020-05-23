@@ -20,7 +20,7 @@ import Router from "./router";
 
 // Load the favicon
 /* eslint-disable import/no-webpack-loader-syntax */
-import "!file-loader?name=[name].[ext]!./static/images/favicon.ico";
+import "!file-loader?name=[name].[ext]!./static/img/favicon.ico";
 /* eslint-enable import/no-webpack-loader-syntax */
 
 // Import CSS reset and Global Styles
@@ -56,4 +56,4 @@ if (module.hot) {
 
 render();
 
-export const dispach = store.dispatch;
+export const dispatch = store.dispatch;

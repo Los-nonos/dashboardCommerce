@@ -8,7 +8,7 @@ import jwt from '../externalModules/jwt';
 
 class AuthStorage {
   setSession = (token, roles = undefined) => {
-    localStorageService.set('auth-token', token);
+    localStorageService.set('zeep-token', token);
     if (roles) {
       localStorageService.set('roles', roles);
     }
@@ -19,11 +19,11 @@ class AuthStorage {
   };
 
   getSession = () => {
-    return localStorageService.get('auth-token');
+    return localStorageService.get('zeep-token');
   };
 
   deleteSession = () => {
-    localStorageService.remove('auth-token');
+    localStorageService.remove('zeep-token');
     localStorageService.remove('roles');
   };
 
