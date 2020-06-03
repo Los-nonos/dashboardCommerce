@@ -21,9 +21,14 @@ const switchRoutes = (
     <Switch>
         {routes.map((prop, key) => {
             if (prop.layout === '/auth') {
-              console.log(prop.path);
-              console.log(typeof prop.component);
-              return <Route path={prop.layout + prop.path} component={prop.component} key={key} />;
+              return (<Route
+                path={prop.layout + prop.path}
+                component={props => {
+                  const Component = prop.component;
+                  return <Component {...props} />;
+                }}
+                key={key}
+              />);
             }
             return null;
         })}

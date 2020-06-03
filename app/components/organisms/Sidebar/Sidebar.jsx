@@ -17,13 +17,13 @@ import sidebarStyle from '../../../styles/dashboard/components/sidebarStyle.jsx'
 const Sidebar = ({ ...props }) => {
   // verifies if routeName is the one active (in browser input)
   function activeRoute(routeName) {
-    return props.location.pathname.indexOf(routeName) > -1 ? true : false;
+    return props.location.pathname.indexOf(routeName) > -1;
   }
   const { classes, color, logo, image, logoText, routes, userRoles } = props;
   let links = (
     <List className={classes.list}>
       {routes.map((prop, key) => {
-        if (userRoles.includes(prop.rol)) {
+        if ((userRoles.includes(prop.rol) || prop.rol === '') && prop.layout === '/dashboard') {
           let activePro = ' ';
           let listItemClasses;
           if (prop.path === '/upgrade-to-pro') {
@@ -68,7 +68,7 @@ const Sidebar = ({ ...props }) => {
   );
   let brand = (
     <div className={classes.logo}>
-      <a href={`www.google.com`} className={classNames(classes.logoLink)}>
+      <a href={`/dashboard`} className={classNames(classes.logoLink)}>
         <div className={classes.logoImage}>
           <img src={logo} alt="logo" className={classes.img} />
         </div>

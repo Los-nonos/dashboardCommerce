@@ -4,7 +4,7 @@ import { actionNames } from '../../utils/constants/actionConstants';
 class AuthAdapter {
   login = response => {
     const { status, data } = response;
-
+    console.log(data);
     if (!isError(status)) {
       console.log(data);
       const { token } = data;
@@ -16,14 +16,14 @@ class AuthAdapter {
         user: data.user,
       };
     }
-    const { code, details } = data.errors;
+    const { code, error } = data;
 
     return {
       type: actionNames.loginFailed,
       error: {
         code: status,
         type: code,
-        errors: details.errors,
+        errors: error,
       },
     };
   };
@@ -40,14 +40,14 @@ class AuthAdapter {
         token,
       };
     }
-    const { code, details } = data.errors;
+    const { code, details } = data;
 
     return {
       type: actionNames.loginFailed,
       error: {
         code: status,
         type: code,
-        errors: details.errors,
+        errors: details,
       },
     };
   };

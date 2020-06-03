@@ -180,7 +180,7 @@ const sidebarStyle = theme => ({
     margin: '0',
     lineHeight: '30px',
     fontSize: '14px',
-    color: whiteColor,
+    color: blackColor,
   },
   itemTextRTL: {
     textAlign: 'right',

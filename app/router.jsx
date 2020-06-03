@@ -11,17 +11,16 @@ import PrivateRoute from "./utils/customRoutes/PrivateRoute";
 import LoginPage from "./containers/Login/LoginPage";
 
 const App = () => {
-  console.log(typeof LoginPage);
   return (
     <Switch>
       <PrivateRoute path={'/dashboard'} component={Admin}/>
       {/*<Route path="/auth" component={Auth}/>*/}
       <Route path={'/auth/login'} component={LoginPage} />
-      {/*{authStorage.getSession() ? (
+      {authStorage.getSession() ? (
         <Redirect from="/" to="/dashboard" />
       ) : (
         <Redirect from="/" to="/auth/login" />
-      )}*/}
+      )}
     </Switch>
 )}
 
