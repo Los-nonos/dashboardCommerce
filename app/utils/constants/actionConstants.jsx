@@ -23,5 +23,16 @@ export const actionNames = {
   passwordChangedSuccessfully: 'PASSWORD_CHANGED_SUCCESSFULLY',
   passwordChangedFail: 'PASSWORD_CHANGED_FAIL',
 
+  loadFiltersSuccesful: 'LOAD_FILTERS_SUCCESFUL',
+  loadProductsByFilterSuccesful: 'LOAD_PRODUCTS_BY_FILTER_SUCCESFUL',
+  loadProductsByFilterFail: 'LOAD_PRODUCTS_BY_FILTER_FAIL',
+  loadProductsWithDetailsSuccesful: 'LOAD_PRODUCT_WITH_DETAILS_SUCCESFUL',
+  loadProductWithDetailsFail: 'LOAD_PRODUCT_WITH_DETAILS_FAIL',
+  loadFiltersFail: 'LOAD_FILTERS_FAIL',
+  selectSearchPage: 'SELECT_SEARCH_PAGE',
+  nextSearchPage: 'NEXT_SEARCH_PAGE',
+  previousSearchPage: 'PREVIOUS_SEARCH_PAGE',
+
   handleError: 'HANDLE_ERROR',
+
 }

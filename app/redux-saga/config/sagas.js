@@ -5,6 +5,7 @@ import { saveSession, deleteSession, renewToken } from "../Auth/SessionSagas";
 import { actionNames } from "../../utils/constants/actionConstants";
 /* eslint-disable import/no-cycle */
 import { checkRoles } from "../Auth/permissionsSagas";
+import {loadFilters, searchProducts, seeDetails} from "../Search/SearchSagas";
 // import { signUp } from "../Auth/signUpSagas";
 
 function* sagas() {
@@ -14,6 +15,9 @@ function* sagas() {
   yield takeEvery(actionNames.renewToken, renewToken);
   yield takeEvery(actionNames.loginFailed, loginFailed);
   yield takeEvery(actionNames.checkRoles, checkRoles);
+  yield takeEvery(actionNames.loadFilters, loadFilters);
+  yield takeEvery(actionNames.search, searchProducts);
+  yield takeEvery(actionNames.seeDetails, seeDetails);
   // yield takeEvery(actionNames.signUp, signUp);
 }
 

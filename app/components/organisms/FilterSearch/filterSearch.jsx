@@ -1,12 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import GridContainer from "../../atoms/Grid/GridContainer";
 import GridItem from "../../atoms/Grid/GridItem";
-import CustomInput from "../../atoms/CustomInput/CustomInput";
 import CustomGridContainer from "../../atoms/Grid/CustomGridContainer";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import Button from "@material-ui/core/Button";
+
+import {withStyles} from "@material-ui/core";
+
+import searchStyle from '../../../styles/dashboard/components/molecules/filterSearchStyles';
 
 class FilterSearch extends React.Component {
   constructor(props) {
@@ -14,24 +20,78 @@ class FilterSearch extends React.Component {
     this.state = {
       currentFilters: {
         categoryName: '',
+        filterName: '',
+        filterOption: '',
+        valueFilterOption: '',
+        query: '',
       },
+      lastSearch: [],
+      categorySelected: ''
     };
+    this.dispatch = props.dispatch;
+    this.dispatch(this.props.loadFilters());
   }
 
   searchProducts = () => {
+    this.props.changeCurrentFiltersState(this.state.currentFilters);
+    this.dispatch(this.props.searchProducts(this.state, this.props.page, this.props.orderBy, this.props.order));
+    const lastSearch = [];
+    for (const filter of Object.values(this.state.currentFilters)) {
+      if (filter && typeof filter === 'string') {
+        lastSearch.push(filter);
+      }
+    }
 
+    this.setState({
+      currentFilters: {
+        categoryName: '',
+      },
+      lastSearch,
+      categorySelected: '',
+    })
   }
 
   lastSearch = () => {
-
+    const { classes } = this.props;
+    if (this.state.lastSearch.length !== 0) {
+      return (
+        <>
+          <h6 className={classes.lastSearch}>Last search:</h6>
+          {this.state.lastSearch.map((filter, index) => {
+            return (
+              <Button key={index} disabled color="primary" small>
+                {filter}
+              </Button>
+            );
+          })}
+        </>
+      );
+    }
   }
 
-  handleCategoryName = () => {
-
+  handleCategoryName = (event) => {
+    this.setState(prevState => ({
+      currentFilters: {
+        ...prevState.currentFilters,
+        categoryName: event.target.value,
+      },
+      categorySelected: event.target.value,
+    }));
   }
 
   listCategoryName = (classes) => {
-
+    return this.props.filters.categoryName.map((categoryName, index) => (
+      <MenuItem
+        key={index}
+        classes={{
+          root: classes.selectMenuItem,
+          selected: classes.selectMenuItemSelectedMultiple,
+        }}
+        value={categoryName.name}
+      >
+        {categoryName.name}
+      </MenuItem>
+    ));
   }
 
   render() {
@@ -73,10 +133,24 @@ class FilterSearch extends React.Component {
               </Select>
             </FormControl>
           </GridItem>
-          </GridContainer>
+          <GridItem xs={12} sm={6} md={6} lg={2}>
+            <Button color={'primary'} onSubmit={this.searchProducts}>BUSCAR</Button>
+          </GridItem>
+        </GridContainer>
       </>
     );
   }
 }
 
-export default FilterSearch;
+FilterSearch.propTypes = {
+  classes: PropTypes.object.isRequired,
+  loadFilters: PropTypes.func,
+  searchProducts: PropTypes.func,
+  filters: PropTypes.object,
+};
+
+const mapStateToProps = state => {
+  return state.searchReducer;
+};
+
+export default connect(mapStateToProps)(withStyles(searchStyle)(FilterSearch));
