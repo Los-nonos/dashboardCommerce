@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { handler } from './handlerErrors';
+import axios from "axios";
+import { handler } from "./handlerErrors";
 // eslint-disable-next-line import/no-cycle
-import authStorage from '../localStorage/authStorage';
+import authStorage from "../localStorage/authStorage";
 
 class ApiFech {
   constructor() {
@@ -13,9 +13,9 @@ class ApiFech {
   get(endpoint, customHeaders = {}) {
     return new Promise(async (resolve, reject) => {
       const requestData = {
-        method: 'get',
+        method: "get",
         endpoint,
-        customHeaders,
+        customHeaders
       };
 
       try {
@@ -29,10 +29,10 @@ class ApiFech {
   post(endpoint, body, customHeaders = {}) {
     return new Promise(async (resolve, reject) => {
       const requestData = {
-        method: 'post',
+        method: "post",
         endpoint,
         body,
-        customHeaders,
+        customHeaders
       };
 
       try {
@@ -46,10 +46,10 @@ class ApiFech {
   put(endpoint, body, customHeaders = {}) {
     return new Promise(async (resolve, reject) => {
       const requestData = {
-        method: 'put',
+        method: "put",
         endpoint,
         body,
-        customHeaders,
+        customHeaders
       };
 
       try {
@@ -63,9 +63,9 @@ class ApiFech {
   delete(endpoint, customHeaders = {}) {
     return new Promise(async (resolve, reject) => {
       const requestData = {
-        method: 'delete',
+        method: "delete",
         endpoint,
-        customHeaders,
+        customHeaders
       };
 
       try {
@@ -83,7 +83,10 @@ class ApiFech {
         baseURL: this.apiUrl(),
         url: `${requestData.endpoint}`,
         data: requestData.body ? requestData.body : null,
-        headers: { ...requestData.customHeaders, authorization: authStorage.getSession() },
+        headers: {
+          ...requestData.customHeaders,
+          authorization: authStorage.getSession()
+        }
       }).catch(error => {
         handler(error.response);
         reject(error.response);

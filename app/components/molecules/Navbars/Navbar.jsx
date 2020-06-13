@@ -1,22 +1,22 @@
-import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React from "react";
+import classNames from "classnames";
+import PropTypes from "prop-types";
 // @material-ui/core components
-import withStyles from '@material-ui/core/styles/withStyles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Hidden from '@material-ui/core/Hidden';
+import withStyles from "@material-ui/core/styles/withStyles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import Hidden from "@material-ui/core/Hidden";
 // @material-ui/icons
-import Menu from '@material-ui/icons/Menu';
+import Menu from "@material-ui/icons/Menu";
 // core components
-import Button from '../../atoms/CustomButtons/Button.jsx';
+import Button from "../../atoms/CustomButtons/Button.jsx";
 
-import headerStyle from '../../../styles/dashboard/components/headerStyle.js';
+import headerStyle from "../../../styles/dashboard/components/headerStyle.js";
 
 function Header({ ...props }) {
   function makeBrand() {
-    let name = '';
+    let name = "";
     props.routes.map((prop, key) => {
       if (prop.layout + prop.path === props.location.pathname) {
         name = prop.name;
@@ -27,7 +27,7 @@ function Header({ ...props }) {
   }
   const { classes, color } = props;
   const appBarClasses = classNames({
-    [' ' + classes[color]]: color,
+    [" " + classes[color]]: color
   });
   return (
     <AppBar className={classes.appBar + appBarClasses}>
@@ -39,7 +39,11 @@ function Header({ ...props }) {
           </Button>
         </div>
         <Hidden mdUp implementation="css">
-          <IconButton color="inherit" aria-label="open drawer" onClick={props.handleDrawerToggle}>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={props.handleDrawerToggle}
+          >
             <Menu />
           </IconButton>
         </Hidden>
@@ -50,7 +54,14 @@ function Header({ ...props }) {
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  color: PropTypes.oneOf(['primary', 'info', 'success', 'warning', 'danger', 'rooftopBlue']),
+  color: PropTypes.oneOf([
+    "primary",
+    "info",
+    "success",
+    "warning",
+    "danger",
+    "rooftopBlue"
+  ])
 };
 
 export default withStyles(headerStyle)(Header);

@@ -1,18 +1,18 @@
-import {actionNames} from "../utils/constants/actionConstants";
+import { actionNames } from "../utils/constants/actionConstants";
 
 export const stateDefault = {
   filters: {
     categoryName: [],
     filterNames: [],
     filterOptions: [],
-    valueFilterOption: '',
-    query: ''
+    valueFilterOption: "",
+    query: ""
   },
   products: [],
   productWithDetails: {},
   page: 1,
-  totalPages: 1,
-}
+  totalPages: 1
+};
 
 const searchReducer = (state = stateDefault, action) => {
   switch (action.type) {
@@ -22,13 +22,17 @@ const searchReducer = (state = stateDefault, action) => {
         filters: {
           categoryName: action.body.categories,
           filterName: action.body.filterNames,
-          filterOption: action.body.filterOptions,
-        },
+          filterOption: action.body.filterOptions
+        }
       };
     case actionNames.loadFiltersFail:
       return { ...state };
     case actionNames.loadProductsByFilterSuccesful:
-      return { ...state, products: action.products, totalPages: action.totalPages };
+      return {
+        ...state,
+        products: action.products,
+        totalPages: action.totalPages
+      };
     case actionNames.loadProductsByFilterFail:
       return { ...state, products: [] };
     case actionNames.nextSearchPage:
@@ -50,6 +54,6 @@ const searchReducer = (state = stateDefault, action) => {
     default:
       return state;
   }
-}
+};
 
 export default searchReducer;

@@ -5,7 +5,7 @@ import { saveSession, deleteSession, renewToken } from "../Auth/SessionSagas";
 import { actionNames } from "../../utils/constants/actionConstants";
 /* eslint-disable import/no-cycle */
 import { checkRoles } from "../Auth/permissionsSagas";
-import {loadFilters, searchProducts, seeDetails} from "../Search/SearchSagas";
+import { loadFilters, searchProducts, seeDetails } from "../Search/SearchSagas";
 // import { signUp } from "../Auth/signUpSagas";
 
 function* sagas() {

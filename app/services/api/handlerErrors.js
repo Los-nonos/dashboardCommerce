@@ -1,4 +1,4 @@
-import { pages, redirectTo } from '../../utils/helpers/redirectTo';
+import { pages, redirectTo } from "../../utils/helpers/redirectTo";
 
 export const handler = error => {
   // eslint-disable-next-line default-case

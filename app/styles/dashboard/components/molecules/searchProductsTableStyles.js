@@ -11,57 +11,57 @@ import {
 
 const searchProductsTableStyles = {
   warningTableHeader: {
-    color: warningColor,
+    color: warningColor
   },
   primaryTableHeader: {
-    color: primaryColor[0],
+    color: primaryColor[0]
   },
   dangerTableHeader: {
-    color: dangerColor,
+    color: dangerColor
   },
   successTableHeader: {
-    color: successColor,
+    color: successColor
   },
   infoTableHeader: {
-    color: infoColor,
+    color: infoColor
   },
   roseTableHeader: {
-    color: roseColor,
+    color: roseColor
   },
   grayTableHeader: {
-    color: grayColor,
+    color: grayColor
   },
   table: {
-    marginBottom: '0',
-    width: '100%',
-    maxWidth: '100%',
-    backgroundColor: 'transparent',
-    borderSpacing: '0',
-    borderCollapse: 'collapse',
+    marginBottom: "0",
+    width: "100%",
+    maxWidth: "100%",
+    backgroundColor: "transparent",
+    borderSpacing: "0",
+    borderCollapse: "collapse"
   },
   tableHeadCell: {
-    color: 'inherit',
+    color: "inherit",
     ...defaultFont,
-    fontSize: '1em',
+    fontSize: "1em"
   },
   tableCell: {
     ...defaultFont,
-    lineHeight: '1.42857143',
-    padding: '12px 8px',
-    verticalAlign: 'middle',
+    lineHeight: "1.42857143",
+    padding: "12px 8px",
+    verticalAlign: "middle"
   },
   tableResponsive: {
-    width: '100%',
-    marginTop: '30px',
-    overflowX: 'auto',
+    width: "100%",
+    marginTop: "30px",
+    overflowX: "auto"
   },
   searchTableGrid: {
-    height: '100%',
+    height: "100%"
   },
   searchTableInput: {
-    height: '100%',
-    display: 'table-cell',
-  },
-}
+    height: "100%",
+    display: "table-cell"
+  }
+};
 
 export default searchProductsTableStyles;

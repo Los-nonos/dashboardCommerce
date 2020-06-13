@@ -1,5 +1,5 @@
-import { isError } from '../../utils/helpers/isError';
-import { actionNames } from '../../utils/constants/actionConstants';
+import { isError } from "../../utils/helpers/isError";
+import { actionNames } from "../../utils/constants/actionConstants";
 
 class AuthAdapter {
   login = response => {
@@ -13,7 +13,7 @@ class AuthAdapter {
       return {
         type: actionNames.loggedIn,
         token,
-        user: data.user,
+        user: data.user
       };
     }
     const { code, error } = data;
@@ -23,8 +23,8 @@ class AuthAdapter {
       error: {
         code: status,
         type: code,
-        errors: error,
-      },
+        errors: error
+      }
     };
   };
 
@@ -37,7 +37,7 @@ class AuthAdapter {
 
       return {
         type: actionNames.renewToken,
-        token,
+        token
       };
     }
     const { code, details } = data;
@@ -47,8 +47,8 @@ class AuthAdapter {
       error: {
         code: status,
         type: code,
-        errors: details,
-      },
+        errors: details
+      }
     };
   };
 }

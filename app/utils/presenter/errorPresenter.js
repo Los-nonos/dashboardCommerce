@@ -1,8 +1,6 @@
-
-
 export const errorUserPassword = (data, status, type) => {
   const { code, details } = data.errors;
-  const fields = ['oldPassword', 'newPassword', 'newPasswordConfirmation'];
+  const fields = ["oldPassword", "newPassword", "newPasswordConfirmation"];
 
   let res = {};
   fields.forEach(field => {
@@ -13,8 +11,8 @@ export const errorUserPassword = (data, status, type) => {
           code: status,
           type: code,
           detail: details.errors[field].message,
-          errors: details.errors,
-        },
+          errors: details.errors
+        }
       };
     }
   });

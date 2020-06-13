@@ -1,11 +1,11 @@
-import { actionNames } from '../utils/constants/actionConstants';
+import { actionNames } from "../utils/constants/actionConstants";
 
 const stateDefault = {
   errorHandler: {
-    code: '404',
-    errors: '',
-    typeError: 'Page not found',
-  },
+    code: "404",
+    errors: "",
+    typeError: "Page not found"
+  }
 };
 
 const errorReducer = (state = stateDefault, action) => {
@@ -15,8 +15,8 @@ const errorReducer = (state = stateDefault, action) => {
         errorHandler: {
           code: action.error.code,
           errors: action.error.errors,
-          typeError: action.error.type,
-        },
+          typeError: action.error.type
+        }
       });
     default:
       return state;

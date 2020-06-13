@@ -1,26 +1,26 @@
-import { actionNames } from '../utils/constants/actionConstants';
+import { actionNames } from "../utils/constants/actionConstants";
 
 export function showChangePasswordModal() {
   return {
-    type: actionNames.showChangePasswordModal,
+    type: actionNames.showChangePasswordModal
   };
 }
 
 export function closeChangePasswordModal() {
   return {
-    type: actionNames.closeChangePasswordModal,
+    type: actionNames.closeChangePasswordModal
   };
 }
 
 export function changePassword(userData) {
   return {
     type: actionNames.changePassword,
-    data: userData,
+    data: userData
   };
 }
 
 export function closeNotification() {
   return {
-    type: actionNames.closeNotification,
+    type: actionNames.closeNotification
   };
 }

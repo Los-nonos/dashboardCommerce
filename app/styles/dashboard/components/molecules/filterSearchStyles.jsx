@@ -1,5 +1,3 @@
-const filterSearchStyles = {
-
-};
+const filterSearchStyles = {};
 
 export default filterSearchStyles;

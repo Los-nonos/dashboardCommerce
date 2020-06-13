@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import GridContainer from "../../atoms/Grid/GridContainer";
 import GridItem from "../../atoms/Grid/GridItem";
 import CustomGridContainer from "../../atoms/Grid/CustomGridContainer";
@@ -10,23 +10,23 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 
-import {withStyles} from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 
-import searchStyle from '../../../styles/dashboard/components/molecules/filterSearchStyles';
+import searchStyle from "../../../styles/dashboard/components/molecules/filterSearchStyles";
 
 class FilterSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentFilters: {
-        categoryName: '',
-        filterName: '',
-        filterOption: '',
-        valueFilterOption: '',
-        query: '',
+        categoryName: "",
+        filterName: "",
+        filterOption: "",
+        valueFilterOption: "",
+        query: ""
       },
       lastSearch: [],
-      categorySelected: ''
+      categorySelected: ""
     };
     this.dispatch = props.dispatch;
     this.dispatch(this.props.loadFilters());
@@ -34,22 +34,29 @@ class FilterSearch extends React.Component {
 
   searchProducts = () => {
     this.props.changeCurrentFiltersState(this.state.currentFilters);
-    this.dispatch(this.props.searchProducts(this.state, this.props.page, this.props.orderBy, this.props.order));
+    this.dispatch(
+      this.props.searchProducts(
+        this.state,
+        this.props.page,
+        this.props.orderBy,
+        this.props.order
+      )
+    );
     const lastSearch = [];
     for (const filter of Object.values(this.state.currentFilters)) {
-      if (filter && typeof filter === 'string') {
+      if (filter && typeof filter === "string") {
         lastSearch.push(filter);
       }
     }
 
     this.setState({
       currentFilters: {
-        categoryName: '',
+        categoryName: ""
       },
       lastSearch,
-      categorySelected: '',
-    })
-  }
+      categorySelected: ""
+    });
+  };
 
   lastSearch = () => {
     const { classes } = this.props;
@@ -67,32 +74,32 @@ class FilterSearch extends React.Component {
         </>
       );
     }
-  }
+  };
 
-  handleCategoryName = (event) => {
+  handleCategoryName = event => {
     this.setState(prevState => ({
       currentFilters: {
         ...prevState.currentFilters,
-        categoryName: event.target.value,
+        categoryName: event.target.value
       },
-      categorySelected: event.target.value,
+      categorySelected: event.target.value
     }));
-  }
+  };
 
-  listCategoryName = (classes) => {
+  listCategoryName = classes => {
     return this.props.filters.categoryName.map((categoryName, index) => (
       <MenuItem
         key={index}
         classes={{
           root: classes.selectMenuItem,
-          selected: classes.selectMenuItemSelectedMultiple,
+          selected: classes.selectMenuItemSelectedMultiple
         }}
         value={categoryName.name}
       >
         {categoryName.name}
       </MenuItem>
     ));
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -101,11 +108,14 @@ class FilterSearch extends React.Component {
         <CustomGridContainer>
           <GridItem>{this.lastSearch()}</GridItem>
         </CustomGridContainer>
-        <GridContainer justify={'center'}>
+        <GridContainer justify={"center"}>
           <GridItem lg={1} />
           <GridItem xs={12} sm={6} md={6} lg={2}>
             <FormControl fullWidth className={classes.selectFormControl}>
-              <InputLabel htmlFor="category-name" className={classes.selectLabel}>
+              <InputLabel
+                htmlFor="category-name"
+                className={classes.selectLabel}
+              >
                 Category name
               </InputLabel>
               <Select
@@ -113,18 +123,18 @@ class FilterSearch extends React.Component {
                 onChange={this.handleCategoryName}
                 MenuProps={{
                   className: classes.selectMenu,
-                  classes: { paper: classes.selectPaper },
+                  classes: { paper: classes.selectPaper }
                 }}
                 classes={{ select: classes.select }}
                 inputProps={{
-                  name: 'categoryName',
-                  id: 'category-name',
+                  name: "categoryName",
+                  id: "category-name"
                 }}
               >
                 <MenuItem
                   disabled
                   classes={{
-                    root: classes.selectMenuItem,
+                    root: classes.selectMenuItem
                   }}
                 >
                   Category name
@@ -134,7 +144,9 @@ class FilterSearch extends React.Component {
             </FormControl>
           </GridItem>
           <GridItem xs={12} sm={6} md={6} lg={2}>
-            <Button color={'primary'} onSubmit={this.searchProducts}>BUSCAR</Button>
+            <Button color={"primary"} onSubmit={this.searchProducts}>
+              BUSCAR
+            </Button>
           </GridItem>
         </GridContainer>
       </>
@@ -146,7 +158,7 @@ FilterSearch.propTypes = {
   classes: PropTypes.object.isRequired,
   loadFilters: PropTypes.func,
   searchProducts: PropTypes.func,
-  filters: PropTypes.object,
+  filters: PropTypes.object
 };
 
 const mapStateToProps = state => {

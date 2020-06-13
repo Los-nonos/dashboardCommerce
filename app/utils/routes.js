@@ -1,6 +1,6 @@
 import Login from "@material-ui/icons/LockOpen";
-import Settings from '@material-ui/icons/Settings';
-import IconSearch from '@material-ui/icons/Search';
+import Settings from "@material-ui/icons/Settings";
+import IconSearch from "@material-ui/icons/Search";
 // core components/views for Admin layout
 // import LoginPage from "../containers/Login/LoginPage";
 import UserAccount from "../containers/UserAccount/UserAccount";
@@ -9,29 +9,29 @@ import SearchProducts from "../containers/Products/SearchProducts";
 
 const dashboardRoutes = [
   {
-    path: '/user-account',
-    name: 'User account',
+    path: "/user-account",
+    name: "User account",
     icon: Settings,
     component: UserAccount,
-    layout: '/dashboard',
-    rol: '',
+    layout: "/dashboard",
+    rol: ""
   },
   {
-    path: '/search',
-    name: 'BUSCADOR',
+    path: "/search",
+    name: "BUSCADOR",
     icon: IconSearch,
     component: SearchProducts,
-    layout: '/dashboard',
-    rol: 'sales',
+    layout: "/dashboard",
+    rol: "sales"
   },
   {
-    path: '/error',
-    name: 'Error',
+    path: "/error",
+    name: "Error",
     icon: Login,
     component: ErrorPage,
-    layout: '/auth',
-    rol: '',
-  },
+    layout: "/auth",
+    rol: ""
+  }
 ];
 
 export default dashboardRoutes;

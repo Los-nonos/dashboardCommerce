@@ -1,4 +1,4 @@
-import localStorage from 'localStorage';
+import localStorage from "localStorage";
 
 class LocalStorageService {
   get = key => localStorage.getItem(key);

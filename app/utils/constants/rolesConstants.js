@@ -1,4 +1,4 @@
 export const roles = {
-  owner: 'owner',
-  employee: 'employee'
-}
+  owner: "owner",
+  employee: "employee"
+};

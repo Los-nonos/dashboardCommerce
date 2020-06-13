@@ -1,8 +1,8 @@
-import { all, call, put } from 'redux-saga/effects';
+import { all, call, put } from "redux-saga/effects";
 // eslint-disable-next-line import/no-cycle
-import userAccount from '../../services/api/userAccount';
-import { actionNames } from '../../utils/constants/actionConstants';
-import { pages, redirectTo } from '../../utils/helpers/redirectTo';
+import userAccount from "../../services/api/userAccount";
+import { actionNames } from "../../utils/constants/actionConstants";
+import { pages, redirectTo } from "../../utils/helpers/redirectTo";
 
 export function* changePassword(action) {
   const { data } = action;
@@ -13,10 +13,10 @@ export function* changePassword(action) {
         type: actionNames.showNotification,
         error: {
           code: 422,
-          type: 'UNPROCESSABLE ENTITY',
-          detail: 'New password and Confirm new password must match',
-        },
-      }),
+          type: "UNPROCESSABLE ENTITY",
+          detail: "New password and Confirm new password must match"
+        }
+      })
     ]);
   } else {
     yield all([put({ type: actionNames.loadingToggle })]);
@@ -30,14 +30,14 @@ export function* changePassword(action) {
       yield all([
         put(res),
         put({ type: actionNames.loadingToggle }),
-        put({ type: actionNames.showNotification, error: res.error }),
+        put({ type: actionNames.showNotification, error: res.error })
       ]);
     } else {
       yield all([
         put(res),
         put({ type: actionNames.loadingToggle }),
         put({ type: actionNames.closeChangePasswordModal }),
-        put({ type: actionNames.showNotification, message: res.message }),
+        put({ type: actionNames.showNotification, message: res.message })
       ]);
       redirectTo(pages.closePasswordModal);
     }

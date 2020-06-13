@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 // @material-ui/core components
-import withStyles from '@material-ui/core/styles/withStyles';
-import Grid from '@material-ui/core/Grid';
+import withStyles from "@material-ui/core/styles/withStyles";
+import Grid from "@material-ui/core/Grid";
 
 const style = {
   grid: {
-    width: 'unset',
-    justifyContent: 'center',
-  },
+    width: "unset",
+    justifyContent: "center"
+  }
 };
 
 function CustomGridContainer(props) {

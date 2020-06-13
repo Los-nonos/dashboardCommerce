@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import Api from './api';
-import userAccountAdapter from '../adapters/userAccountAdapter';
+import Api from "./api";
+import userAccountAdapter from "../adapters/userAccountAdapter";
 
 class UserAccount {
   changePassword = async userData => {
@@ -8,7 +8,7 @@ class UserAccount {
 
     let changeResponse;
     try {
-      changeResponse = await Api.post('auth/change-password/', body);
+      changeResponse = await Api.post("auth/change-password/", body);
     } catch (err) {
       changeResponse = err;
     }

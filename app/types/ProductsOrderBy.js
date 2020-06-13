@@ -1,3 +1,1 @@
-export const ProductsOrderBy = {
-
-}
+export const ProductsOrderBy = {};

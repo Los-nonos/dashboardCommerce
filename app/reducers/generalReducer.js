@@ -1,11 +1,11 @@
-import { actionNames } from '../utils/constants/actionConstants';
+import { actionNames } from "../utils/constants/actionConstants";
 
 const stateDefault = {
   loading: false,
   error: { errors: {} },
   notification: false,
-  notificationColor: '',
-  message: '',
+  notificationColor: "",
+  message: ""
 };
 
 const generalReducer = (state = stateDefault, action) => {
@@ -13,14 +13,22 @@ const generalReducer = (state = stateDefault, action) => {
     case actionNames.loadingToggle:
       return { ...state, loading: !state.loading };
     case actionNames.closeNotification:
-      return { ...state, notification: false, message: '', notificationColor: '', error: { errors: {} } };
+      return {
+        ...state,
+        notification: false,
+        message: "",
+        notificationColor: "",
+        error: { errors: {} }
+      };
     case actionNames.showNotification:
       return {
         ...state,
         notification: true,
-        message: action.error ? `Error ${action.error.code}, ${action.error.detail}` : action.message,
+        message: action.error
+          ? `Error ${action.error.code}, ${action.error.detail}`
+          : action.message,
         error: action.error ? action.error : { errors: {} },
-        notificationColor: action.error ? 'danger' : 'success',
+        notificationColor: action.error ? "danger" : "success"
       };
     default:
       return state;

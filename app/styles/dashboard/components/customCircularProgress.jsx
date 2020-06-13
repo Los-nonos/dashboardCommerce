@@ -1,8 +1,8 @@
-import {primaryColor} from "../../zeepDashboardStyles";
+import { primaryColor } from "../../zeepDashboardStyles";
 
 export default {
   root: {
-    padding: '11px',
-    color: primaryColor,
-  },
+    padding: "11px",
+    color: primaryColor
+  }
 };
