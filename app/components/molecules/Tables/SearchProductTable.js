@@ -21,6 +21,7 @@ import {withStyles} from "@material-ui/core";
 
 import tableSearchStyle from '../../../styles/dashboard/components/molecules/searchProductsTableStyles';
 import {redirectTo} from "../../../utils/helpers/redirectTo";
+import {ProductsOrderBy} from "../../../types/ProductsOrderBy";
 
 class SearchProductTable extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ class SearchProductTable extends React.Component {
     let orderBy = props.toLowerCase().split(' ');
     orderBy = orderBy[1] ? orderBy[0] + orderBy[1][0].toUpperCase() + orderBy[1].slice(1) : orderBy[0];
 
-    return Object.values(productsOrderBy).indexOf(orderBy) > -1 ? orderBy : null;
+    return Object.values(ProductsOrderBy).indexOf(orderBy) > -1 ? orderBy : null;
   };
 
   changeArrowOrderBy = (props, classes) => {
@@ -77,7 +78,7 @@ class SearchProductTable extends React.Component {
   };
 
   handleClickDetails = props => {
-    const slug = props.slug;
+    const slug = props.uuid;
     this.dispatch(this.props.seeDetails(slug));
     redirectTo('products');
   };
@@ -167,7 +168,7 @@ SearchProductTable.propTypes = {
     'gray',
   ]),
   tableHead: PropTypes.arrayOf(PropTypes.string),
-  tableData: PropTypes.object,
+  tableData: PropTypes.array,
   dispatch: PropTypes.func,
   updateModalShow: PropTypes.bool,
   createModalShow: PropTypes.bool,
@@ -178,7 +179,7 @@ SearchProductTable.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return state.products;
+  return state.productsReducer;
 };
 
 export default connect(mapStateToProps)(withStyles(tableSearchStyle)(SearchProductTable));

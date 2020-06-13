@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import PropTypes from 'prop-types';
 import GridContainer from "../../atoms/Grid/GridContainer";
 import GridItem from "../../atoms/Grid/GridItem";
 import CustomGridContainer from "../../atoms/Grid/CustomGridContainer";
@@ -101,7 +101,7 @@ class FilterSearch extends React.Component {
         <CustomGridContainer>
           <GridItem>{this.lastSearch()}</GridItem>
         </CustomGridContainer>
-        <GridContainer jusftify={'center'}>
+        <GridContainer justify={'center'}>
           <GridItem lg={1} />
           <GridItem xs={12} sm={6} md={6} lg={2}>
             <FormControl fullWidth className={classes.selectFormControl}>

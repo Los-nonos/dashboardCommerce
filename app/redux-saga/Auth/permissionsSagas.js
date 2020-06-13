@@ -5,6 +5,8 @@ import { pages, redirectTo } from '../../utils/helpers/redirectTo';
 import authStorage from '../../services/localStorage/authStorage';
 
 function isUserAllowed(userRoles, allowedRoles) {
+  console.log(userRoles);
+  console.log(allowedRoles);
   for (const userRol of userRoles) {
     for (const allowedRole of allowedRoles) {
       if (userRol === allowedRole) {

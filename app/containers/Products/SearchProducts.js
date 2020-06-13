@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import GridContainer from "../../components/atoms/Grid/GridContainer";
 import FilterSearch from "../../components/organisms/FilterSearch/filterSearch";
 import GridItem from "../../components/atoms/Grid/GridItem";
@@ -13,7 +15,7 @@ import {showNotification} from "../../actions/GeneralActions";
 import SearchIcon from '@material-ui/icons/Search';
 import Pagination from "../../components/molecules/Pagination/Pagination";
 import {withStyles} from "@material-ui/core";
-import searchStyle from '../../styles/dashboard/containers/Search/SearchPage'
+import searchStyle from '../../styles/dashboard/containers/Search/SearchPageStyles'
 
 class SearchProducts extends React.Component {
   constructor(props) {
@@ -123,10 +125,6 @@ class SearchProducts extends React.Component {
       <GridContainer>
         <GridItem xs={12} sm={12} md={12}>
           <Notification closeNotification={this.closeNotification} />
-          <div className={classes.center}>
-            <h1>Search</h1>
-            <SearchIcon className={classes.searchIcon} />
-          </div>
         </GridItem>
         </GridContainer>
         <FilterSearch
@@ -140,7 +138,7 @@ class SearchProducts extends React.Component {
         <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
             <Card>
-              <CardHeader color="rooftopBlue">
+              <CardHeader color="primary">
                 <h4 className={classes.cardTitleWhite}>Productos</h4>
                 <p className={classes.cardCategoryWhite}>Todos los productos están listados aquí</p>
               </CardHeader>

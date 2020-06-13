@@ -1,10 +1,11 @@
 import Login from "@material-ui/icons/LockOpen";
 import Settings from '@material-ui/icons/Settings';
-
+import IconSearch from '@material-ui/icons/Search';
 // core components/views for Admin layout
 // import LoginPage from "../containers/Login/LoginPage";
 import UserAccount from "../containers/UserAccount/UserAccount";
 import ErrorPage from "../containers/Error/ErrorPage";
+import SearchProducts from "../containers/Products/SearchProducts";
 
 const dashboardRoutes = [
   {
@@ -15,14 +16,14 @@ const dashboardRoutes = [
     layout: '/dashboard',
     rol: '',
   },
-  /*{
-    path: '/login',
-    name: 'Logout',
-    icon: Login,
-    component: ErrorPage,
-    layout: '/auth',
-    rol: '',
-  },*/
+  {
+    path: '/search',
+    name: 'BUSCADOR',
+    icon: IconSearch,
+    component: SearchProducts,
+    layout: '/dashboard',
+    rol: 'sales',
+  },
   {
     path: '/error',
     name: 'Error',

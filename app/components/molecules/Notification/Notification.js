@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Snackbar from '../Snackbar/Snackbar';
 import Close from '@material-ui/icons/Close';
 import Check from '@material-ui/icons/Check';
-import GridItem from '../../atoms/Grid/GridItem';
 
 class Notification extends React.Component {
   constructor(props) {

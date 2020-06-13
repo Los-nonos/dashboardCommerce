@@ -55,8 +55,8 @@ const paginationStyle = {
   },
   primary: {
     '&,&:hover,&:focus': {
-      backgroundColor: primaryColor[0],
-      borderColor: primaryColor[0],
+      backgroundColor: primaryColor,
+      borderColor: primaryColor,
       color: whiteColor,
       boxShadow:
         '0 4px 5px 0 rgba(' +
@@ -79,11 +79,11 @@ const paginationStyle = {
       color: whiteColor,
       boxShadow:
         '0 4px 5px 0 rgba(' +
-        hexToRgb(infoColor[0]) +
+        hexToRgb(infoColor) +
         ', 0.14), 0 1px 10px 0 rgba(' +
-        hexToRgb(infoColor[0]) +
+        hexToRgb(infoColor) +
         ', 0.12), 0 2px 4px -1px rgba(' +
-        hexToRgb(infoColor[0]) +
+        hexToRgb(infoColor) +
         ', 0.2)',
     },
     '&:hover,&:focus': {
@@ -98,11 +98,11 @@ const paginationStyle = {
       color: whiteColor,
       boxShadow:
         '0 4px 5px 0 rgba(' +
-        hexToRgb(successColor[0]) +
+        hexToRgb(successColor) +
         ', 0.14), 0 1px 10px 0 rgba(' +
-        hexToRgb(successColor[0]) +
+        hexToRgb(successColor) +
         ', 0.12), 0 2px 4px -1px rgba(' +
-        hexToRgb(successColor[0]) +
+        hexToRgb(successColor) +
         ', 0.2)',
     },
     '&:hover,&:focus': {
@@ -117,11 +117,11 @@ const paginationStyle = {
       color: whiteColor,
       boxShadow:
         '0 4px 5px 0 rgba(' +
-        hexToRgb(warningColor[0]) +
+        hexToRgb(warningColor) +
         ', 0.14), 0 1px 10px 0 rgba(' +
-        hexToRgb(warningColor[0]) +
+        hexToRgb(warningColor) +
         ', 0.12), 0 2px 4px -1px rgba(' +
-        hexToRgb(warningColor[0]) +
+        hexToRgb(warningColor) +
         ', 0.2)',
     },
     '&:hover,&:focus': {
@@ -136,11 +136,11 @@ const paginationStyle = {
       color: whiteColor,
       boxShadow:
         '0 4px 5px 0 rgba(' +
-        hexToRgb(dangerColor[0]) +
+        hexToRgb(dangerColor) +
         ', 0.14), 0 1px 10px 0 rgba(' +
-        hexToRgb(dangerColor[0]) +
+        hexToRgb(dangerColor) +
         ', 0.12), 0 2px 4px -1px rgba(' +
-        hexToRgb(dangerColor[0]) +
+        hexToRgb(dangerColor) +
         ', 0.2)',
     },
     '&:hover,&:focus': {
