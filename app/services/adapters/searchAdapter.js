@@ -6,8 +6,6 @@ class SearchAdapter {
     const { status, data } = loadResponse;
 
     if (!isError(status)) {
-      data.data.seniority = Object.values(data.data.seniority);
-
       return {
         type: actionNames.loadFiltersSuccesful,
         body: data.data

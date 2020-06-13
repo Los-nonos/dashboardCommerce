@@ -70,7 +70,7 @@ class SearchProducts extends React.Component {
   };
 
   handleLoadSearchProducts = () => {
-    this.dispatch(searchActions.checkRoles());
+    this.dispatch(searchActions.checkRoles(['sales']));
     this.dispatch(
       searchActions.searchProducts(
         this.state,

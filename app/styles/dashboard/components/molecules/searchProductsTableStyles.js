@@ -6,7 +6,7 @@ import {
   infoColor,
   roseColor,
   grayColor,
-  defaultFont
+  defaultFont, whiteColor
 } from "../../../zeepDashboardStyles";
 
 const searchProductsTableStyles = {
@@ -48,7 +48,8 @@ const searchProductsTableStyles = {
     ...defaultFont,
     lineHeight: "1.42857143",
     padding: "12px 8px",
-    verticalAlign: "middle"
+    verticalAlign: "middle",
+    color: whiteColor,
   },
   tableResponsive: {
     width: "100%",
