@@ -13,6 +13,8 @@ import Card from "../../components/molecules/Card/Card";
 import CardHeader from "../../components/molecules/Card/CardHeader";
 import CardBody from "../../components/molecules/Card/CardBody";
 import Pagination from "../../components/molecules/Pagination/Pagination";
+import Slide from "@material-ui/core/Slide";
+import ProductsTable from "../../components/molecules/Tables/ProductsTable";
 
 class Products extends React.Component{
   constructor(props) {
@@ -30,7 +32,7 @@ class Products extends React.Component{
     this.setState({ orderBy, order });
   };
 
-  handleClickCreateProducts = (e) => {
+  handleClickCreateProducts = () => {
     this.dispatch(actions.showCreateModal());
   }
 
@@ -142,6 +144,7 @@ class Products extends React.Component{
                   completeProduct={actions.completeProduct}
                   seeDetails={actions.seeDetails}
                   listProducts={actions.listProducts}
+                  showOnWebsite={actions.showProductOnWebsite}
                   changeOrderState={this.handleChangeOrderState}
                   page={this.state.page}
                 />
