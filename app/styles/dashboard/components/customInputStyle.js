@@ -2,7 +2,7 @@ import {
   primaryColor,
   dangerColor,
   successColor,
-  defaultFont
+  defaultFont, whiteColor
 } from "../../zeepDashboardStyles";
 
 const customInputStyle = {
@@ -54,7 +54,7 @@ const customInputStyle = {
     color: dangerColor + " !important"
   },
   labelRootSuccess: {
-    color: successColor + " !important"
+    color: primaryColor + " !important"
   },
   formControl: {
     margin: "0 0 17px 0",
@@ -65,7 +65,7 @@ const customInputStyle = {
     }
   },
   input: {
-    color: "#fff",
+    color: whiteColor,
     height: "unset",
     "&,&::placeholder": {
       fontSize: "14px",

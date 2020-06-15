@@ -16,12 +16,16 @@ import Pagination from "../../components/molecules/Pagination/Pagination";
 import Slide from "@material-ui/core/Slide";
 import ProductsTable from "../../components/molecules/Tables/ProductsTable";
 
+import styles from '../../styles/dashboard/containers/Products/ProductContainerStyles'
+import FormProducts from "../../components/organisms/Products/formProducts";
+
 class Products extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
       page: 1,
     }
+    this.dispatch = props.dispatch;
   }
   handleLoadProducts = () => {
     this.dispatch(actions.checkRoles());
@@ -107,7 +111,7 @@ class Products extends React.Component{
       <>
         <GridContainer>
           <GridItem>
-            {this.props.createModal || this.props.updateModal ? (
+            {this.props.modalShow.createModal || this.props.modalShow.updateModal ? (
               <FormProducts
                 closeModal={actions.closeModal}
                 updateProduct={actions.updateProduct}
@@ -152,7 +156,7 @@ class Products extends React.Component{
             </Card>
           </GridItem>
           <div className={classes.center}>
-            <Pagination pages={this.pagination()} color="rooftopOrange" />
+            <Pagination pages={this.pagination()} color="primary" />
           </div>
         </GridContainer>
       </>
@@ -160,7 +164,7 @@ class Products extends React.Component{
   }
 }
 
-Products.PropTypes = {
+Products.propTypes = {
   dispatch: PropTypes.func,
   page: PropTypes.number,
   totalPages: PropTypes.number,
@@ -175,4 +179,4 @@ const mapStateToProps = state => {
   return state.productsReducer;
 }
 
-export default connect(mapStateToProps)(withStyles({})(Products));
+export default connect(mapStateToProps)(withStyles(styles)(Products));

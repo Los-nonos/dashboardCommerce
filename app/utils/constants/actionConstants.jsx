@@ -10,6 +10,7 @@ export const actionNames = {
 
   showCreateProductModal: 'SHOW_CREATE_PRODUCT_MODAL',
   showUpdateProductModal: 'SHOW_UPDATE_PRODUCT_MODAL',
+  closeModal: 'CLOSE_MODAL',
 
   loadFilters: "LOAD_FILTERS",
   search: "SEARCH",
@@ -17,6 +18,7 @@ export const actionNames = {
   showDetails: "SHOW_DETAILS",
 
   showOnWebsite: 'SHOW_ON_WEBSITE',
+  listProducts: 'LIST_PRODUCTS',
 
   loadingToggle: "LOADING_TOGGLE",
   closeNotification: "CLOSE_NOTIFICATION",
