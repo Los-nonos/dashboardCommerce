@@ -6,7 +6,7 @@ import {
   infoColor,
   roseColor,
   grayColor,
-  defaultFont,
+  defaultFont, whiteColor,
 } from '../../../zeepDashboardStyles';
 
 const tableStyle = theme => ({
@@ -49,6 +49,7 @@ const tableStyle = theme => ({
     lineHeight: '1.42857143',
     padding: '12px 8px',
     verticalAlign: 'middle',
+    color: whiteColor,
   },
   tableResponsive: {
     width: '100%',
@@ -62,6 +63,9 @@ const tableStyle = theme => ({
     height: '100%',
     display: 'table-cell',
   },
+  tableActionButton: {
+    color: whiteColor,
+  }
 });
 
 export default tableStyle;

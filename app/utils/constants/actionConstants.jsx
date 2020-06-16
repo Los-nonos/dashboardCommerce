@@ -59,6 +59,7 @@ export const actionNames = {
   loadProductFail: 'LOAD_PRODUCT_FAIL',
   loadProductsSuccessful: 'LOAD_PRODUCTS_SUCCESSFUL',
   loadProductsFail: 'LOAD_PRODUCTS_FAIL',
+  showViewModal: 'SHOW_VIEW_MODAL',
 
-
+  getProductByUuid: 'GET_PRODUCT_BY_UUID',
 };

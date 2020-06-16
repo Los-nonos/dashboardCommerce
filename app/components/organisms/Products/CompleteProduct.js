@@ -9,7 +9,7 @@ class CompleteProduct extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      characteristics: [],
+      characteristics: this.props.productWithDetails.characteristics,
       filters: this.props.dataToCompleteProduct.categories,
     }
   }

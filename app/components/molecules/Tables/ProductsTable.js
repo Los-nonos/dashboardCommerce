@@ -35,6 +35,10 @@ class ProductsTable extends React.Component {
     this.dispatch(this.props.getProductByUuid(uuid));
   };
 
+  handleClickChangeState = () => {
+
+  };
+
   handleOrderBy = props => {
     const orderBy = this.orderBySanitized(props);
 
@@ -78,7 +82,6 @@ class ProductsTable extends React.Component {
   handleClickDetails = props => {
     const { uuid } = props;
     this.dispatch(this.props.seeDetails(uuid));
-    redirectTo('products');
   };
 
   handleClickShowOnWebsite = props => {
@@ -133,7 +136,7 @@ class ProductsTable extends React.Component {
                     <TableCell className={classes.tableActions}>
                       <Tooltip
                         id="tooltip-top"
-                        title="See details"
+                        title="Ver detalles"
                         placement="top"
                         classes={{ tooltip: classes.tooltip }}
                       >
@@ -147,7 +150,7 @@ class ProductsTable extends React.Component {
                       </Tooltip>
                       <Tooltip id="tooltip-top" title="Edit" placement="top" classes={{ tooltip: classes.tooltip }}>
                         <IconButton
-                          aria-label="Edit"
+                          aria-label="Editar"
                           className={classes.tableActionButton}
                           onClick={this.handleClickUpdate.bind(this, prop)}
                         >
@@ -156,7 +159,7 @@ class ProductsTable extends React.Component {
                       </Tooltip>
                       <Tooltip
                         id="tooltip-top-start"
-                        title={prop.visibleData[9] === 'active' ? 'Deactivate' : 'Activate'}
+                        title={'Eliminar'}
                         placement="top"
                         classes={{ tooltip: classes.tooltip }}
                       >

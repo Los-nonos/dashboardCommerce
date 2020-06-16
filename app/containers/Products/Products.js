@@ -18,6 +18,7 @@ import ProductsTable from "../../components/molecules/Tables/ProductsTable";
 
 import styles from '../../styles/dashboard/containers/Products/ProductContainerStyles'
 import FormProducts from "../../components/organisms/Products/formProducts";
+import ViewProduct from "../../components/organisms/Products/viewProduct";
 
 class Products extends React.Component{
   constructor(props) {
@@ -125,6 +126,12 @@ class Products extends React.Component{
                 showNotification={generalActions.showNotification}
               />
             ) : null}
+            {this.props.modalShow.viewModal ?
+              <ViewProduct
+                closeModal={actions.closeModal}
+                Transition={Transition}
+                showNotification={generalActions.showNotification}
+              /> : null}
             <Button id={'createProductButton'} color={'primary'} onClick={this.handleClickCreateProducts} >
               Cargar nuevo producto
             </Button>

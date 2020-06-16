@@ -43,7 +43,7 @@ class Products {
   list = async (page, orderBy, order) => {
     let response;
     try {
-      response = await Api.get(`/products?page=${page}&orderBy=${orderBy}:${order}`)
+      response = await Api.get(`/search?page=${page}&orderBy=${orderBy}:${order}`)
     } catch (err) {
       response = err;
     }

@@ -16,10 +16,13 @@ export const stateDefault = {
     productImage: '',
     characteristics: [],
   },
-  productWithDetails: {},
+  productWithDetails: {
+    characteristics: [],
+  },
   modalShow: {
     createModal: false,
     updateModal: false,
+    viewModal: false,
   },
   completeProductData: {
     title: 'Caracteristicas',
@@ -60,6 +63,10 @@ const productsReducer = (state = stateDefault, action) => {
       };
     case actionNames.loadProductsByFilterFail:
       return { ...state, products: [] };
+    case actionNames.loadProductsSuccessful:
+      return { ...state, products: action.products, totalPages: action.totalPages };
+    case actionNames.loadProductsFail:
+      return { ...state, products: [], totalPages: 1 }
     case actionNames.nextProductsPage:
       if (state.page + 1 <= state.totalPages) {
         return { ...state, page: state.page + 1 };
@@ -77,9 +84,15 @@ const productsReducer = (state = stateDefault, action) => {
     case actionNames.showUpdateProductModal:
       return { ...state, modalShow: { updateModal: true } };
     case actionNames.closeModal:
-      return { ...state, modalShow: { createModal: false, updateModal: false }};
+      return { ...state, modalShow: { createModal: false, updateModal: false, viewModal: false, }};
     case actionNames.selectedCategory:
       return { ...state, dataToCompleteProduct: { category: action.category } };
+    case actionNames.showViewModal:
+      return { ...state, modalShow: { viewModal: true }};
+    case actionNames.loadProductsWithDetailsSuccesful:
+      return { ...state, productWithDetails: action.productWithDetails };
+    case actionNames.loadProductWithDetailsFail:
+      return { ...state, productWithDetails: {} };
     default:
       return state;
   }
