@@ -15,6 +15,10 @@ import CompleteProduct from "./CompleteProduct";
 import {withStyles} from "@material-ui/core";
 import styles from '../../../styles/dashboard/components/organisms/formProductStyles'
 import productUploadImage from '../../../services/api/uploadImage';
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 
 
 class FormProducts extends React.Component
@@ -57,6 +61,18 @@ class FormProducts extends React.Component
       this.dispatch(this.props.updateProduct(dataProducts));
     }
   }
+
+  handleSelectorChange = event => {
+    if(event.target.name === 'category') {
+      const category = this.props.filters.categoryName.map(categoryName => {
+        if(categoryName.name === event.target.value) {
+          return categoryName;
+        }
+      })
+      this.dispatch(this.props.selectedCategory(category[0]));
+    }
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   imageUploadHandler = async () => {
     const formDataImage = new FormData();
@@ -133,7 +149,7 @@ class FormProducts extends React.Component
         <DialogContent id="classic-modal-slide-description" className={classes.modalBody}>
           <form onSubmit={this.createProduct}>
             <GridContainer>
-              <GridItem xs={12} sm={12} md={3}>
+              <GridItem xs={12} sm={12} md={4}>
                 <CustomInput
                   labelText="Name"
                   id="name"
@@ -158,8 +174,88 @@ class FormProducts extends React.Component
                   inputProps={{
                     required: true,
                     name: 'description',
+                    multiline: true,
+                    rows: '5',
                   }}
                 />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={4}>
+                <CustomInput
+                  labelText={'Price'}
+                  id={'price'}
+                  required
+                  error={this.props.formErrors.price !== undefined}
+                  formControlProps={{
+                    fullWidth: true,
+                  }}
+                  inputProps={{
+                    required: true,
+                    name: 'price',
+                    type: 'number',
+                  }}
+                />
+                <CustomInput
+                  labelText={'Taxes'}
+                  id={'taxes'}
+                  required
+                  error={this.props.formErrors.price !== undefined}
+                  formControlProps={{
+                    fullWidth: true,
+                  }}
+                  inputProps={{
+                    required: true,
+                    name: 'taxes',
+                    type: 'number'
+                  }}
+                />
+                <FormControl fullWidth={true} className={{
+                  color: '#fff',
+                }}>
+                  <InputLabel htmlFor="category" className={classes.selectLabel}>
+                    Categoria
+                  </InputLabel>
+                  <Select
+                    MenuProps={{
+                      className: classes.selectMenu,
+                    }}
+                    classes={{
+                      select: classes.select,
+                    }}
+                    required
+                    error={this.props.formErrors.category !== undefined}
+                    value={this.state.category}
+                    onChange={this.handleSelectorChange}
+                    inputProps={{
+                      name: 'category',
+                      id: 'category',
+                    }}
+                  >
+                    <MenuItem
+                      disabled
+                      classes={{
+                        root: classes.selectMenuItem,
+                      }}
+                    >
+                      Categoria
+                    </MenuItem>
+                    {this.props.filters.categoryName.map(category => {
+                      return (
+                        <MenuItem
+                          classes={{
+                            root: classes.selectMenuItem,
+                            selected: classes.selectMenuItemSelected,
+                          }}
+                          className={{
+                            color: "#fff"
+                          }}
+                          value={category.name}
+                        >
+                          {category.name}
+                        </MenuItem>
+                      )
+                    })}
+                  </Select>
+                </FormControl>
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
                 <CardAvatar product>
@@ -212,13 +308,12 @@ class FormProducts extends React.Component
               </GridItem>
             </GridContainer>
             <GridContainer>
-              {this.props.modalShow.updateModal ? (
-                <CompleteProduct
-                  productsUpdated={this.props.productsUpdated}
-                  changeTabSelected={this.props.changeTabSelected}
-                  showNotification={this.props.showNotification}
-                />
-              ) : null}
+              <CompleteProduct
+                productsUpdated={this.props.productsUpdated}
+                changeTabSelected={this.props.changeTabSelected}
+                showNotification={this.props.showNotification}
+                assignCharacteristicToProduct={this.props.assignCharacteristicToProduct}
+              />
             </GridContainer>
             <div className={classes.customSubmitButton}>
               <LoadingButton type="submit" color="primary" loading={this.props.loading}>
@@ -254,6 +349,8 @@ FormProducts.propTypes = {
   formData: PropTypes.object,
   formErrors: PropTypes.object,
   loadingToggle: PropTypes.func,
+  assignCharacteristicToProduct: PropTypes.func,
+  selectedCategory: PropTypes.func,
 
   productProfileUpdated: PropTypes.func,
   showNotification: PropTypes.func,

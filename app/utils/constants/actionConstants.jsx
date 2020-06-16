@@ -16,6 +16,7 @@ export const actionNames = {
   search: "SEARCH",
   seeDetails: "SEE_DETAILS",
   showDetails: "SHOW_DETAILS",
+  selectedCategory: 'SELECTED_CATEGORY',
 
   showOnWebsite: 'SHOW_ON_WEBSITE',
   listProducts: 'LIST_PRODUCTS',

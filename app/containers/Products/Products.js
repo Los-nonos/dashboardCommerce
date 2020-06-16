@@ -26,9 +26,12 @@ class Products extends React.Component{
       page: 1,
     }
     this.dispatch = props.dispatch;
+    this.handleLoadProducts();
   }
+
   handleLoadProducts = () => {
-    this.dispatch(actions.checkRoles());
+    this.dispatch(actions.checkRoles(['sales', 'deposits']));
+    this.dispatch(actions.loadFilters());
     this.dispatch(actions.listProducts(this.state.page, this.state.orderBy, this.state.order));
   }
 
@@ -116,6 +119,7 @@ class Products extends React.Component{
                 closeModal={actions.closeModal}
                 updateProduct={actions.updateProduct}
                 createProduct={actions.createProduct}
+                selectedCategory={actions.selectedCategory}
                 Transition={Transition}
                 productsUpdated={actions.productsUpdated}
                 showNotification={generalActions.showNotification}

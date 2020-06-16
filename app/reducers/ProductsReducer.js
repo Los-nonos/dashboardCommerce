@@ -14,11 +14,22 @@ export const stateDefault = {
     name: '',
     description: '',
     productImage: '',
+    characteristics: [],
   },
   productWithDetails: {},
   modalShow: {
     createModal: false,
     updateModal: false,
+  },
+  completeProductData: {
+    title: 'Caracteristicas',
+    characteristics: [],
+  },
+  dataToCompleteProduct: {
+    category: {
+        name: '',
+        filters: []
+      },
   },
   formErrors: {},
   page: 1,
@@ -27,6 +38,20 @@ export const stateDefault = {
 
 const productsReducer = (state = stateDefault, action) => {
   switch (action.type) {
+    case actionNames.loadFiltersSuccesful:
+      return {...state, filters: {
+          categoryName: action.body.categories,
+          filterName: action.body.filterNames,
+          filterOption: action.body.filterOptions
+        }
+      };
+    case actionNames.loadFiltersFail:
+      return {...state, filters: {
+          categoryName: [],
+          filterName: [],
+          filterOption: [],
+        }
+      };
     case actionNames.loadProductsByFilterSuccesful:
       return {
         ...state,
@@ -52,7 +77,9 @@ const productsReducer = (state = stateDefault, action) => {
     case actionNames.showUpdateProductModal:
       return { ...state, modalShow: { updateModal: true } };
     case actionNames.closeModal:
-      return {...state, modalShow: { createModal: false, updateModal: false }};
+      return { ...state, modalShow: { createModal: false, updateModal: false }};
+    case actionNames.selectedCategory:
+      return { ...state, dataToCompleteProduct: { category: action.category } };
     default:
       return state;
   }

@@ -1,5 +1,20 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
+export function selectedCategory(category) {
+  return {
+    type: actionNames.selectedCategory,
+    category
+  }
+}
+
+
+export function loadFilters() {
+  return {
+    type: actionNames.loadFilters,
+  };
+}
+
+
 export function updateProduct(dataProduct) {
   return {
     type: actionNames.updateProduct,

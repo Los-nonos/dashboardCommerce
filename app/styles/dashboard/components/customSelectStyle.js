@@ -15,7 +15,7 @@ const customSelectStyle = {
     lineHeight: "1.42857",
     textDecoration: "none",
     textTransform: "uppercase",
-    color: grayColor[1],
+    color: whiteColor,
     letterSpacing: "0",
     "&:focus": {
       backgroundColor: "transparent"
@@ -42,7 +42,7 @@ const customSelectStyle = {
   selectLabel: {
     fontSize: "12px",
     textTransform: "uppercase",
-    color: grayColor[1] + " !important",
+    color: whiteColor + " !important",
     top: "8px"
   },
   selectMenu: {
@@ -76,7 +76,7 @@ const customSelectStyle = {
     fontWeight: "400",
     lineHeight: "2",
     whiteSpace: "nowrap",
-    color: grayColor[8],
+    color: blackColor,
     paddingRight: "30px",
     "&:hover": {
       backgroundColor: primaryColor[0],
@@ -132,7 +132,7 @@ const customSelectStyle = {
     "& > div": {
       marginTop: "13px"
     }
-  }
+  },
 };
 
 export default customSelectStyle;
