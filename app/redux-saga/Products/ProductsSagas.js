@@ -17,7 +17,7 @@ export function* createProduct(action) {
       put({ type: actionNames.loadingToggle }),
       put({ type: actionNames.showNotification, error: res.error }),
     ]);
-  }else{
+  } else {
     const response = yield call(product.getById, res.product.id);
     yield all([
       put(res),
@@ -45,15 +45,14 @@ export function* updateProduct(action) {
       put({ type: actionNames.showNotification, error: res.error }),
     ]);
   }else{
-    const response = yield call(product.getById, res.product.id);
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),
       put({ type: actionNames.closeModal }),
       put({ type: actionNames.showNotification, message: res.message }),
     ]);
+    redirectTo(pages.closeModal);
   }
-  redirectTo(pages.closeModal);
 }
 
 export function* listProducts(action) {
@@ -76,5 +75,27 @@ export function* listProducts(action) {
   } else {
     yield put(res);
     yield put({ type: actionNames.loadingToggle });
+  }
+}
+
+export function* getProductByUuid(action) {
+  let { uuid } = action;
+  yield put({ type: actionNames.loadingToggle });
+  const res = yield call(product.getById, uuid);
+
+  if (res.error) {
+    if (res.error.code === 401 || res.error.code === 403) {
+      yield all([put({ type: actionNames.handleError, error: res.error })]);
+      redirectTo(pages.error);
+    }
+    yield all([
+      put(res),
+      put({ type: actionNames.loadingToggle }),
+      put({ type: actionNames.showNotification, error: res.error }),
+    ]);
+  } else {
+    yield put(res);
+    yield put({ type: actionNames.loadingToggle });
+    yield put({ type: actionNames.showUpdateProductModal });
   }
 }

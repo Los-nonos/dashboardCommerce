@@ -93,6 +93,19 @@ const productsReducer = (state = stateDefault, action) => {
       return { ...state, productWithDetails: action.productWithDetails };
     case actionNames.loadProductWithDetailsFail:
       return { ...state, productWithDetails: {} };
+    case actionNames.loadProductSuccessful:
+      return { ...state, formData: {
+          id: action.product.id,
+          name: action.product.name,
+          description: action.product.description,
+          category: action.product.category,
+          characteristics: action.product.characteristics,
+          taxes: action.product.taxes,
+          productImage: action.product.image,
+        },
+      };
+    case actionNames.loadProductFail:
+      return { ...state, formData: {} };
     default:
       return state;
   }

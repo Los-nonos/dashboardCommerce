@@ -96,7 +96,6 @@ class ViewProduct extends React.Component
     if (this.props.modalShow.updateModal && this.state.firstLoad) {
       this.updateValues();
     }
-    console.log(this.state.product);
     return (
       <Dialog
         classes={{

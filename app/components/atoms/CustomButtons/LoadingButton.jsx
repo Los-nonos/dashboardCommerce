@@ -82,9 +82,6 @@ LoadingButton.propTypes = {
     "rose",
     "white",
     "secondary",
-    "rooftopOrange",
-    "rooftopBlue",
-    "rooftopYellow",
     "transparent"
   ]),
   size: PropTypes.oneOf(["sm", "lg"]),

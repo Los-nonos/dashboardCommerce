@@ -42,6 +42,9 @@ class FormProducts extends React.Component
     const fields = [
       'name',
       'description',
+      'price',
+      'taxes',
+      'category',
       'productImage'
     ];
 
@@ -98,6 +101,7 @@ class FormProducts extends React.Component
   };
 
   checkIfUrlIsImage = url => {
+    url = url ? url : '';
     return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
   };
 
@@ -161,6 +165,7 @@ class FormProducts extends React.Component
                   inputProps={{
                     required: true,
                     name: 'name',
+                    defaultValue: this.props.formData.name
                   }}
                 />
                 <CustomInput
@@ -176,6 +181,7 @@ class FormProducts extends React.Component
                     name: 'description',
                     multiline: true,
                     rows: '5',
+                    defaultValue: this.props.formData.description
                   }}
                 />
               </GridItem>
@@ -192,6 +198,7 @@ class FormProducts extends React.Component
                     required: true,
                     name: 'price',
                     type: 'number',
+                    defaultValue: this.props.formData.price
                   }}
                 />
                 <CustomInput
@@ -205,7 +212,8 @@ class FormProducts extends React.Component
                   inputProps={{
                     required: true,
                     name: 'taxes',
-                    type: 'number'
+                    type: 'number',
+                    defaultValue: this.props.formData.taxes
                   }}
                 />
                 <FormControl fullWidth={true} className={{
@@ -228,6 +236,7 @@ class FormProducts extends React.Component
                     inputProps={{
                       name: 'category',
                       id: 'category',
+                      defaultValue: this.props.formData.category
                     }}
                   >
                     <MenuItem
