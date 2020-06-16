@@ -48,4 +48,17 @@ export const actionNames = {
   nextProductsPage: 'NEXT_PRODUCTS_PAGE',
   selectProductPage: 'SELECT_PRODUCTS_PAGE',
   previousProductsPage: 'PREVIOUS_PRODUCTS_PAGE',
+
+  createProduct: 'CREATE_PRODUCT',
+  updateProduct: 'UPDATE_PRODUCT',
+  productCreatedFail: 'PRODUCT_CREATED_FAIL',
+  productCreatedSuccessfully: 'PRODUCT_CREATED_SUCCESSFULLY',
+  productUpdatedFail: 'PRODUCT_UPDATE_FAIL',
+  productUpdatedSuccessfully: 'PRODUCT_UPDATE_SUCCESSFULLY',
+  loadProductSuccessful: 'LOAD_PRODUCT_SUCCESSFUL',
+  loadProductFail: 'LOAD_PRODUCT_FAIL',
+  loadProductsSuccessful: 'LOAD_PRODUCTS_SUCCESSFUL',
+  loadProductsFail: 'LOAD_PRODUCTS_FAIL',
+
+
 };

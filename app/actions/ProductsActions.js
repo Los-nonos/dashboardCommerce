@@ -18,7 +18,7 @@ export function loadFilters() {
 export function updateProduct(dataProduct) {
   return {
     type: actionNames.updateProduct,
-    product: {
+    dataProduct: {
       name: dataProduct.name,
       image: dataProduct.image,
       price: dataProduct.price,
@@ -44,7 +44,7 @@ export function getProductsByUuid(uuid) {
 export function completeProduct(dataProduct) {
   return {
     type: actionNames.completeProduct,
-    product: {
+    dataProduct: {
       name: dataProduct.name,
       image: dataProduct.image,
       price: dataProduct.price,
@@ -57,7 +57,7 @@ export function completeProduct(dataProduct) {
 export function createProduct(dataProduct) {
   return {
     type: actionNames.createProduct,
-    product: {
+    dataProduct: {
       name: dataProduct.name,
       image: dataProduct.image,
       price: dataProduct.price,
