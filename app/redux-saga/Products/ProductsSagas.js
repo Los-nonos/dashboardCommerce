@@ -6,7 +6,7 @@ import {pages, redirectTo} from "../../utils/helpers/redirectTo";
 export function* createProduct(action) {
   const { dataProduct } = action;
   const res = yield call(product.create, dataProduct);
-
+  console.log(res);
   if(res.error) {
     if (res.error.code === 401 || res.error.code === 403) {
       yield all([put({ type: actionNames.handleError, error: res.error })]);

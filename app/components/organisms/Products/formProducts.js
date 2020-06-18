@@ -30,6 +30,7 @@ class FormProducts extends React.Component
       isAvailable: false,
       firstLoad: true,
       selectedImage: null,
+      categoryFilters: null,
     };
     this.dispatch = props.dispatch;
   }
@@ -71,8 +72,9 @@ class FormProducts extends React.Component
         if(categoryName.name === event.target.value) {
           return categoryName;
         }
-      })
-      this.dispatch(this.props.selectedCategory(category[0]));
+      });
+      this.setState({categoryFilters: category[0] });
+      //this.dispatch(this.props.selectedCategory(category[0]));
     }
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -317,12 +319,15 @@ class FormProducts extends React.Component
               </GridItem>
             </GridContainer>
             <GridContainer>
-              <CompleteProduct
-                productsUpdated={this.props.productsUpdated}
-                changeTabSelected={this.props.changeTabSelected}
-                showNotification={this.props.showNotification}
-                assignCharacteristicToProduct={this.props.assignCharacteristicToProduct}
-              />
+              {this.state.categoryFilters ? (
+                <CompleteProduct
+                  customFilters={this.state.categoryFilters}
+                  productsUpdated={this.props.productsUpdated}
+                  changeTabSelected={this.props.changeTabSelected}
+                  showNotification={this.props.showNotification}
+                  assignCharacteristicToProduct={this.props.assignCharacteristicToProduct}
+                />
+              ) : null}
             </GridContainer>
             <div className={classes.customSubmitButton}>
               <LoadingButton type="submit" color="primary" loading={this.props.loading}>

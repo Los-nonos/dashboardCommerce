@@ -288,21 +288,6 @@ const buttonStyle = theme => ({
         color: dangerColor
       }
     },
-    "&$rooftopBlue": {
-      "&,&:focus,&:hover,&:visited": {
-        color: primaryColor[0]
-      }
-    },
-    "&$rooftopOrange": {
-      "&,&:focus,&:hover,&:visited": {
-        color: infoColor
-      }
-    },
-    "&$rooftopYellow": {
-      "&,&:focus,&:hover,&:visited": {
-        color: infoColor
-      }
-    }
   },
   transparent: {
     "&,&:focus,&:hover": {

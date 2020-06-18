@@ -10,11 +10,13 @@ class CompleteProduct extends React.Component {
     super(props);
     this.state = {
       characteristics: this.props.productWithDetails.characteristics,
-      filters: this.props.dataToCompleteProduct.categories,
+      filters: this.props.customFilters.filters,
     }
   }
 
   getFilters = (filters) => {
+    console.log(filters);
+    console.log(this.props.customFilters);
     return filters.map(filter => {
       return filter.name;
     })
@@ -30,7 +32,7 @@ class CompleteProduct extends React.Component {
               {
                 title: 'Caracteristica',
                 field: 'characteristic',
-                lookup: this.getFilters(this.props.dataToCompleteProduct.category.filters),
+                lookup: this.getFilters(this.props.customFilters.filters),
               },
               {
                 title: 'Valor',
@@ -50,7 +52,12 @@ class CompleteProduct extends React.Component {
 }
 
 CompleteProduct.propTypes = {
-
+  assignCharacteristicToProduct: PropTypes.func,
+  updateProductCharacteristic: PropTypes.func,
+  createProductCharacteristic: PropTypes.func,
+  dataToCompleteProduct: PropTypes.object,
+  productWithDetails: PropTypes.object,
+  customFilters: PropTypes.object,
 };
 
 const mapStateToProps = state => {

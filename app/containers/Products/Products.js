@@ -114,31 +114,6 @@ class Products extends React.Component{
     return (
       <>
         <GridContainer>
-          <GridItem>
-            {this.props.modalShow.createModal || this.props.modalShow.updateModal ? (
-              <FormProducts
-                closeModal={actions.closeModal}
-                updateProduct={actions.updateProduct}
-                createProduct={actions.createProduct}
-                selectedCategory={actions.selectedCategory}
-                Transition={Transition}
-                productsUpdated={actions.productsUpdated}
-                showNotification={generalActions.showNotification}
-              />
-            ) : null}
-            {this.props.modalShow.viewModal ?
-              <ViewProduct
-                closeModal={actions.closeModal}
-                Transition={Transition}
-                showNotification={generalActions.showNotification}
-              /> : null}
-            <Button id={'createProductButton'} color={'primary'} onClick={this.handleClickCreateProducts} >
-              Cargar nuevo producto
-            </Button>
-            <Notification closeNotification={this.closeNotification} />
-          </GridItem>
-        </GridContainer>
-        <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
             <Card>
               <CardHeader color={'primary'}>
@@ -169,6 +144,31 @@ class Products extends React.Component{
           <div className={classes.center}>
             <Pagination pages={this.pagination()} color="primary" />
           </div>
+        </GridContainer>
+        <GridContainer>
+          <GridItem>
+            {this.props.modalShow.createModal || this.props.modalShow.updateModal ? (
+              <FormProducts
+                closeModal={actions.closeModal}
+                updateProduct={actions.updateProduct}
+                createProduct={actions.createProduct}
+                selectedCategory={actions.selectedCategory}
+                Transition={Transition}
+                productsUpdated={actions.productsUpdated}
+                showNotification={generalActions.showNotification}
+              />
+            ) : null}
+            {this.props.modalShow.viewModal ?
+              <ViewProduct
+                closeModal={actions.closeModal}
+                Transition={Transition}
+                showNotification={generalActions.showNotification}
+              /> : null}
+            <Button id={'createProductButton'} color={'primary'} onClick={this.handleClickCreateProducts} >
+              Cargar nuevo producto
+            </Button>
+            <Notification closeNotification={this.closeNotification} />
+          </GridItem>
         </GridContainer>
       </>
     );

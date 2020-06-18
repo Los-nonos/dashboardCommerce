@@ -106,6 +106,10 @@ const productsReducer = (state = stateDefault, action) => {
       };
     case actionNames.loadProductFail:
       return { ...state, formData: {} };
+    case actionNames.productCreatedFail:
+      return {...state, formErrors: action.errors };
+    case actionNames.productCreatedSuccessfully:
+      return { ...state };
     default:
       return state;
   }

@@ -29,25 +29,6 @@ export default function Footer(props) {
   return (
     <footer className={footerClasses}>
       <div className={classes.container}>
-        <div className={classes.left}>
-          <List className={classes.list}>
-            <ListItem className={classes.inlineBlock}>
-              <a href="/" className={classes.block} target="_blank">
-                Zeep Commerce
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a href="/about" className={classes.block} target="_blank">
-                About us
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a href="/contact" className={classes.block} target="_blank">
-                Contact
-              </a>
-            </ListItem>
-          </List>
-        </div>
         <div className={classes.right}>
           &copy; {1900 + new Date().getYear()} , made with{" "}
           <Favorite className={classes.icon} /> by{" "}

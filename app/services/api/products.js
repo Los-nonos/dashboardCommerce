@@ -7,7 +7,7 @@ class Products {
 
     let response;
     try {
-      response = await Api.post('/products', body);
+      response = await Api.post('products/', body);
     }catch(err) {
       response = err;
     }
