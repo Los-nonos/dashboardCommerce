@@ -17,7 +17,7 @@ class Notification extends React.Component {
     return (
       <Snackbar
         place="tr"
-        color={this.props.notificationColor}
+        color={'danger'}
         icon={this.props.notificationColor === "danger" ? Close : Check}
         message={this.props.message}
         open={this.props.notification}

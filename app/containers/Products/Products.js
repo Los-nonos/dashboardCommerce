@@ -59,6 +59,7 @@ class Products extends React.Component{
           //product.characteristics,
         ],
         uuid: product.uuid,
+        id: product.id,
       }
       products.push(dataProduct);
     }
@@ -99,7 +100,7 @@ class Products extends React.Component{
   render() {
     if (this.state.page !== this.props.page) {
       this.setState({ page: this.props.page });
-      this.handleLoadProducts();
+      //this.handleLoadProducts();
     }
     const { classes } = this.props;
     const Transition = React.forwardRef(function Transition(props, ref) {

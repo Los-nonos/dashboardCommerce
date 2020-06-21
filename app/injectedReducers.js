@@ -4,6 +4,7 @@ import generalReducer from "./reducers/generalReducer";
 import userAccountReducer from "./reducers/UserAccountReducer";
 import searchReducer from "./reducers/SearchReducer";
 import productsReducer from "./reducers/ProductsReducer";
+import employeeReducer from "./reducers/EmployeeReducer";
 
 export default {
   login,
@@ -11,5 +12,6 @@ export default {
   generalReducer,
   userAccountReducer,
   searchReducer,
-  productsReducer
+  productsReducer,
+  employeeReducer
 };

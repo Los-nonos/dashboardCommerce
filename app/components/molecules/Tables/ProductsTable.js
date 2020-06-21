@@ -168,7 +168,7 @@ class ProductsTable extends React.Component {
                           className={classes.tableActionButton}
                           onClick={this.handleClickChangeState.bind(this, prop)}
                         >
-                          {prop.visibleData[9] === 'active' ? (
+                          {prop.visibleData['active'] === 'active' ? (
                             <Close className={classes.tableActionButtonIcon + ' ' + classes.close} />
                           ) : (
                             <Done className={classes.tableActionButtonIcon + ' ' + classes.done} />

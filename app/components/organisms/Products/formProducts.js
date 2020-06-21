@@ -207,7 +207,7 @@ class FormProducts extends React.Component
                   labelText={'Taxes'}
                   id={'taxes'}
                   required
-                  error={this.props.formErrors.price !== undefined}
+                  error={this.props.formErrors.taxes !== undefined}
                   formControlProps={{
                     fullWidth: true,
                   }}

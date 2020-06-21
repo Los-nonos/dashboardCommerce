@@ -4,9 +4,9 @@ import { actionNames } from "../../utils/constants/actionConstants";
 class AuthAdapter {
   login = response => {
     const { status, data } = response;
-    console.log(data);
+
     if (!isError(status)) {
-      console.log(data);
+
       const { token } = data;
       delete data.token;
 

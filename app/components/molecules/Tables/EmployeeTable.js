@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
@@ -9,6 +11,9 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 import {Close, Done, Edit, Grade, Visibility} from "@material-ui/icons";
+
+import styles from '../../../styles/dashboard/components/molecules/productsTableStyles';
+import {withStyles} from "@material-ui/core";
 
 class EmployeeTable extends React.Component {
   constructor(props) {
@@ -102,3 +107,9 @@ class EmployeeTable extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return state.employeeReducer;
+}
+
+export default connect(mapStateToProps)(withStyles(styles)(EmployeeTable));

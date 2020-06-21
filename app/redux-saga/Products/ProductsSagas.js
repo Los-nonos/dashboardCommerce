@@ -6,7 +6,7 @@ import {pages, redirectTo} from "../../utils/helpers/redirectTo";
 export function* createProduct(action) {
   const { dataProduct } = action;
   const res = yield call(product.create, dataProduct);
-  console.log(res);
+
   if(res.error) {
     if (res.error.code === 401 || res.error.code === 403) {
       yield all([put({ type: actionNames.handleError, error: res.error })]);
@@ -25,7 +25,7 @@ export function* createProduct(action) {
       put({ type: actionNames.showNotification, message: res.message }),
       put({ type: actionNames.closeModal }),
       put(response),
-      put({ type: actionNames.updateModalShow }),
+      put({ type: actionNames.showUpdateProductModal }),
     ]);
   }
 }
@@ -51,7 +51,7 @@ export function* updateProduct(action) {
       put({ type: actionNames.closeModal }),
       put({ type: actionNames.showNotification, message: res.message }),
     ]);
-    redirectTo(pages.closeModal);
+    //redirectTo(pages.closeModal);
   }
 }
 

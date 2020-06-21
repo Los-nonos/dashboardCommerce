@@ -3,14 +3,12 @@ import {actionNames} from "../utils/constants/actionConstants";
 export const stateDefault = {
   filters: {
     categoryName: [],
-    filterNames: [],
-    filterOptions: [],
     valueFilterOption: "",
     query: ""
   },
   products: [],
   formData: {
-    id: '',
+    id: 0,
     name: '',
     description: '',
     productImage: '',
@@ -44,15 +42,11 @@ const productsReducer = (state = stateDefault, action) => {
     case actionNames.loadFiltersSuccesful:
       return {...state, filters: {
           categoryName: action.body.categories,
-          filterName: action.body.filterNames,
-          filterOption: action.body.filterOptions
         }
       };
     case actionNames.loadFiltersFail:
       return {...state, filters: {
           categoryName: [],
-          filterName: [],
-          filterOption: [],
         }
       };
     case actionNames.loadProductsByFilterSuccesful:
@@ -90,7 +84,15 @@ const productsReducer = (state = stateDefault, action) => {
     case actionNames.showViewModal:
       return { ...state, modalShow: { viewModal: true }};
     case actionNames.loadProductsWithDetailsSuccesful:
-      return { ...state, productWithDetails: action.productWithDetails };
+      return { ...state, formData: {
+          id: action.productWithDetails.id,
+          name: action.productWithDetails.name,
+          description: action.productWithDetails.description,
+          price: action.productWithDetails.price,
+          taxes: action.productWithDetails.taxes,
+          category: action.productWithDetails.category.name,
+          characteristics: action.productWithDetails.characteristics,
+      } };
     case actionNames.loadProductWithDetailsFail:
       return { ...state, productWithDetails: {} };
     case actionNames.loadProductSuccessful:
@@ -98,6 +100,7 @@ const productsReducer = (state = stateDefault, action) => {
           id: action.product.id,
           name: action.product.name,
           description: action.product.description,
+          price: action.product.price,
           category: action.product.category,
           characteristics: action.product.characteristics,
           taxes: action.product.taxes,

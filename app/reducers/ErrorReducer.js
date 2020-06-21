@@ -4,7 +4,8 @@ const stateDefault = {
   errorHandler: {
     code: "404",
     errors: "",
-    typeError: "Page not found"
+    typeError: "Page not found",
+    notificationColor: 'danger',
   }
 };
 

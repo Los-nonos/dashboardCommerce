@@ -7,17 +7,19 @@ class Products {
 
     let response;
     try {
-      response = await Api.post('products/', body);
+      response = await Api.post("products", body);
     }catch(err) {
       response = err;
     }
+    console.log('llegó acá');
+    console.log(response);
 
-    return productAdapter.create(response, body);
+    return productAdapter.createAdapt(response, body);
   };
 
   update = async (dataProduct) => {
     const body = dataProduct;
-
+    console.log(body);
     let response;
 
     try {
@@ -26,7 +28,7 @@ class Products {
       response = err;
     }
 
-    return productAdapter.update(response, body);
+    return productAdapter.updateAdapt(response, body);
   }
 
   getById = async (id) => {
@@ -37,7 +39,7 @@ class Products {
       response = err;
     }
 
-    return productAdapter.getById(response);
+    return productAdapter.getByIdAdapt(response);
   };
 
   list = async (page, orderBy, order) => {
@@ -48,7 +50,7 @@ class Products {
       response = err;
     }
 
-    return productAdapter.list(response);
+    return productAdapter.listAdapt(response);
   }
 }
 

@@ -3,7 +3,7 @@ import {actionNames} from "../../utils/constants/actionConstants";
 import {errorProducts} from "../../utils/presenter/errorPresenter";
 
 class ProductAdapter {
-  create = (createResponse, body) => {
+  createAdapt = (createResponse, body) => {
     const { status, data } = createResponse;
     console.log(createResponse);
     if (!isError(status)) {
@@ -17,7 +17,7 @@ class ProductAdapter {
     return errorProducts(data, status, body, actionNames.productCreatedFail)
   }
 
-  update = (updateResponse, body) => {
+  updateAdapt = (updateResponse, body) => {
     const { status, data } = updateResponse;
 
     if (!isError(status)) {
@@ -31,7 +31,7 @@ class ProductAdapter {
     return errorProducts(data, status, body, actionNames.productUpdatedFail)
   }
 
-  getById = (getResponse) => {
+  getByIdAdapt = (getResponse) => {
     const { status, data } = getResponse;
 
     if (!isError(status)) {
@@ -52,7 +52,7 @@ class ProductAdapter {
     };
   }
 
-  list = (listResponse) => {
+  listAdapt = (listResponse) => {
     const { status, data } = listResponse;
 
     if (!isError(status)) {
