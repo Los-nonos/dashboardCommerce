@@ -11,8 +11,6 @@ class Products {
     }catch(err) {
       response = err;
     }
-    console.log('llegó acá');
-    console.log(response);
 
     return productAdapter.createAdapt(response, body);
   };

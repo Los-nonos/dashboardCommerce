@@ -7,6 +7,7 @@ import { actionNames } from "../../utils/constants/actionConstants";
 import { checkRoles } from "../Auth/permissionsSagas";
 import { loadFilters, searchProducts, seeDetails } from "../Search/SearchSagas";
 import {createProduct, getProductByUuid, listProducts, updateProduct} from "../Products/ProductsSagas";
+import {listEmployees, seeEmployeeDetails} from "../User/EmployeeSagas";
 // import { signUp } from "../Auth/signUpSagas";
 
 function* sagas() {
@@ -23,6 +24,8 @@ function* sagas() {
   yield takeEvery(actionNames.updateProduct, updateProduct);
   yield takeEvery(actionNames.listProducts, listProducts);
   yield takeEvery(actionNames.getProductByUuid, getProductByUuid);
+  yield takeEvery(actionNames.listEmployees, listEmployees);
+  yield takeEvery(actionNames.seeEmployeeDetails, seeEmployeeDetails);
   // yield takeEvery(actionNames.signUp, signUp);
 }
 

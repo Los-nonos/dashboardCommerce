@@ -1,13 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import * as actions from "../../actions/EmployeeActions";
 import GridItem from "../../components/atoms/Grid/GridItem";
 import Card from "../../components/molecules/Card/Card";
 import CardHeader from "../../components/molecules/Card/CardHeader";
 import CardBody from "../../components/molecules/Card/CardBody";
-import ProductsTable from "../../components/molecules/Tables/ProductsTable";
 import Pagination from "../../components/molecules/Pagination/Pagination";
 import GridContainer from "../../components/atoms/Grid/GridContainer";
-import Slide from "@material-ui/core/Slide";
+import EmployeeTable from "../../components/molecules/Tables/EmployeeTable";
+import { withStyles } from "@material-ui/core";
+import styles from '../../styles/dashboard/containers/Products/ProductContainerStyles';
 
 class Employees extends React.Component {
   constructor(props) {
@@ -24,10 +26,6 @@ class Employees extends React.Component {
   handleChangeOrderState = (orderBy, order) => {
     this.setState({ orderBy, order });
   };
-
-  handleClickCreateProducts = () => {
-    this.dispatch(actions.showCreateModal());
-  }
 
   closeNotification = () => {
     this.dispatch(actions.closeNotification());
@@ -112,7 +110,7 @@ class Employees extends React.Component {
                     'Rol'
                   ]}
                   tableData={employeeData}
-                  getProductByUuid={actions.getEmployeeByid}
+                  getProductByUuid={actions.getEmployeeById}
                   completeProduct={actions.completeEmployee}
                   seeDetails={actions.seeDetails}
                   listProducts={actions.listEmployees}
@@ -130,3 +128,9 @@ class Employees extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return state.employeeReducer;
+}
+
+export default connect(mapStateToProps)(withStyles(styles)(Employees));

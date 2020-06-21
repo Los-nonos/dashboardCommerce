@@ -62,4 +62,25 @@ export const actionNames = {
   showViewModal: 'SHOW_VIEW_MODAL',
 
   getProductByUuid: 'GET_PRODUCT_BY_UUID',
+  listEmployees: 'LIST_EMPLOYEES',
+  showCreateEmployeeModal: 'SHOW_CREATE_EMPLOYEE_MODAL',
+  previousEmployeePage: 'PREVIOUS_EMPLOYEE_PAGE',
+  selectEmployeePage: 'SELECT_EMPLOYEE_PAGE',
+  nextEmployeePage: 'NEXT_EMPLOYEE_PAGE',
+  getEmployeeById: 'GET_EMPLOYEE_BY_ID',
+  completeEmployee: 'COMPLETE_EMPLOYEE',
+  seeEmployeeDetails: 'SEE_EMPLOYEE_DETAILS',
+  createEmployee: 'CREATE_EMPLOYEE',
+  updateEmployee: 'UPDATE_EMPLOYEE',
+  showUpdateEmployeeModal: 'SHOW_UPDATE_EMPLOYEE_MODAL',
+  employeeCreatedSuccessfully: 'EMPLOYEE_CREATED_SUCCESSFULLY',
+  employeeCreatedFail: 'EMPLOYEE_CREATED_FAIL',
+  employeeUpdatedSuccessfully: 'EMPLOYEE_UPDATED_SUCCESSFULLY',
+  employeeUpdatedFail: 'EMPLOYEE_UPDATED_FAIL',
+  loadEmployeeSuccessful: 'LOAD_EMPLOYEE_SUCCESSFULLY',
+  loadEmployeeFail: 'LOAD_EMPLOYEE_FAIL',
+  loadEmployeesSuccessful: 'LOAD_EMPLOYEES_SUCCESSFULLY',
+  loadEmployeesFail: 'LOAD_EMPLOYEES_FAIL'
+
+
 };
