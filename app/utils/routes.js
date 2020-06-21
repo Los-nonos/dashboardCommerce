@@ -7,6 +7,8 @@ import UserAccount from "../containers/UserAccount/UserAccount";
 import ErrorPage from "../containers/Error/ErrorPage";
 import SearchProducts from "../containers/Products/SearchProducts";
 import Products from "../containers/Products/Products";
+import {Person} from "@material-ui/icons";
+import Employees from "../containers/Users/Employees";
 
 const dashboardRoutes = [
   {
@@ -40,7 +42,15 @@ const dashboardRoutes = [
     component: ErrorPage,
     layout: "/auth",
     rol: ""
-  }
+  },
+  {
+    path: '/employees',
+    name: 'EMPLEADOS',
+    icon: Person,
+    component: Employees,
+    layout: '/dashboard',
+    rol: 'admin',
+  },
 ];
 
 export default dashboardRoutes;
