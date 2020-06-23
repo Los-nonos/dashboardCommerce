@@ -15,4 +15,5 @@ export function* deleteSession() {
 
 export function* renewToken(action) {
   yield call(authStorage.renewToken, action.token);
+  yield put({ type: actionNames.checkNotifications, token: action.token });
 }

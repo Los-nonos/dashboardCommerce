@@ -30,6 +30,11 @@ const generalReducer = (state = stateDefault, action) => {
         error: action.error ? action.error : { errors: {} },
         notificationColor: action.error ? "danger" : "success"
       };
+    case actionNames.checkNotificationsSuccessfully:
+      return {
+        ...state,
+        notifications: action.notifications,
+      };
     default:
       return state;
   }

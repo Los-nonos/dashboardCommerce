@@ -5,11 +5,10 @@ import { errorEmployments } from "../../utils/presenter/errorPresenter";
 class EmployeeAdapter {
   createAdapt = (createResponse, body) => {
     const { status, data } = createResponse;
-    console.log(createResponse);
     if (!isError(status)) {
       return {
         type: actionNames.employeeCreatedSuccessfully,
-        message: "Producto creado satisfactoriamente",
+        message: "Empleado creado satisfactoriamente",
         product: data.data
       };
     }
@@ -28,7 +27,7 @@ class EmployeeAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.employeeUpdatedSuccessfully,
-        message: "Producto actualizado satisfactoriamente",
+        message: "Empleado actualizado satisfactoriamente",
         product: data.data
       };
     }

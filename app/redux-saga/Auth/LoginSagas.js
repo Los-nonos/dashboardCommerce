@@ -24,7 +24,8 @@ export function* login(action) {
         type: actionNames.saveSession,
         token: res.token,
         roles: res.user.roles
-      })
+      }),
+      put({ type: actionNames.checkNotifications, id: res.user.id }),
     ]);
     redirectToWithState(pages.dashboard, { previousPath: "login" });
   }
