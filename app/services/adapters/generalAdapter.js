@@ -14,7 +14,7 @@ class GeneralAdapter {
 
     const { code, details } = data.errors;
     return {
-      type: actionNames.loadEmployeeFail,
+      type: actionNames.checkNotificationsFail,
       error: {
         code: status,
         type: code,

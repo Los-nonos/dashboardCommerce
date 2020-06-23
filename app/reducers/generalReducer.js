@@ -5,7 +5,8 @@ const stateDefault = {
   error: { errors: {} },
   notification: false,
   notificationColor: "",
-  message: ""
+  message: "",
+  notifications: [],
 };
 
 const generalReducer = (state = stateDefault, action) => {
@@ -35,6 +36,8 @@ const generalReducer = (state = stateDefault, action) => {
         ...state,
         notifications: action.notifications,
       };
+    case actionNames.checkNotificationsFail:
+      return { ...state, notifications: [] };
     default:
       return state;
   }

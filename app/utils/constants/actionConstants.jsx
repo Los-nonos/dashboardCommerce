@@ -83,4 +83,5 @@ export const actionNames = {
   loadEmployeesFail: "LOAD_EMPLOYEES_FAIL",
   checkNotifications: "CHECK_NOTIFICATIONS",
   checkNotificationsSuccessfully: "CHECK_NOTIFICATIONS_SUCCESSFULLY",
+  checkNotificationsFail: "CHECK_NOTIFICATIONS_FAIL",
 };
