@@ -80,6 +80,10 @@ export function* seeDetails(action) {
       put({ type: actionNames.showNotification, error: res.error })
     ]);
   } else {
-    yield all([put(res), put({ type: actionNames.loadingToggle }), put({type: actionNames.showViewModal})]);
+    yield all([
+      put(res),
+      put({ type: actionNames.loadingToggle }),
+      put({ type: actionNames.showViewModal })
+    ]);
   }
 }

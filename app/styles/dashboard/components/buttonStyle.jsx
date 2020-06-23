@@ -287,7 +287,7 @@ const buttonStyle = theme => ({
       "&,&:focus,&:hover,&:visited": {
         color: dangerColor
       }
-    },
+    }
   },
   transparent: {
     "&,&:focus,&:hover": {

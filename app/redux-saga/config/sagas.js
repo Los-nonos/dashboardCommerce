@@ -6,8 +6,13 @@ import { actionNames } from "../../utils/constants/actionConstants";
 /* eslint-disable import/no-cycle */
 import { checkRoles } from "../Auth/permissionsSagas";
 import { loadFilters, searchProducts, seeDetails } from "../Search/SearchSagas";
-import {createProduct, getProductByUuid, listProducts, updateProduct} from "../Products/ProductsSagas";
-import {listEmployees, seeEmployeeDetails} from "../User/EmployeeSagas";
+import {
+  createProduct,
+  getProductByUuid,
+  listProducts,
+  updateProduct
+} from "../Products/ProductsSagas";
+import { listEmployees, seeEmployeeDetails } from "../User/EmployeeSagas";
 // import { signUp } from "../Auth/signUpSagas";
 
 function* sagas() {

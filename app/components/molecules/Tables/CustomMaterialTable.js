@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import MaterialTable from 'material-table';
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import MaterialTable from "material-table";
 
 class CustomMaterialTable extends React.Component {
   constructor(props) {
@@ -9,21 +9,29 @@ class CustomMaterialTable extends React.Component {
     this.state = {
       materialTable: {
         columns: [],
-        data: [],
+        data: []
       },
-      firstLoad: true,
+      firstLoad: true
     };
     this.dispatch = props.dispatch;
   }
 
   addAction = (title, newData) => {
     switch (title) {
-      case 'Characteristics':
+      case "Characteristics":
         const characteristics = newData.characteristics
-          ? prepareCharacteristics(newData.characteristics, this.props.completeProduct.characteristics)
+          ? prepareCharacteristics(
+              newData.characteristics,
+              this.props.completeProduct.characteristics
+            )
           : [];
         newData.characteristics = characteristics;
-        this.dispatch(this.props.assignCharacteristicToProduct(newData, this.props.formData.id));
+        this.dispatch(
+          this.props.assignCharacteristicToProduct(
+            newData,
+            this.props.formData.id
+          )
+        );
         break;
       default:
         break;
@@ -32,12 +40,20 @@ class CustomMaterialTable extends React.Component {
 
   editAction = (title, newData) => {
     switch (title) {
-      case 'Characteristics':
+      case "Characteristics":
         const characteristics = newData.characteristics
-          ? prepareCharacteristics(newData.characteristics, this.props.completeProduct.characteristics)
+          ? prepareCharacteristics(
+              newData.characteristics,
+              this.props.completeProduct.characteristics
+            )
           : [];
         newData.characteristics = characteristics;
-        this.dispatch(this.props.updateProductCharacteristic(newData, this.props.formData.id));
+        this.dispatch(
+          this.props.updateProductCharacteristic(
+            newData,
+            this.props.formData.id
+          )
+        );
         break;
       default:
         break;
@@ -46,8 +62,13 @@ class CustomMaterialTable extends React.Component {
 
   deleteAction = (title, oldData) => {
     switch (title) {
-      case 'Characteristics':
-        this.dispatch(this.props.deleteProductCharacteristic(oldData, this.props.formData.id));
+      case "Characteristics":
+        this.dispatch(
+          this.props.deleteProductCharacteristic(
+            oldData,
+            this.props.formData.id
+          )
+        );
         break;
       default:
         break;
@@ -68,19 +89,22 @@ class CustomMaterialTable extends React.Component {
           options={{ search: false, draggable: false }}
           editable={{
             onRowAdd: newData =>
-              new Promise((resolve) => {
+              new Promise(resolve => {
                 setTimeout(() => {
                   resolve();
                   this.addAction(title, newData);
                   this.setState(prevState => {
                     const data = [...prevState.materialTable.data];
                     data.push(newData);
-                    return { ...prevState, materialTable: { ...prevState.materialTable, data } };
+                    return {
+                      ...prevState,
+                      materialTable: { ...prevState.materialTable, data }
+                    };
                   });
                 }, 600);
               }),
             onRowUpdate: (newData, oldData) =>
-              new Promise((resolve) => {
+              new Promise(resolve => {
                 setTimeout(() => {
                   resolve();
                   this.editAction(title, newData);
@@ -88,7 +112,10 @@ class CustomMaterialTable extends React.Component {
                     this.setState(prevState => {
                       const data = [...prevState.materialTable.data];
                       data[data.indexOf(oldData)] = newData;
-                      return { ...prevState, materialTable: { ...prevState.materialTable, data } };
+                      return {
+                        ...prevState,
+                        materialTable: { ...prevState.materialTable, data }
+                      };
                     });
                   }
                 }, 600);
@@ -101,17 +128,19 @@ class CustomMaterialTable extends React.Component {
                   this.setState(prevState => {
                     const data = [...prevState.materialTable.data];
                     data.splice(data.indexOf(oldData), 1);
-                    return { ...prevState, materialTable: { ...prevState.materialTable, data } };
+                    return {
+                      ...prevState,
+                      materialTable: { ...prevState.materialTable, data }
+                    };
                   });
                 }, 600);
-              }),
+              })
           }}
         />
       </div>
     );
   }
 }
-
 
 CustomMaterialTable.propTypes = {
   dispatch: PropTypes.func,
@@ -123,11 +152,11 @@ CustomMaterialTable.propTypes = {
   updateProductCharacteristic: PropTypes.func,
   deleteProductCharacteristic: PropTypes.func,
   formData: PropTypes.object,
-  showNotification: PropTypes.func,
-}
+  showNotification: PropTypes.func
+};
 
 const mapStateToProps = state => {
   return state.productsReducer;
-}
+};
 
 export default connect(mapStateToProps)(CustomMaterialTable);

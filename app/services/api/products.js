@@ -1,39 +1,39 @@
-import Api from './api';
+import Api from "./api";
 import productAdapter from "../adapters/productAdapter";
 
 class Products {
-  create = async (dataProduct) => {
+  create = async dataProduct => {
     const body = dataProduct;
 
     let response;
     try {
       response = await Api.post("products", body);
-    }catch(err) {
+    } catch (err) {
       response = err;
     }
 
     return productAdapter.createAdapt(response, body);
   };
 
-  update = async (dataProduct) => {
+  update = async dataProduct => {
     const body = dataProduct;
     console.log(body);
     let response;
 
     try {
       response = await Api.put(`/products/${body.id}`, body);
-    }catch (err) {
+    } catch (err) {
       response = err;
     }
 
     return productAdapter.updateAdapt(response, body);
-  }
+  };
 
-  getById = async (id) => {
+  getById = async id => {
     let response;
     try {
       response = await Api.get(`/products/${id}`);
-    }catch(err) {
+    } catch (err) {
       response = err;
     }
 
@@ -43,13 +43,15 @@ class Products {
   list = async (page, orderBy, order) => {
     let response;
     try {
-      response = await Api.get(`/search?page=${page}&orderBy=${orderBy}:${order}`)
+      response = await Api.get(
+        `/search?page=${page}&orderBy=${orderBy}:${order}`
+      );
     } catch (err) {
       response = err;
     }
 
     return productAdapter.listAdapt(response);
-  }
+  };
 }
 
 export default new Products();

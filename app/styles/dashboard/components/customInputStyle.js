@@ -2,7 +2,8 @@ import {
   primaryColor,
   dangerColor,
   successColor,
-  defaultFont, whiteColor
+  defaultFont,
+  whiteColor
 } from "../../zeepDashboardStyles";
 
 const customInputStyle = {

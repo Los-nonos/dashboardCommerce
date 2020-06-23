@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -12,13 +12,11 @@ import GridItem from "../../atoms/Grid/GridItem";
 import CustomInput from "../../atoms/CustomInput/CustomInput";
 import CardAvatar from "../../molecules/Card/CardAvatar";
 import CompleteProduct from "./CompleteProduct";
-import {withStyles} from "@material-ui/core";
-import styles from '../../../styles/dashboard/components/organisms/formProductStyles'
-import productUploadImage from '../../../services/api/uploadImage';
+import { withStyles } from "@material-ui/core";
+import styles from "../../../styles/dashboard/components/organisms/formProductStyles";
+import productUploadImage from "../../../services/api/uploadImage";
 
-
-class ViewProduct extends React.Component
-{
+class ViewProduct extends React.Component {
   constructor(props) {
     super(props);
 
@@ -26,7 +24,7 @@ class ViewProduct extends React.Component
       isAvailable: false,
       firstLoad: true,
       selectedImage: null,
-      product: this.props.productWithDetails,
+      product: this.props.productWithDetails
     };
     this.dispatch = props.dispatch;
   }
@@ -36,12 +34,12 @@ class ViewProduct extends React.Component
   };
 
   handleSelectorChange = event => {
-    if(event.target.name === 'category') {
+    if (event.target.name === "category") {
       const category = this.props.filters.categoryName.map(categoryName => {
-        if(categoryName.name === event.target.value) {
+        if (categoryName.name === event.target.value) {
           return categoryName;
         }
-      })
+      });
       this.dispatch(this.props.selectedCategory(category[0]));
     }
     this.setState({ [event.target.name]: event.target.value });
@@ -50,7 +48,7 @@ class ViewProduct extends React.Component
   imageUploadHandler = async () => {
     const formDataImage = new FormData();
     const { selectedImage } = this.state;
-    formDataImage.append('file', selectedImage, selectedImage.name);
+    formDataImage.append("file", selectedImage, selectedImage.name);
     const imageResponse = await productUploadImage.imageUpload(formDataImage);
     this.props.formData.productImage = imageResponse.data.location;
     this.refreshImage();
@@ -58,16 +56,20 @@ class ViewProduct extends React.Component
   };
 
   refreshImage = () => {
-    document.getElementById('productImage').value = this.props.formData.productImage;
-    document.getElementById('profileImageShow').src = this.props.formData.productImage;
+    document.getElementById(
+      "productImage"
+    ).value = this.props.formData.productImage;
+    document.getElementById(
+      "profileImageShow"
+    ).src = this.props.formData.productImage;
   };
 
   showButtonUploadImage = () => {
-    document.getElementById('uploadImageButton').style.display = 'inline-block';
+    document.getElementById("uploadImageButton").style.display = "inline-block";
   };
 
   hiddenButtonUploadImage = () => {
-    document.getElementById('uploadImageButton').style.display = 'none';
+    document.getElementById("uploadImageButton").style.display = "none";
   };
 
   checkIfUrlIsImage = url => {
@@ -76,7 +78,7 @@ class ViewProduct extends React.Component
 
   imageSelectedHandler = event => {
     this.setState({
-      selectedImage: event.target.files[0],
+      selectedImage: event.target.files[0]
     });
     this.showButtonUploadImage();
   };
@@ -84,14 +86,16 @@ class ViewProduct extends React.Component
   updateValues() {
     this.setState({
       firstLoad: false,
-      selectedImage: null,
+      selectedImage: null
     });
   }
 
   render() {
     const { classes, Transition } = this.props;
     const isImage = this.checkIfUrlIsImage(this.props.formData.productImage);
-    this.props.formData.productImage = isImage ? this.props.formData.productImage : ''; // TODO: change from image product default
+    this.props.formData.productImage = isImage
+      ? this.props.formData.productImage
+      : ""; // TODO: change from image product default
 
     if (this.props.modalShow.updateModal && this.state.firstLoad) {
       this.updateValues();
@@ -100,25 +104,31 @@ class ViewProduct extends React.Component
       <Dialog
         classes={{
           root: classes.modalRoot,
-          paper: classes.modal,
+          paper: classes.modal
         }}
-        open={
-          this.props.modalShow.viewModal
-        }
+        open={this.props.modalShow.viewModal}
         className={{
-          backgroundColor: '#090809'
+          backgroundColor: "#090809"
         }}
         TransitionComponent={Transition}
         keepMounted
         aria-labelledby="classic-modal-slide-title"
         aria-describedby="classic-modal-slide-description"
       >
-        <DialogTitle id="classic-modal-slide-title" disableTypography className={classes.modalHeader}>
-          {this.props.formData.name !== '' ? (
+        <DialogTitle
+          id="classic-modal-slide-title"
+          disableTypography
+          className={classes.modalHeader}
+        >
+          {this.props.formData.name !== "" ? (
             <h4 className={classes.modalTitle}>{this.props.formData.name}</h4>
-          ) : null})}
+          ) : null}
+          )}
         </DialogTitle>
-        <DialogContent id="classic-modal-slide-description" className={classes.modalBody}>
+        <DialogContent
+          id="classic-modal-slide-description"
+          className={classes.modalBody}
+        >
           <form onSubmit={this.createProduct}>
             <GridContainer>
               <GridItem xs={12} sm={12} md={4}>
@@ -128,11 +138,11 @@ class ViewProduct extends React.Component
                   disabled
                   error={this.props.formErrors.name !== undefined}
                   formControlProps={{
-                    fullWidth: true,
+                    fullWidth: true
                   }}
                   inputProps={{
                     required: true,
-                    name: 'name',
+                    name: "name",
                     value: this.state.product.name,
                     disabled: true
                   }}
@@ -143,13 +153,13 @@ class ViewProduct extends React.Component
                   disabled
                   error={this.props.formErrors.description !== undefined}
                   formControlProps={{
-                    fullWidth: true,
+                    fullWidth: true
                   }}
                   inputProps={{
                     required: true,
-                    name: 'description',
+                    name: "description",
                     multiline: true,
-                    rows: '5',
+                    rows: "5",
                     value: this.state.product.description,
                     disabled: true
                   }}
@@ -157,52 +167,52 @@ class ViewProduct extends React.Component
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
                 <CustomInput
-                  labelText={'Price'}
-                  id={'price'}
+                  labelText={"Price"}
+                  id={"price"}
                   required
                   error={this.props.formErrors.price !== undefined}
                   formControlProps={{
-                    fullWidth: true,
+                    fullWidth: true
                   }}
                   inputProps={{
                     required: true,
-                    name: 'price',
-                    type: 'number',
+                    name: "price",
+                    type: "number",
                     value: this.state.product.price,
                     disabled: true
                   }}
                 />
                 <CustomInput
-                  labelText={'Taxes'}
-                  id={'taxes'}
+                  labelText={"Taxes"}
+                  id={"taxes"}
                   required
                   error={this.props.formErrors.price !== undefined}
                   formControlProps={{
-                    fullWidth: true,
+                    fullWidth: true
                   }}
                   inputProps={{
                     required: true,
-                    name: 'taxes',
-                    type: 'number',
+                    name: "taxes",
+                    type: "number",
                     value: this.state.product.taxes,
                     disabled: true
                   }}
                 />
                 <CustomInput
-                labelText={'Category'}
-                id={'category'}
-                disabled
-                inputProps={{
-                  value: this.state.product.category,
-                  disabled: true
-                }}
+                  labelText={"Category"}
+                  id={"category"}
+                  disabled
+                  inputProps={{
+                    value: this.state.product.category,
+                    disabled: true
+                  }}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
                 <CardAvatar product>
                   <img
                     id="productImageShow"
-                    alt={'productImageShow'}
+                    alt={"productImageShow"}
                     src={this.props.formData.productImage}
                     className={`${classes.customAvatarPlaceholder}`}
                   />
@@ -211,13 +221,18 @@ class ViewProduct extends React.Component
                   onChange={this.imageSelectedHandler}
                   accept="image/*"
                   className={classes.input}
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   id="raised-button-file"
                   multiple
                   type="file"
                 />
                 <label htmlFor="raised-button-file">
-                  <Button variant="raised" component="span" size="sm" className={classes.button}>
+                  <Button
+                    variant="raised"
+                    component="span"
+                    size="sm"
+                    className={classes.button}
+                  >
                     Upload Image
                   </Button>
                 </label>
@@ -228,7 +243,7 @@ class ViewProduct extends React.Component
                   variant="raised"
                   component="span"
                   className={classes.button}
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   size="sm"
                 >
                   Apply
@@ -237,13 +252,13 @@ class ViewProduct extends React.Component
                   id="productImage"
                   error={this.props.formErrors.productImage !== undefined}
                   formControlProps={{
-                    fullWidth: true,
+                    fullWidth: true
                   }}
                   inputProps={{
                     required: false,
                     defaultValue: this.props.formData.productImage,
-                    name: 'productImage',
-                    type: 'hidden',
+                    name: "productImage",
+                    type: "hidden"
                   }}
                 />
               </GridItem>
@@ -253,11 +268,17 @@ class ViewProduct extends React.Component
                 productsUpdated={this.props.productsUpdated}
                 changeTabSelected={this.props.changeTabSelected}
                 showNotification={this.props.showNotification}
-                assignCharacteristicToProduct={this.props.assignCharacteristicToProduct}
+                assignCharacteristicToProduct={
+                  this.props.assignCharacteristicToProduct
+                }
               />
             </GridContainer>
             <div className={classes.customSubmitButton}>
-              <LoadingButton type="submit" color="primary" loading={this.props.loading}>
+              <LoadingButton
+                type="submit"
+                color="primary"
+                loading={this.props.loading}
+              >
                 Ok
               </LoadingButton>
               <Button color="secondary" onClick={this.toggleModal}>
@@ -294,11 +315,11 @@ ViewProduct.propTypes = {
   selectedCategory: PropTypes.func,
 
   productProfileUpdated: PropTypes.func,
-  showNotification: PropTypes.func,
+  showNotification: PropTypes.func
 };
 
 const mapStateToProps = state => {
   return state.productsReducer;
-}
+};
 
 export default connect(mapStateToProps)(withStyles(styles)(ViewProduct));

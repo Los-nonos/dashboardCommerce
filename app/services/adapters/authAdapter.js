@@ -6,7 +6,6 @@ class AuthAdapter {
     const { status, data } = response;
 
     if (!isError(status)) {
-
       const { token } = data;
       delete data.token;
 

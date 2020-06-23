@@ -1,4 +1,4 @@
-import {actionNames} from "../utils/constants/actionConstants";
+import { actionNames } from "../utils/constants/actionConstants";
 
 export function seeDetails(id) {
   return {
@@ -9,7 +9,7 @@ export function seeDetails(id) {
 
 export function completeEmployee() {
   return {
-    type: actionNames.completeEmployee,
+    type: actionNames.completeEmployee
   };
 }
 
@@ -22,7 +22,7 @@ export function getEmployeeById(id) {
 
 export function nextPage() {
   return {
-    type: actionNames.nextEmployeePage,
+    type: actionNames.nextEmployeePage
   };
 }
 
@@ -41,7 +41,7 @@ export function previousPage() {
 
 export function closeNotification() {
   return {
-    type: actionNames.closeNotification,
+    type: actionNames.closeNotification
   };
 }
 
@@ -55,13 +55,13 @@ export function createEmployee(dataEmployee) {
 export function updateEmployee(dataEmployee) {
   return {
     type: actionNames.updateEmployee,
-    dataEmployee,
-  }
+    dataEmployee
+  };
 }
 
 export function showCreateModal() {
   return {
-    type: actionNames.showCreateEmployeeModal,
+    type: actionNames.showCreateEmployeeModal
   };
 }
 

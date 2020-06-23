@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -12,17 +12,15 @@ import GridItem from "../../atoms/Grid/GridItem";
 import CustomInput from "../../atoms/CustomInput/CustomInput";
 import CardAvatar from "../../molecules/Card/CardAvatar";
 import CompleteProduct from "./CompleteProduct";
-import {withStyles} from "@material-ui/core";
-import styles from '../../../styles/dashboard/components/organisms/formProductStyles'
-import productUploadImage from '../../../services/api/uploadImage';
+import { withStyles } from "@material-ui/core";
+import styles from "../../../styles/dashboard/components/organisms/formProductStyles";
+import productUploadImage from "../../../services/api/uploadImage";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 
-
-class FormProducts extends React.Component
-{
+class FormProducts extends React.Component {
   constructor(props) {
     super(props);
 
@@ -30,7 +28,7 @@ class FormProducts extends React.Component
       isAvailable: false,
       firstLoad: true,
       selectedImage: null,
-      categoryFilters: null,
+      categoryFilters: null
     };
     this.dispatch = props.dispatch;
   }
@@ -39,22 +37,24 @@ class FormProducts extends React.Component
     await this.dispatch(this.props.closeModal());
   };
 
-  createProduct = (e) => {
+  createProduct = e => {
     const fields = [
-      'name',
-      'description',
-      'price',
-      'taxes',
-      'category',
-      'productImage'
+      "name",
+      "description",
+      "price",
+      "taxes",
+      "category",
+      "productImage"
     ];
 
-    e.target.elements.namedItem('productImage').value = this.props.formData.productImage;
+    e.target.elements.namedItem(
+      "productImage"
+    ).value = this.props.formData.productImage;
 
     const formElements = e.target.elements;
     const dataProducts = fields
       .map(field => ({
-        [field]: formElements.namedItem(field).value,
+        [field]: formElements.namedItem(field).value
       }))
       .reduce((current, next) => ({ ...current, ...next }));
 
@@ -64,16 +64,16 @@ class FormProducts extends React.Component
       dataProducts.id = this.props.formData.id;
       this.dispatch(this.props.updateProduct(dataProducts));
     }
-  }
+  };
 
   handleSelectorChange = event => {
-    if(event.target.name === 'category') {
+    if (event.target.name === "category") {
       const category = this.props.filters.categoryName.map(categoryName => {
-        if(categoryName.name === event.target.value) {
+        if (categoryName.name === event.target.value) {
           return categoryName;
         }
       });
-      this.setState({categoryFilters: category[0] });
+      this.setState({ categoryFilters: category[0] });
       //this.dispatch(this.props.selectedCategory(category[0]));
     }
     this.setState({ [event.target.name]: event.target.value });
@@ -82,7 +82,7 @@ class FormProducts extends React.Component
   imageUploadHandler = async () => {
     const formDataImage = new FormData();
     const { selectedImage } = this.state;
-    formDataImage.append('file', selectedImage, selectedImage.name);
+    formDataImage.append("file", selectedImage, selectedImage.name);
     const imageResponse = await productUploadImage.imageUpload(formDataImage);
     this.props.formData.productImage = imageResponse.data.location;
     this.refreshImage();
@@ -90,26 +90,30 @@ class FormProducts extends React.Component
   };
 
   refreshImage = () => {
-    document.getElementById('productImage').value = this.props.formData.productImage;
-    document.getElementById('profileImageShow').src = this.props.formData.productImage;
+    document.getElementById(
+      "productImage"
+    ).value = this.props.formData.productImage;
+    document.getElementById(
+      "profileImageShow"
+    ).src = this.props.formData.productImage;
   };
 
   showButtonUploadImage = () => {
-    document.getElementById('uploadImageButton').style.display = 'inline-block';
+    document.getElementById("uploadImageButton").style.display = "inline-block";
   };
 
   hiddenButtonUploadImage = () => {
-    document.getElementById('uploadImageButton').style.display = 'none';
+    document.getElementById("uploadImageButton").style.display = "none";
   };
 
   checkIfUrlIsImage = url => {
-    url = url ? url : '';
+    url = url ? url : "";
     return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
   };
 
   imageSelectedHandler = event => {
     this.setState({
-      selectedImage: event.target.files[0],
+      selectedImage: event.target.files[0]
     });
     this.showButtonUploadImage();
   };
@@ -117,14 +121,16 @@ class FormProducts extends React.Component
   updateValues() {
     this.setState({
       firstLoad: false,
-      selectedImage: null,
+      selectedImage: null
     });
   }
 
   render() {
     const { classes, Transition } = this.props;
     const isImage = this.checkIfUrlIsImage(this.props.formData.productImage);
-    this.props.formData.productImage = isImage ? this.props.formData.productImage : ''; // TODO: change from image product default
+    this.props.formData.productImage = isImage
+      ? this.props.formData.productImage
+      : ""; // TODO: change from image product default
 
     if (this.props.modalShow.updateModal && this.state.firstLoad) {
       this.updateValues();
@@ -134,25 +140,33 @@ class FormProducts extends React.Component
       <Dialog
         classes={{
           root: classes.modalRoot,
-          paper: classes.modal,
+          paper: classes.modal
         }}
         open={
           this.props.modalShow.createModal || this.props.modalShow.updateModal
         }
         className={{
-          backgroundColor: '#090809'
+          backgroundColor: "#090809"
         }}
         TransitionComponent={Transition}
         keepMounted
         aria-labelledby="classic-modal-slide-title"
         aria-describedby="classic-modal-slide-description"
       >
-        <DialogTitle id="classic-modal-slide-title" disableTypography className={classes.modalHeader}>
-          {this.props.formData.name !== '' ? (
+        <DialogTitle
+          id="classic-modal-slide-title"
+          disableTypography
+          className={classes.modalHeader}
+        >
+          {this.props.formData.name !== "" ? (
             <h4 className={classes.modalTitle}>{this.props.formData.name}</h4>
-          ) : null})}
+          ) : null}
+          )}
         </DialogTitle>
-        <DialogContent id="classic-modal-slide-description" className={classes.modalBody}>
+        <DialogContent
+          id="classic-modal-slide-description"
+          className={classes.modalBody}
+        >
           <form onSubmit={this.createProduct}>
             <GridContainer>
               <GridItem xs={12} sm={12} md={4}>
@@ -162,11 +176,11 @@ class FormProducts extends React.Component
                   required
                   error={this.props.formErrors.name !== undefined}
                   formControlProps={{
-                    fullWidth: true,
+                    fullWidth: true
                   }}
                   inputProps={{
                     required: true,
-                    name: 'name',
+                    name: "name",
                     defaultValue: this.props.formData.name
                   }}
                 />
@@ -176,75 +190,81 @@ class FormProducts extends React.Component
                   required
                   error={this.props.formErrors.description !== undefined}
                   formControlProps={{
-                    fullWidth: true,
+                    fullWidth: true
                   }}
                   inputProps={{
                     required: true,
-                    name: 'description',
+                    name: "description",
                     multiline: true,
-                    rows: '5',
+                    rows: "5",
                     defaultValue: this.props.formData.description
                   }}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
                 <CustomInput
-                  labelText={'Price'}
-                  id={'price'}
+                  labelText={"Price"}
+                  id={"price"}
                   required
                   error={this.props.formErrors.price !== undefined}
                   formControlProps={{
-                    fullWidth: true,
+                    fullWidth: true
                   }}
                   inputProps={{
                     required: true,
-                    name: 'price',
-                    type: 'number',
+                    name: "price",
+                    type: "number",
                     defaultValue: this.props.formData.price
                   }}
                 />
                 <CustomInput
-                  labelText={'Taxes'}
-                  id={'taxes'}
+                  labelText={"Taxes"}
+                  id={"taxes"}
                   required
                   error={this.props.formErrors.taxes !== undefined}
                   formControlProps={{
-                    fullWidth: true,
+                    fullWidth: true
                   }}
                   inputProps={{
                     required: true,
-                    name: 'taxes',
-                    type: 'number',
+                    name: "taxes",
+                    type: "number",
                     defaultValue: this.props.formData.taxes
                   }}
                 />
-                <FormControl fullWidth={true} className={{
-                  color: '#fff',
-                }}>
-                  <InputLabel htmlFor="category" className={classes.selectLabel}>
+                <FormControl
+                  fullWidth={true}
+                  className={{
+                    color: "#fff"
+                  }}
+                >
+                  <InputLabel
+                    htmlFor="category"
+                    className={classes.selectLabel}
+                  >
                     Categoria
                   </InputLabel>
                   <Select
                     MenuProps={{
-                      className: classes.selectMenu,
+                      className: classes.selectMenu
                     }}
                     classes={{
-                      select: classes.select,
+                      select: classes.select
                     }}
                     required
                     error={this.props.formErrors.category !== undefined}
                     value={this.state.category}
                     onChange={this.handleSelectorChange}
                     inputProps={{
-                      name: 'category',
-                      id: 'category',
+                      name: "category",
+                      id: "category",
                       defaultValue: this.props.formData.category
                     }}
                   >
                     <MenuItem
                       disabled
                       classes={{
-                        root: classes.selectMenuItem,
+                        root: classes.selectMenuItem
                       }}
                     >
                       Categoria
@@ -254,7 +274,7 @@ class FormProducts extends React.Component
                         <MenuItem
                           classes={{
                             root: classes.selectMenuItem,
-                            selected: classes.selectMenuItemSelected,
+                            selected: classes.selectMenuItemSelected
                           }}
                           className={{
                             color: "#fff"
@@ -263,7 +283,7 @@ class FormProducts extends React.Component
                         >
                           {category.name}
                         </MenuItem>
-                      )
+                      );
                     })}
                   </Select>
                 </FormControl>
@@ -272,7 +292,7 @@ class FormProducts extends React.Component
                 <CardAvatar product>
                   <img
                     id="productImageShow"
-                    alt={'productImageShow'}
+                    alt={"productImageShow"}
                     src={this.props.formData.productImage}
                     className={`${classes.customAvatarPlaceholder}`}
                   />
@@ -281,13 +301,18 @@ class FormProducts extends React.Component
                   onChange={this.imageSelectedHandler}
                   accept="image/*"
                   className={classes.input}
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   id="raised-button-file"
                   multiple
                   type="file"
                 />
                 <label htmlFor="raised-button-file">
-                  <Button variant="raised" component="span" size="sm" className={classes.button}>
+                  <Button
+                    variant="raised"
+                    component="span"
+                    size="sm"
+                    className={classes.button}
+                  >
                     Upload Image
                   </Button>
                 </label>
@@ -298,7 +323,7 @@ class FormProducts extends React.Component
                   variant="raised"
                   component="span"
                   className={classes.button}
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   size="sm"
                 >
                   Apply
@@ -307,13 +332,13 @@ class FormProducts extends React.Component
                   id="productImage"
                   error={this.props.formErrors.productImage !== undefined}
                   formControlProps={{
-                    fullWidth: true,
+                    fullWidth: true
                   }}
                   inputProps={{
                     required: false,
                     defaultValue: this.props.formData.productImage,
-                    name: 'productImage',
-                    type: 'hidden',
+                    name: "productImage",
+                    type: "hidden"
                   }}
                 />
               </GridItem>
@@ -325,12 +350,18 @@ class FormProducts extends React.Component
                   productsUpdated={this.props.productsUpdated}
                   changeTabSelected={this.props.changeTabSelected}
                   showNotification={this.props.showNotification}
-                  assignCharacteristicToProduct={this.props.assignCharacteristicToProduct}
+                  assignCharacteristicToProduct={
+                    this.props.assignCharacteristicToProduct
+                  }
                 />
               ) : null}
             </GridContainer>
             <div className={classes.customSubmitButton}>
-              <LoadingButton type="submit" color="primary" loading={this.props.loading}>
+              <LoadingButton
+                type="submit"
+                color="primary"
+                loading={this.props.loading}
+              >
                 Ok
               </LoadingButton>
               <Button color="secondary" onClick={this.toggleModal}>
@@ -367,11 +398,11 @@ FormProducts.propTypes = {
   selectedCategory: PropTypes.func,
 
   productProfileUpdated: PropTypes.func,
-  showNotification: PropTypes.func,
+  showNotification: PropTypes.func
 };
 
 const mapStateToProps = state => {
   return state.productsReducer;
-}
+};
 
 export default connect(mapStateToProps)(withStyles(styles)(FormProducts));

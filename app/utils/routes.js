@@ -1,13 +1,14 @@
 import Login from "@material-ui/icons/LockOpen";
 import Settings from "@material-ui/icons/Settings";
 import IconSearch from "@material-ui/icons/Search";
+import { Person } from "@material-ui/icons";
+
 // core components/views for Admin layout
 // import LoginPage from "../containers/Login/LoginPage";
 import UserAccount from "../containers/UserAccount/UserAccount";
 import ErrorPage from "../containers/Error/ErrorPage";
 import SearchProducts from "../containers/Products/SearchProducts";
 import Products from "../containers/Products/Products";
-import {Person} from "@material-ui/icons";
 import Employees from "../containers/Users/Employees";
 
 const dashboardRoutes = [
@@ -44,13 +45,13 @@ const dashboardRoutes = [
     rol: ""
   },
   {
-    path: '/employees',
-    name: 'EMPLEADOS',
+    path: "/employees",
+    name: "EMPLEADOS",
     icon: Person,
     component: Employees,
-    layout: '/dashboard',
-    rol: 'admin',
-  },
+    layout: "/dashboard",
+    rol: "admin"
+  }
 ];
 
 export default dashboardRoutes;

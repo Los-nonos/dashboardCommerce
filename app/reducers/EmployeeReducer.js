@@ -1,11 +1,11 @@
-import {actionNames} from "../utils/constants/actionConstants";
+import { actionNames } from "../utils/constants/actionConstants";
 
 export const stateDefault = {
   employees: [],
-  employeeWithDetails: {},
+  employeeWithDetails: {}
 };
 
-const employeeReducer = (state= stateDefault, action) => {
+const employeeReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case actionNames.loadEmployeesSuccessful:
       return { ...state, employees: action.employees };
@@ -36,10 +36,13 @@ const employeeReducer = (state= stateDefault, action) => {
     case actionNames.employeeUpdatedFail:
       return { ...state };
     case actionNames.closeModal:
-      return { ...state, modalShow: { createModal: false, updateModal: false }};
+      return {
+        ...state,
+        modalShow: { createModal: false, updateModal: false }
+      };
     default:
       return state;
   }
-}
+};
 
 export default employeeReducer;

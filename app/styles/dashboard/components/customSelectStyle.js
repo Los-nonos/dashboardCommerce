@@ -132,7 +132,7 @@ const customSelectStyle = {
     "& > div": {
       marginTop: "13px"
     }
-  },
+  }
 };
 
 export default customSelectStyle;

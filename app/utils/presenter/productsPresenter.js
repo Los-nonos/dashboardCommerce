@@ -1,11 +1,11 @@
-const prepareCharacteristics = (valuesNames) => {
+const prepareCharacteristics = valuesNames => {
   const characteristics = [];
   valuesNames.forEach(valueName => {
-    const filterName = valueName.characteristics.replace(', ', '');
+    const filterName = valueName.characteristics.replace(", ", "");
     characteristics.push({
       name: filterName,
-      value: valueName.value,
-    })
+      value: valueName.value
+    });
   });
-  return characteristics
-}
+  return characteristics;
+};

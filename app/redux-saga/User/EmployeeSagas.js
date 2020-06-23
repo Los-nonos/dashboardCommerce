@@ -1,14 +1,14 @@
-import {all, call, put} from "redux-saga/effects";
-import {actionNames} from "../../utils/constants/actionConstants";
+import { all, call, put } from "redux-saga/effects";
+import { actionNames } from "../../utils/constants/actionConstants";
 import employee from "../../services/api/employee";
-import {pages, redirectTo} from "../../utils/helpers/redirectTo";
+import { pages, redirectTo } from "../../utils/helpers/redirectTo";
 
 export function* createEmployee(action) {
   const { dataEmployee } = action;
   yield all([put({ type: actionNames.loadingToggle })]);
   const res = yield call(employee.create, dataEmployee);
 
-  if(res.error) {
+  if (res.error) {
     if (res.error.code === 401 || res.error.code === 403) {
       yield all([put({ type: actionNames.handleError, error: res.error })]);
       redirectTo(pages.error);
@@ -26,7 +26,7 @@ export function* createEmployee(action) {
       put({ type: actionNames.showNotification, message: res.message }),
       put({ type: actionNames.closeModal }),
       put(response),
-      put({ type: actionNames.showUpdateEmployeeModal }),
+      put({ type: actionNames.showUpdateEmployeeModal })
     ]);
   }
 }
@@ -36,7 +36,7 @@ export function* updateEmployee(action) {
   yield all([put({ type: actionNames.loadingToggle })]);
   const res = yield call(employee.update, dataEmployee);
 
-  if(res.error) {
+  if (res.error) {
     if (res.error.code === 401 || res.error.code === 403) {
       yield all([put({ type: actionNames.handleError, error: res.error })]);
       redirectTo(pages.error);
@@ -51,7 +51,7 @@ export function* updateEmployee(action) {
       put(res),
       put({ type: actionNames.loadingToggle }),
       put({ type: actionNames.showNotification, message: res.message }),
-      put({ type: actionNames.closeModal }),
+      put({ type: actionNames.closeModal })
     ]);
   }
 }
@@ -76,15 +76,15 @@ export function* seeEmployeeDetails(action) {
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),
-      put({type: actionNames.showViewModal})
+      put({ type: actionNames.showViewModal })
     ]);
   }
 }
 
 export function* listEmployees(action) {
   let { page, orderBy, order } = action;
-  orderBy = orderBy ? orderBy : 'registrationDate';
-  order = order ? order : 'asc';
+  orderBy = orderBy ? orderBy : "registrationDate";
+  order = order ? order : "asc";
   yield put({ type: actionNames.loadingToggle });
   const res = yield call(employee.list, page, orderBy, order);
 
@@ -96,7 +96,7 @@ export function* listEmployees(action) {
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),
-      put({ type: actionNames.showNotification, error: res.error }),
+      put({ type: actionNames.showNotification, error: res.error })
     ]);
   } else {
     yield put(res);
@@ -124,7 +124,10 @@ export function* enableEmployee(action) {
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),
-      put({ type: actionNames.showNotification, message: 'El empleado a sido habilitado exitosamente' })
+      put({
+        type: actionNames.showNotification,
+        message: "El empleado a sido habilitado exitosamente"
+      })
     ]);
   }
 }
@@ -149,7 +152,10 @@ export function* disableEmployee(action) {
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),
-      put({type: actionNames.showNotification, message: 'El empleado a sido deshabilitado exitosamente'})
+      put({
+        type: actionNames.showNotification,
+        message: "El empleado a sido deshabilitado exitosamente"
+      })
     ]);
   }
 }

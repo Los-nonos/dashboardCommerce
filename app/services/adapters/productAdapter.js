@@ -1,6 +1,6 @@
-import {isError} from "../../utils/helpers/isError";
-import {actionNames} from "../../utils/constants/actionConstants";
-import {errorProducts} from "../../utils/presenter/errorPresenter";
+import { isError } from "../../utils/helpers/isError";
+import { actionNames } from "../../utils/constants/actionConstants";
+import { errorProducts } from "../../utils/presenter/errorPresenter";
 
 class ProductAdapter {
   createAdapt = (createResponse, body) => {
@@ -9,13 +9,13 @@ class ProductAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.productCreatedSuccessfully,
-        message: 'Producto creado satisfactoriamente',
+        message: "Producto creado satisfactoriamente",
         product: data.data
       };
     }
 
-    return errorProducts(data, status, body, actionNames.productCreatedFail)
-  }
+    return errorProducts(data, status, body, actionNames.productCreatedFail);
+  };
 
   updateAdapt = (updateResponse, body) => {
     const { status, data } = updateResponse;
@@ -23,21 +23,21 @@ class ProductAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.productUpdatedSuccessfully,
-        message: 'Producto actualizado satisfactoriamente',
+        message: "Producto actualizado satisfactoriamente",
         product: data.data
       };
     }
 
-    return errorProducts(data, status, body, actionNames.productUpdatedFail)
-  }
+    return errorProducts(data, status, body, actionNames.productUpdatedFail);
+  };
 
-  getByIdAdapt = (getResponse) => {
+  getByIdAdapt = getResponse => {
     const { status, data } = getResponse;
 
     if (!isError(status)) {
       return {
         type: actionNames.loadProductSuccessful,
-        product: data.data,
+        product: data.data
       };
     }
 
@@ -47,19 +47,19 @@ class ProductAdapter {
       error: {
         code: status,
         type: code,
-        errors: details.errors,
-      },
+        errors: details.errors
+      }
     };
-  }
+  };
 
-  listAdapt = (listResponse) => {
+  listAdapt = listResponse => {
     const { status, data } = listResponse;
 
     if (!isError(status)) {
       return {
         type: actionNames.loadProductsSuccessful,
         products: data.items,
-        totalPages: data.pageCount,
+        totalPages: data.pageCount
       };
     }
 
@@ -69,10 +69,10 @@ class ProductAdapter {
       error: {
         code: status,
         type: code,
-        errors: details,
-      },
+        errors: details
+      }
     };
-  }
+  };
 }
 
 export default new ProductAdapter();

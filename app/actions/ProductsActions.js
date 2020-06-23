@@ -4,16 +4,14 @@ export function selectedCategory(category) {
   return {
     type: actionNames.selectedCategory,
     category
-  }
-}
-
-
-export function loadFilters() {
-  return {
-    type: actionNames.loadFilters,
   };
 }
 
+export function loadFilters() {
+  return {
+    type: actionNames.loadFilters
+  };
+}
 
 export function updateProduct(dataProduct) {
   return {
@@ -24,22 +22,22 @@ export function updateProduct(dataProduct) {
       price: dataProduct.price,
       taxes: dataProduct.taxes,
       description: dataProduct.description,
-      characteristics: dataProduct.characteristics,
-    },
-  }
+      characteristics: dataProduct.characteristics
+    }
+  };
 }
 
 export function productsUpdated() {
   return {
-    type: actionNames.productNeedUpdated,
-  }
+    type: actionNames.productNeedUpdated
+  };
 }
 
 export function getProductsByUuid(uuid) {
   return {
     type: actionNames.getProductByUuid,
-    uuid,
-  }
+    uuid
+  };
 }
 
 export function completeProduct(dataProduct) {
@@ -50,9 +48,9 @@ export function completeProduct(dataProduct) {
       image: dataProduct.image,
       price: dataProduct.price,
       description: dataProduct.description,
-      characteristics: dataProduct.characteristics,
-    },
-  }
+      characteristics: dataProduct.characteristics
+    }
+  };
 }
 
 export function createProduct(dataProduct) {
@@ -64,9 +62,9 @@ export function createProduct(dataProduct) {
       price: dataProduct.price,
       taxes: dataProduct.taxes,
       description: dataProduct.description,
-      characteristics: dataProduct.characteristics,
-    },
-  }
+      characteristics: dataProduct.characteristics
+    }
+  };
 }
 
 export function nextPage() {
@@ -75,36 +73,32 @@ export function nextPage() {
   };
 }
 
-
 export function selectPage(index) {
   return {
     type: actionNames.selectProductPage,
-    index,
+    index
   };
 }
-
 
 export function previousPage() {
   return {
-    type: actionNames.previousProductsPage,
+    type: actionNames.previousProductsPage
   };
 }
-
 
 export function listProducts(page, orderBy, order) {
   return {
     type: actionNames.listProducts,
     page,
     orderBy,
-    order,
+    order
   };
 }
-
 
 export function checkRoles(roles) {
   return {
     type: actionNames.checkRoles,
-    roles,
+    roles
   };
 }
 
@@ -112,32 +106,30 @@ export function showProductOnWebsite(uuid) {
   return {
     type: actionNames.showOnWebsite,
     uuid
-  }
-}
-
-
-export function closeNotification() {
-  return {
-    type: actionNames.closeNotification,
   };
 }
 
+export function closeNotification() {
+  return {
+    type: actionNames.closeNotification
+  };
+}
 
 export function closeModal() {
   return {
-    type: actionNames.closeModal,
-  }
+    type: actionNames.closeModal
+  };
 }
 
 export function showCreateModal() {
   return {
-    type: actionNames.showCreateProductModal,
-  }
+    type: actionNames.showCreateProductModal
+  };
 }
 
 export function seeDetails(uuid) {
   return {
     type: actionNames.seeDetails,
-    uuid,
-  }
+    uuid
+  };
 }

@@ -1,59 +1,72 @@
 import Api from "./api";
+import employeeAdapter from "../adapters/employeeAdapter";
 
-class Employee{
-  create = async(dataEmployee) => {
+class Employee {
+  create = async dataEmployee => {
     let response;
     try {
-      response = await Api.post(`/employees`, dataEmployee)
+      response = await Api.post(`/employees`, dataEmployee);
     } catch (err) {
       response = err;
     }
-  }
 
-  update = async (dataEmployee) => {
+    return employeeAdapter.createAdapt(response, dataEmployee);
+  };
+
+  update = async dataEmployee => {
     let response;
     try {
-      response = await Api.post(`/employees/${dataEmployee.id}`, dataEmployee)
+      response = await Api.post(`/employees/${dataEmployee.id}`, dataEmployee);
     } catch (err) {
       response = err;
     }
-  }
+
+    return employeeAdapter.updateAdapt(response, dataEmployee);
+  };
 
   list = async (page, orderBy, order) => {
     let response;
     try {
-      response = await Api.get(`/employees?page=${page}&orderBy=${orderBy}:${order}`)
+      response = await Api.get(
+        `/employees?page=${page}&orderBy=${orderBy}:${order}`
+      );
     } catch (err) {
       response = err;
     }
-  }
+    return employeeAdapter.listAdapt(response);
+  };
 
-  seeDetails = async (id) => {
+  seeDetails = async id => {
     let response;
     try {
-      response = await Api.get(`/users/${id}`)
+      response = await Api.get(`/users/${id}`);
     } catch (err) {
       response = err;
     }
-  }
+    return employeeAdapter.getByIdAdapt(response);
+  };
 
-  enableEmployee = async (id) => {
+  enableEmployee = async id => {
     let response;
     try {
-      response = await Api.get(`/users/${id}/enable`)
+      response = await Api.get(`/users/${id}/enable`);
     } catch (err) {
       response = err;
     }
-  }
 
-  disableEmployee = async (id) => {
+    return employeeAdapter.enableAdapt(response);
+  };
+
+  disableEmployee = async id => {
     let response;
     try {
-      response = await Api.get(`/users/${id}/disable`)
+      response = await Api.get(`/users/${id}/disable`);
     } catch (err) {
       response = err;
     }
-  }
+
+    return employeeAdapter.disableAdapt(response);
+  };
 }
 
 export default new Employee();

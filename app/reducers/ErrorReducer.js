@@ -5,7 +5,7 @@ const stateDefault = {
     code: "404",
     errors: "",
     typeError: "Page not found",
-    notificationColor: 'danger',
+    notificationColor: "danger"
   }
 };
 
