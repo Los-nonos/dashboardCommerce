@@ -1,6 +1,6 @@
-import { isError } from '../../utils/helpers/isError';
-import { actionNames } from '../../utils/constants/actionConstants';
-import { errorUserPassword } from '../../utils/presenter/errorPresenter';
+import { isError } from "../../utils/helpers/isError";
+import { actionNames } from "../../utils/constants/actionConstants";
+import { errorUserPassword } from "../../utils/presenter/errorPresenter";
 
 class UserAccountAdapter {
   changePassword = changeResponse => {
@@ -8,7 +8,7 @@ class UserAccountAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.passwordChangedSuccessfully,
-        message: 'Password changed successfully',
+        message: "Password changed successfully"
       };
     }
 
@@ -21,8 +21,8 @@ class UserAccountAdapter {
       error: {
         code: status,
         type: code,
-        detail: details,
-      },
+        detail: details
+      }
     };
   };
 }

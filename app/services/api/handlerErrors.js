@@ -1,4 +1,4 @@
-import { pages, redirectTo } from '../../utils/helpers/redirectTo';
+import { pages, redirectTo } from "../../utils/helpers/redirectTo";
 
 export const handler = error => {
   // eslint-disable-next-line default-case
@@ -6,8 +6,10 @@ export const handler = error => {
     case 401:
       redirectTo(pages.login);
       break;
-    // TODO: implement error view when is ready
     case 403:
+      break;
+    default:
+      console.log(error);
       break;
   }
 };

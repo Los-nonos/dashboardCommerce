@@ -1,7 +1,7 @@
-import { actionNames } from '../utils/constants/actionConstants';
+import { actionNames } from "../utils/constants/actionConstants";
 
 const stateDefault = {
-  changePasswordModalShow: false,
+  changePasswordModalShow: false
 };
 
 const userAccountReducer = (state = stateDefault, action) => {

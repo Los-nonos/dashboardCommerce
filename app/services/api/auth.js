@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import Api from './api';
-import authAdapter from '../adapters/authAdapter';
+import Api from "./api";
+import authAdapter from "../adapters/authAdapter";
 
 class Auth {
   logIn = async (username, password) => {
@@ -8,7 +8,7 @@ class Auth {
 
     let loginResponse;
     try {
-      loginResponse = await Api.post('auth/login', body);
+      loginResponse = await Api.post("auth/login", body);
     } catch (err) {
       loginResponse = err;
     }
@@ -21,7 +21,7 @@ class Auth {
 
     let response;
     try {
-      response = await Api.post('auth/renew-token', body);
+      response = await Api.post("auth/renew-token", body);
     } catch (err) {
       response = err;
     }

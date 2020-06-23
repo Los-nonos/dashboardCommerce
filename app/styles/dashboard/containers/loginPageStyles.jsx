@@ -1,75 +1,82 @@
-import { dangerColor, cardTitle, whiteColor, grayColor, blackColor, hexToRgb } from '../../zeepDashboardStyles';
-import customCheckboxRadioSwitch from '../../dashboard/checkboxAdnRadioStyle.jsx';
+import {
+  dangerColor,
+  cardTitle,
+  whiteColor,
+  grayColor,
+  blackColor,
+  hexToRgb
+} from "../../zeepDashboardStyles";
+import customCheckboxRadioSwitch from "../../dashboard/checkboxAdnRadioStyle.jsx";
 
 const loginPageStyle = {
   ...customCheckboxRadioSwitch,
   container: {
-    paddingRight: '15px',
-    paddingLeft: '15px',
-    marginRight: 'auto',
-    marginLeft: 'auto',
-    width: '100%',
-    '&:before,&:after': {
-      display: 'table',
-      content: '" "',
+    paddingRight: "15px",
+    paddingLeft: "15px",
+    marginRight: "auto",
+    marginLeft: "auto",
+    width: "100%",
+    "&:before,&:after": {
+      display: "table",
+      content: '" "'
     },
-    '&:after': {
-      clear: 'both',
+    "&:after": {
+      clear: "both"
     },
-    zIndex: '4',
+    zIndex: "4"
     // [theme.breakpoints.down('sm')]: {
     //   paddingBottom: '100px',
     // },
   },
   cardTitle: {
     ...cardTitle,
-    color: whiteColor,
+    color: whiteColor
   },
   textCenter: {
-    textAlign: 'center',
+    textAlign: "center"
   },
   justifyContentCenter: {
-    justifyContent: 'center !important',
+    justifyContent: "center !important"
   },
   customButtonClass: {
-    '&,&:focus,&:hover': {
-      color: whiteColor,
+    "&,&:focus,&:hover": {
+      color: whiteColor
     },
-    marginLeft: '5px',
-    marginRight: '5px',
+    marginLeft: "5px",
+    marginRight: "5px"
   },
   inputAdornment: {
-    marginRight: '18px',
+    marginRight: "18px"
   },
   inputAdornmentIcon: {
-    color: grayColor[6],
+    color: grayColor[6]
   },
   cardHidden: {
-    opacity: '0',
-    transform: 'translate3d(0, -60px, 0)',
+    opacity: "0",
+    transform: "translate3d(0, -60px, 0)"
   },
   cardHeader: {
-    marginBottom: '20px',
+    marginBottom: "20px"
   },
   socialLine: {
-    padding: '0.9375rem 0',
+    padding: "0.9375rem 0"
   },
   formControlClassName: {
-    margin: '0',
-    paddingBottom: '0',
-    '& + $formControlClassName': {
-      marginTop: '5px',
-    },
+    margin: "0",
+    paddingBottom: "0",
+    "& + $formControlClassName": {
+      marginTop: "5px"
+    }
   },
   checkboxLabelControlClassName: {
-    marginTop: '16px',
+    marginTop: "16px"
   },
   checkboxLabel: {
-    color: 'rgba(' + hexToRgb(blackColor) + ', 0.26)',
+    color: "rgba(" + hexToRgb(blackColor) + ", 0.26)"
   },
   error: {
-    color: dangerColor[0],
-  },
+    color: dangerColor[0]
+  }
 };
 
 export default loginPageStyle;

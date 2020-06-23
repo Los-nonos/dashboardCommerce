@@ -1,8 +1,8 @@
-import { actionNames } from '../utils/constants/actionConstants';
+import { actionNames } from "../utils/constants/actionConstants";
 
 export function loadingToggle() {
   return {
-    type: actionNames.loadingToggle,
+    type: actionNames.loadingToggle
   };
 }
 
@@ -12,9 +12,9 @@ export function showNotification(message, isError = false, errorCode = 500) {
     message,
     error: isError
       ? {
-        code: errorCode,
-        detail: message,
-      }
-      : null,
+          code: errorCode,
+          detail: message
+        }
+      : null
   };
 }

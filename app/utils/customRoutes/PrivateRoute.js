@@ -1,7 +1,7 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
 // eslint-disable-next-line import/no-cycle
-import authStorage from '../../services/localStorage/authStorage';
+import authStorage from "../../services/localStorage/authStorage";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -12,8 +12,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       ) : (
         <Redirect
           to={{
-            pathname: '/auth/login',
-            state: { from: props.location },
+            pathname: "/auth/login",
+            state: { from: props.location }
           }}
         />
       )

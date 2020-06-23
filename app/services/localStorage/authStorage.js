@@ -1,30 +1,30 @@
-import localStorageService from './localStorageService';
+import localStorageService from "./localStorageService";
 // eslint-disable-next-line import/no-cycle
-import auth from '../api/auth';
-import { actionNames } from '../../utils/constants/actionConstants';
+import auth from "../api/auth";
+import { actionNames } from "../../utils/constants/actionConstants";
 // eslint-disable-next-line import/no-cycle
-import { dispatch } from '../../app';
-import jwt from '../externalModules/jwt';
+import { dispatch } from "../../app";
+import jwt from "../externalModules/jwt";
 
 class AuthStorage {
   setSession = (token, roles = undefined) => {
-    localStorageService.set('zeep-token', token);
+    localStorageService.set("zeep-token", token);
     if (roles) {
-      localStorageService.set('roles', roles);
+      localStorageService.set("roles", roles);
     }
   };
 
   getRoles = () => {
-    return localStorageService.get('roles');
+    return localStorageService.get("roles");
   };
 
   getSession = () => {
-    return localStorageService.get('zeep-token');
+    return localStorageService.get("zeep-token");
   };
 
   deleteSession = () => {
-    localStorageService.remove('zeep-token');
-    localStorageService.remove('roles');
+    localStorageService.remove("zeep-token");
+    localStorageService.remove("roles");
   };
 
   renewToken = async (token = this.getSession()) => {
