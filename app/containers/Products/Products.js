@@ -202,7 +202,7 @@ Products.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return state.productsReducer;
+  return { ...state.productsReducer, ...state.generalReducer };
 };
 
 export default connect(mapStateToProps)(withStyles(styles)(Products));

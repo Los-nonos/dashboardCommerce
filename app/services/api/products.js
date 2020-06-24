@@ -7,7 +7,7 @@ class Products {
 
     let response;
     try {
-      response = await Api.post("products", body);
+      response = await Api.post("products", body, { 'Content-type': 'application/json' });
     } catch (err) {
       response = err;
     }
@@ -17,9 +17,8 @@ class Products {
 
   update = async dataProduct => {
     const body = dataProduct;
-    console.log(body);
-    let response;
 
+    let response;
     try {
       response = await Api.put(`/products/${body.id}`, body);
     } catch (err) {
