@@ -21,6 +21,7 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 class EmployeeTable extends React.Component {
   constructor(props) {
     super(props);
+    this.dispatch = props.dispatch;
   }
 
   changeArrowOrderBy = (props, classes) => {
@@ -132,7 +133,7 @@ class EmployeeTable extends React.Component {
                           classes={{ tooltip: classes.tooltip }}
                         >
                           <IconButton
-                            aria-label="See details"
+                            aria-label="Ver detalles"
                             className={classes.tableActionButton}
                             onClick={this.handleClickDetails.bind(this, prop)}
                           >
@@ -152,34 +153,20 @@ class EmployeeTable extends React.Component {
                           classes={{ tooltip: classes.tooltip }}
                         >
                           <IconButton
-                            aria-label={
-                              prop.visibleData[9] === "active"
-                                ? "Close"
-                                : "Done"
-                            }
+                            aria-label={"Close"}
                             className={classes.tableActionButton}
                             onClick={this.handleClickChangeState.bind(
                               this,
                               prop
                             )}
                           >
-                            {prop.visibleData[9] === "active" ? (
-                              <Close
-                                className={
-                                  classes.tableActionButtonIcon +
-                                  " " +
-                                  classes.close
-                                }
-                              />
-                            ) : (
-                              <Done
-                                className={
-                                  classes.tableActionButtonIcon +
-                                  " " +
-                                  classes.done
-                                }
-                              />
-                            )}
+                            <Close
+                              className={
+                                classes.tableActionButtonIcon +
+                                " " +
+                                classes.close
+                              }
+                            />
                           </IconButton>
                         </Tooltip>
                       </TableCell>

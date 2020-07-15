@@ -1,5 +1,12 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
+export function changeEmployeeState() {
+  return {
+    type: actionNames.changeEmployeeState
+  }
+}
+
+
 export function employeeUpdated() {
   return {
     type: actionNames.employeeUpdated,

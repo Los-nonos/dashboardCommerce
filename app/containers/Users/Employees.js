@@ -139,6 +139,7 @@ class Employees extends React.Component {
                   completeEmployee={actions.completeEmployee}
                   seeDetails={actions.seeDetails}
                   listEmployees={actions.listEmployees}
+                  changeEmployeeState={actions.changeEmployeeState}
                   changeOrderState={this.handleChangeOrderState}
                   page={this.state.page}
                 />

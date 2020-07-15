@@ -35,6 +35,7 @@ function* sagas() {
   yield takeEvery(actionNames.checkNotifications, checkNotifications);
   yield takeEvery(actionNames.createEmployee, createEmployee);
   yield takeEvery(actionNames.updateEmployee, updateEmployee);
+  yield takeEvery(actionNames.seeEmployeeDetails, seeEmployeeDetails);
   // yield takeEvery(actionNames.signUp, signUp);
 }
 

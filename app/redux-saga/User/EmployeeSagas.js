@@ -76,7 +76,7 @@ export function* seeEmployeeDetails(action) {
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),
-      put({ type: actionNames.showViewModal })
+      put({ type: actionNames.showUpdateEmployeeModal })
     ]);
   }
 }
