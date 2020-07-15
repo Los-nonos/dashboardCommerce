@@ -1,7 +1,9 @@
-import { call, put } from "redux-saga/effects";
+import { call, select, put } from "redux-saga/effects";
 // eslint-disable-next-line import/no-cycle
 import authStorage from "../../services/localStorage/authStorage";
 import { actionNames } from "../../utils/constants/actionConstants";
+
+const getUserId = state => state.login.userData.id;
 
 export function* saveSession(action) {
   const { token, roles } = action;
@@ -15,5 +17,10 @@ export function* deleteSession() {
 
 export function* renewToken(action) {
   yield call(authStorage.renewToken, action.token);
-  yield put({ type: actionNames.checkNotifications, token: action.token });
+  const id = yield select(getUserId);
+  try {
+    yield put({ type: actionNames.checkNotifications, id: id });
+  }catch (e) {
+
+  }
 }

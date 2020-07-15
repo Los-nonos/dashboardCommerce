@@ -10,15 +10,72 @@ import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
+import { EmployeesOrderBy } from "../../../types/EmployeesOrderBy";
 import { Close, Done, Edit, Grade, Visibility } from "@material-ui/icons";
 
 import styles from "../../../styles/dashboard/components/molecules/productsTableStyles";
 import { withStyles } from "@material-ui/core";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 
 class EmployeeTable extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  changeArrowOrderBy = (props, classes) => {
+    const orderBy = this.orderBySanitized(props);
+
+    if (this.state.orderBy === orderBy) {
+      return this.state.order === "asc" ? (
+        <ArrowDropDownIcon className={classes.tableActionButtonIcon} />
+      ) : (
+        <ArrowDropUpIcon className={classes.tableActionButtonIcon} />
+      );
+    } else {
+      return <ArrowDropUpIcon className={classes.tableActionButtonIcon} />;
+    }
+  };
+
+  handleClickDetails = props => {
+    const { id } = props;
+    this.dispatch(this.props.seeDetails(id));
+  };
+
+  handleClickChangeState = props => {
+    const { id } = props;
+    this.dispatch(this.props.changeEmployeeState(id));
+  }
+
+  handleOrderBy = props => {
+    const orderBy = this.orderBySanitized(props);
+
+    if (orderBy !== null) {
+      let order = "asc";
+
+      if (this.state.orderBy === orderBy) {
+        order = this.state.order === "asc" ? "desc" : "asc";
+        this.setState({ orderBy, order });
+      } else {
+        this.setState({ orderBy, order });
+      }
+
+      this.props.changeOrderState(orderBy, order);
+
+      this.dispatch(this.props.listEmployees(this.props.page, orderBy, order));
+    }
+  };
+
+  orderBySanitized = props => {
+    let orderBy = props.toLowerCase().split(" ");
+    orderBy = orderBy[1]
+      ? orderBy[0] + orderBy[1][0].toUpperCase() + orderBy[1].slice(1)
+      : orderBy[0];
+
+    return Object.values(EmployeesOrderBy).indexOf(orderBy) > -1
+      ? orderBy
+      : null;
+  };
 
   render() {
     const { classes, tableHead, tableData, tableHeaderColor } = this.props;

@@ -12,7 +12,7 @@ import {
   listProducts,
   updateProduct
 } from "../Products/ProductsSagas";
-import { listEmployees, seeEmployeeDetails } from "../User/EmployeeSagas";
+import {createEmployee, listEmployees, seeEmployeeDetails, updateEmployee} from "../User/EmployeeSagas";
 import {checkNotifications} from "../General/GeneralSagas";
 // import { signUp } from "../Auth/signUpSagas";
 
@@ -33,6 +33,8 @@ function* sagas() {
   yield takeEvery(actionNames.listEmployees, listEmployees);
   yield takeEvery(actionNames.seeEmployeeDetails, seeEmployeeDetails);
   yield takeEvery(actionNames.checkNotifications, checkNotifications);
+  yield takeEvery(actionNames.createEmployee, createEmployee);
+  yield takeEvery(actionNames.updateEmployee, updateEmployee);
   // yield takeEvery(actionNames.signUp, signUp);
 }
 

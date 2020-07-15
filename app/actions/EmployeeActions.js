@@ -1,5 +1,19 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
+export function employeeUpdated() {
+  return {
+    type: actionNames.employeeUpdated,
+  }
+}
+
+
+export function closeModal() {
+  return {
+    type: actionNames.closeModal,
+  }
+}
+
+
 export function seeDetails(id) {
   return {
     type: actionNames.seeEmployeeDetails,

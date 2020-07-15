@@ -9,7 +9,7 @@ class EmployeeAdapter {
       return {
         type: actionNames.employeeCreatedSuccessfully,
         message: "Empleado creado satisfactoriamente",
-        product: data.data
+        employee: data.data
       };
     }
 
@@ -46,7 +46,7 @@ class EmployeeAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.loadEmployeeSuccessful,
-        product: data.data
+        employees: data.data
       };
     }
 
@@ -67,7 +67,7 @@ class EmployeeAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.loadEmployeesSuccessful,
-        products: data.items,
+        employees: data.data,
         totalPages: data.pageCount
       };
     }
@@ -89,7 +89,7 @@ class EmployeeAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.loadEmployeesSuccessful,
-        products: data.items,
+        employees: data.items,
         totalPages: data.pageCount
       };
     }

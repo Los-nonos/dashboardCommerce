@@ -10,12 +10,28 @@ import GridContainer from "../../components/atoms/Grid/GridContainer";
 import EmployeeTable from "../../components/molecules/Tables/EmployeeTable";
 import { withStyles } from "@material-ui/core";
 import styles from "../../styles/dashboard/containers/Products/ProductContainerStyles";
+import FormProducts from "../../components/organisms/Products/formProducts";
+import * as generalActions from "../../actions/GeneralActions";
+import ViewProduct from "../../components/organisms/Products/viewProduct";
+import Button from "@material-ui/core/Button";
+import Notification from "../../components/molecules/Notification/Notification";
+import Slide from "@material-ui/core/Slide";
+import FormEmployee from "../../components/organisms/Employees/formEmployees";
 
 class Employees extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      page: 1,
+      order: 'asc',
+      orderBy: 'name',
+    }
     this.dispatch = props.dispatch;
     this.handleLoadEmployees();
+  }
+
+  handleClickCreateEmployee = () => {
+    this.dispatch(actions.showCreateModal());
   }
 
   handleLoadEmployees = () => {
@@ -40,8 +56,15 @@ class Employees extends React.Component {
   listEmployee = () => {
     const employees = [];
     for (const employee of this.props.employees) {
+      let listRoles = employee.roles.toString();
+      listRoles = listRoles.replace(/,/gi, ", ");
+
       const dataEmployee = {
-        visibleData: [employee.name, employee.surname, employee.role],
+        visibleData: [
+          employee.name,
+          employee.surname,
+          listRoles
+        ],
         id: employee.id
       };
       employees.push(dataEmployee);
@@ -88,6 +111,9 @@ class Employees extends React.Component {
       this.handleLoadEmployees();
     }
     const { classes } = this.props;
+    const Transition = React.forwardRef(function Transition(props, ref) {
+      return <Slide direction="down" ref={ref} {...props} />;
+    });
 
     if (this.props.employees[0]) {
       employeeData = this.listEmployee();
@@ -109,10 +135,10 @@ class Employees extends React.Component {
                   tableHeaderColor={"primary"}
                   tableHead={["Nombre", "Apellido", "Rol"]}
                   tableData={employeeData}
-                  getProductByUuid={actions.getEmployeeById}
-                  completeProduct={actions.completeEmployee}
+                  getEmployeeById={actions.getEmployeeById}
+                  completeEmployee={actions.completeEmployee}
                   seeDetails={actions.seeDetails}
-                  listProducts={actions.listEmployees}
+                  listEmployees={actions.listEmployees}
                   changeOrderState={this.handleChangeOrderState}
                   page={this.state.page}
                 />
@@ -122,6 +148,29 @@ class Employees extends React.Component {
           <div className={classes.center}>
             <Pagination pages={this.pagination()} color="primary" />
           </div>
+        </GridContainer>
+        <GridContainer>
+          <GridItem>
+            {this.props.modalShow.createModal ||
+            this.props.modalShow.updateModal ? (
+              <FormEmployee
+                closeModal={actions.closeModal}
+                updateEmployee={actions.updateEmployee}
+                createEmployee={actions.createEmployee}
+                Transition={Transition}
+                employeeUpdated={actions.employeeUpdated}
+                showNotification={generalActions.showNotification}
+              />
+            ) : null}
+            <Button
+              id={"createEmployeeButton"}
+              color={"primary"}
+              onClick={this.handleClickCreateEmployee}
+            >
+              Cargar nuevo empleado
+            </Button>
+            <Notification closeNotification={this.closeNotification} />
+          </GridItem>
         </GridContainer>
       </>
     );

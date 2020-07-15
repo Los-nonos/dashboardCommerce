@@ -9,7 +9,6 @@ import TableBody from "@material-ui/core/TableBody";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 import { Close, Done, Edit, Grade, Visibility } from "@material-ui/icons";
-import { redirectTo } from "../../../utils/helpers/redirectTo";
 import { ProductsOrderBy } from "../../../types/ProductsOrderBy";
 import { withStyles } from "@material-ui/core";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";

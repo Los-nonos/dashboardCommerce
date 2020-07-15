@@ -6,7 +6,7 @@ import { pages, redirectTo } from "../../utils/helpers/redirectTo";
 export function* createEmployee(action) {
   const { dataEmployee } = action;
   yield all([put({ type: actionNames.loadingToggle })]);
-  const res = yield call(employee.create, dataEmployee);
+  const res = yield call(employee.createEmployee, dataEmployee);
 
   if (res.error) {
     if (res.error.code === 401 || res.error.code === 403) {

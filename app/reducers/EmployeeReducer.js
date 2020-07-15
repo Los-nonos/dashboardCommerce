@@ -2,15 +2,36 @@ import { actionNames } from "../utils/constants/actionConstants";
 
 export const stateDefault = {
   employees: [],
-  employeeWithDetails: {}
+  employeeWithDetails: {},
+  page: 1,
+  totalPages: 1,
+  modalShow: {
+    createModal: false,
+    updateModal: false
+  },
+  formData: {},
+  formErrors: {},
+  roles: [
+    'sales',
+    'purchases',
+    'deposits',
+    'treasury',
+    'accounting',
+    'finance',
+    'rrhh'
+  ]
 };
 
 const employeeReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case actionNames.loadEmployeesSuccessful:
-      return { ...state, employees: action.employees };
+      return { ...state, employees: action.employees ? action.employees: [] };
     case actionNames.loadEmployeesFail:
       return { ...state, employees: [] };
+    case actionNames.showCreateEmployeeModal:
+      return { ...state, modalShow: { createModal: true }};
+    case actionNames.showUpdateEmployeeModal:
+      return { ...state, modalShow: { updateModal: true }};
     case actionNames.nextEmployeePage:
       if (state.page + 1 <= state.totalPages) {
         return { ...state, page: state.page + 1 };
