@@ -32,7 +32,7 @@ class Products extends React.Component {
 
   handleLoadProducts = () => {
     this.dispatch(actions.checkRoles(["sales", "deposits"]));
-    this.dispatch(actions.loadFilters());
+    this.dispatch(actions.loadFilters()); //TODO: load brands and providers
     this.dispatch(
       actions.listProducts(
         this.state.page,

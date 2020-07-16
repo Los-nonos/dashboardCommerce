@@ -172,7 +172,7 @@ class FormProducts extends React.Component {
         >
           <form onSubmit={this.createProduct}>
             <GridContainer>
-              <GridItem xs={12} sm={12} md={4}>
+              <GridItem xs={12} sm={12} md={3}>
                 <CustomInput
                   labelText="Name"
                   id="name"
@@ -204,7 +204,7 @@ class FormProducts extends React.Component {
                   }}
                 />
               </GridItem>
-              <GridItem xs={12} sm={12} md={4}>
+              <GridItem xs={12} sm={12} md={3}>
                 <CustomInput
                   labelText={"Price"}
                   id={"price"}
@@ -221,7 +221,7 @@ class FormProducts extends React.Component {
                   }}
                 />
                 <CustomInput
-                  labelText={"Taxes"}
+                  labelText={"Impuestos"}
                   id={"taxes"}
                   required
                   error={this.props.formErrors.taxes !== undefined}
@@ -235,6 +235,40 @@ class FormProducts extends React.Component {
                     defaultValue: this.props.formData.taxes
                   }}
                 />
+                <CustomInput
+                  labelText={"Stock"}
+                  id={"stock"}
+                  required
+                  error={this.props.formErrors.stock !== undefined}
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    required: true,
+                    name: "stock",
+                    type: "number",
+                    defaultValue: this.props.formData.stock
+                  }}
+                />
+                <CustomInput
+                  labelText={"Numero de orden de compra"}
+                  id={"purchaseOrderNumber"}
+                  required
+                  error={
+                    this.props.formErrors.purchaseOrderNumber !== undefined
+                  }
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    required: true,
+                    name: "purchaseOrderNumber",
+                    type: "text",
+                    defaultValue: this.props.formData.purchaseOrderNumber
+                  }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={3}>
                 <FormControl
                   fullWidth={true}
                   className={{
@@ -290,8 +324,118 @@ class FormProducts extends React.Component {
                     })}
                   </Select>
                 </FormControl>
+                <FormControl
+                  fullWidth={true}
+                  className={{
+                    color: "#fff"
+                  }}
+                >
+                  <InputLabel
+                    htmlFor="category"
+                    className={classes.selectLabel}
+                  >
+                    Marca
+                  </InputLabel>
+                  <Select
+                    MenuProps={{
+                      className: classes.selectMenu
+                    }}
+                    classes={{
+                      select: classes.select
+                    }}
+                    required
+                    error={this.props.formErrors.brand !== undefined}
+                    value={this.state.category}
+                    onChange={this.handleSelectorChange}
+                    inputProps={{
+                      name: "brand",
+                      id: "brand",
+                      defaultValue: this.props.formData.brand
+                    }}
+                  >
+                    <MenuItem
+                      disabled
+                      classes={{
+                        root: classes.selectMenuItem
+                      }}
+                    >
+                      Marca
+                    </MenuItem>
+                    {this.props.filters.brandName.map(brand => {
+                      return (
+                        <MenuItem
+                          classes={{
+                            root: classes.selectMenuItem,
+                            selected: classes.selectMenuItemSelected
+                          }}
+                          className={{
+                            color: "#fff"
+                          }}
+                          value={brand.id}
+                        >
+                          {brand.name}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+                <FormControl
+                  fullWidth={true}
+                  className={{
+                    color: "#fff"
+                  }}
+                >
+                  <InputLabel
+                    htmlFor="provider"
+                    className={classes.selectLabel}
+                  >
+                    Proveedor
+                  </InputLabel>
+                  <Select
+                    MenuProps={{
+                      className: classes.selectMenu
+                    }}
+                    classes={{
+                      select: classes.select
+                    }}
+                    required
+                    error={this.props.formErrors.provider !== undefined}
+                    value={this.state.provider}
+                    onChange={this.handleSelectorChange}
+                    inputProps={{
+                      name: "provider",
+                      id: "provider",
+                      defaultValue: this.props.formData.provider
+                    }}
+                  >
+                    <MenuItem
+                      disabled
+                      classes={{
+                        root: classes.selectMenuItem
+                      }}
+                    >
+                      Proveedor
+                    </MenuItem>
+                    {this.props.filters.providerName.map(provider => {
+                      return (
+                        <MenuItem
+                          classes={{
+                            root: classes.selectMenuItem,
+                            selected: classes.selectMenuItemSelected
+                          }}
+                          className={{
+                            color: "#fff"
+                          }}
+                          value={provider.id}
+                        >
+                          {provider.name}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
               </GridItem>
-              <GridItem xs={12} sm={12} md={4}>
+              <GridItem xs={12} sm={12} md={3}>
                 <CardAvatar product>
                   <img
                     id="productImageShow"

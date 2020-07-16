@@ -3,6 +3,8 @@ import { actionNames } from "../utils/constants/actionConstants";
 export const stateDefault = {
   filters: {
     categoryName: [],
+    brandName: [],
+    providerName: [],
     valueFilterOption: "",
     query: ""
   },

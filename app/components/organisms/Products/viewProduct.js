@@ -33,63 +33,6 @@ class ViewProduct extends React.Component {
     await this.dispatch(this.props.closeModal());
   };
 
-  handleSelectorChange = event => {
-    if (event.target.name === "category") {
-      const category = this.props.filters.categoryName.map(categoryName => {
-        if (categoryName.name === event.target.value) {
-          return categoryName;
-        }
-      });
-      this.dispatch(this.props.selectedCategory(category[0]));
-    }
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  imageUploadHandler = async () => {
-    const formDataImage = new FormData();
-    const { selectedImage } = this.state;
-    formDataImage.append("file", selectedImage, selectedImage.name);
-    const imageResponse = await productUploadImage.imageUpload(formDataImage);
-    this.props.formData.productImage = imageResponse.data.location;
-    this.refreshImage();
-    this.hiddenButtonUploadImage();
-  };
-
-  refreshImage = () => {
-    document.getElementById(
-      "productImage"
-    ).value = this.props.formData.productImage;
-    document.getElementById(
-      "profileImageShow"
-    ).src = this.props.formData.productImage;
-  };
-
-  showButtonUploadImage = () => {
-    document.getElementById("uploadImageButton").style.display = "inline-block";
-  };
-
-  hiddenButtonUploadImage = () => {
-    document.getElementById("uploadImageButton").style.display = "none";
-  };
-
-  checkIfUrlIsImage = url => {
-    return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
-  };
-
-  imageSelectedHandler = event => {
-    this.setState({
-      selectedImage: event.target.files[0]
-    });
-    this.showButtonUploadImage();
-  };
-
-  updateValues() {
-    this.setState({
-      firstLoad: false,
-      selectedImage: null
-    });
-  }
-
   render() {
     const { classes, Transition } = this.props;
     const isImage = this.checkIfUrlIsImage(this.props.formData.productImage);
@@ -217,50 +160,6 @@ class ViewProduct extends React.Component {
                     className={`${classes.customAvatarPlaceholder}`}
                   />
                 </CardAvatar>
-                <input
-                  onChange={this.imageSelectedHandler}
-                  accept="image/*"
-                  className={classes.input}
-                  style={{ display: "none" }}
-                  id="raised-button-file"
-                  multiple
-                  type="file"
-                />
-                <label htmlFor="raised-button-file">
-                  <Button
-                    variant="raised"
-                    component="span"
-                    size="sm"
-                    className={classes.button}
-                  >
-                    Upload Image
-                  </Button>
-                </label>
-                <Button
-                  id="uploadImageButton"
-                  onClick={this.imageUploadHandler}
-                  color="primary"
-                  variant="raised"
-                  component="span"
-                  className={classes.button}
-                  style={{ display: "none" }}
-                  size="sm"
-                >
-                  Apply
-                </Button>
-                <CustomInput
-                  id="productImage"
-                  error={this.props.formErrors.productImage !== undefined}
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    required: false,
-                    defaultValue: this.props.formData.productImage,
-                    name: "productImage",
-                    type: "hidden"
-                  }}
-                />
               </GridItem>
             </GridContainer>
             <GridContainer>
