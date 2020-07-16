@@ -19,7 +19,7 @@ export function* createEmployee(action) {
       put({ type: actionNames.showNotification, error: res.error })
     ]);
   } else {
-    const response = yield call(employee.seeDetails, res.product.id);
+    const response = yield call(employee.seeDetails, res.employee.id);
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),

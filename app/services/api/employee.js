@@ -3,14 +3,12 @@ import employeeAdapter from "../adapters/employeeAdapter";
 
 class Employee {
   createEmployee = async dataEmployee => {
-    console.log(dataEmployee);
     let response;
     try {
-      response = await Api.post('employees', dataEmployee, { 'Content-Type': 'application/json', 'Accept': 'application/json' });
+      response = await Api.post('employees', dataEmployee);
     } catch (err) {
       response = err;
     }
-    console.log(response);
 
     return employeeAdapter.createAdapt(response, dataEmployee);
   };

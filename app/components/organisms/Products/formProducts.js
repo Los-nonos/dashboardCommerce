@@ -38,6 +38,8 @@ class FormProducts extends React.Component {
   };
 
   createProduct = e => {
+    e.preventDefault();
+
     const fields = [
       "name",
       "description",
@@ -160,7 +162,8 @@ class FormProducts extends React.Component {
         >
           {this.props.formData.name !== "" ? (
             <h4 className={classes.modalTitle}>{this.props.formData.name}</h4>
-          ) : null}
+          ) : (
+            <h4 className={classes.modalTitle}>{"Nuevo producto"}</h4>
           )}
         </DialogTitle>
         <DialogContent

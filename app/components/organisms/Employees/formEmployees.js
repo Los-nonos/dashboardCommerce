@@ -1,5 +1,5 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -12,8 +12,8 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import LoadingButton from "../../atoms/CustomButtons/LoadingButton";
-import {withStyles} from "@material-ui/core";
-import styles from '../../../styles/dashboard/components/molecules/productsTableStyles';
+import { withStyles } from "@material-ui/core";
+import styles from "../../../styles/dashboard/components/molecules/productsTableStyles";
 
 class FormEmployee extends React.Component {
   constructor(props) {
@@ -21,9 +21,7 @@ class FormEmployee extends React.Component {
 
     this.state = {
       isAvailable: false,
-      firstLoad: true,
-      selectedImage: null,
-      categoryFilters: null
+      firstLoad: true
     };
     this.dispatch = props.dispatch;
   }
@@ -33,13 +31,9 @@ class FormEmployee extends React.Component {
   };
 
   createEmployee = e => {
-    const fields = [
-      "name",
-      "surname",
-      "username",
-      "password",
-      "email",
-    ];
+    e.preventDefault();
+
+    const fields = ["name", "surname", "username", "password", "email"];
 
     const formElements = e.target.elements;
 
@@ -49,7 +43,7 @@ class FormEmployee extends React.Component {
       }))
       .reduce((current, next) => ({ ...current, ...next }));
 
-    dataEmployee['role'] = [formElements.namedItem('role').value];
+    dataEmployee["role"] = [formElements.namedItem("role").value];
 
     if (this.props.modalShow.createModal) {
       this.dispatch(this.props.createEmployee(dataEmployee));
@@ -102,7 +96,7 @@ class FormEmployee extends React.Component {
           {this.props.formData.name ? (
             <h4 className={classes.modalTitle}>{this.props.formData.name}</h4>
           ) : (
-            <h4 className={classes.modalTitle}>{'Nuevo Empleado'}</h4>
+            <h4 className={classes.modalTitle}>{"Nuevo Empleado"}</h4>
           )}
         </DialogTitle>
         <DialogContent
@@ -151,7 +145,7 @@ class FormEmployee extends React.Component {
                   inputProps={{
                     required: true,
                     name: "email",
-                    type: 'email',
+                    type: "email",
                     defaultValue: this.props.formData.email
                   }}
                 />
@@ -193,10 +187,7 @@ class FormEmployee extends React.Component {
                     color: "#fff"
                   }}
                 >
-                  <InputLabel
-                    htmlFor="role"
-                    className={classes.selectLabel}
-                  >
+                  <InputLabel htmlFor="role" className={classes.selectLabel}>
                     Roles
                   </InputLabel>
                   <Select
@@ -267,6 +258,6 @@ class FormEmployee extends React.Component {
 
 const mapStateToProps = state => {
   return state.employeeReducer;
-}
+};
 
 export default connect(mapStateToProps)(withStyles(styles)(FormEmployee));

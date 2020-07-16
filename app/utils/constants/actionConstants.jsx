@@ -62,6 +62,7 @@ export const actionNames = {
   showViewModal: "SHOW_VIEW_MODAL",
 
   getProductByUuid: "GET_PRODUCT_BY_UUID",
+
   listEmployees: "LIST_EMPLOYEES",
   showCreateEmployeeModal: "SHOW_CREATE_EMPLOYEE_MODAL",
   previousEmployeePage: "PREVIOUS_EMPLOYEE_PAGE",
@@ -84,5 +85,30 @@ export const actionNames = {
   checkNotifications: "CHECK_NOTIFICATIONS",
   checkNotificationsSuccessfully: "CHECK_NOTIFICATIONS_SUCCESSFULLY",
   checkNotificationsFail: "CHECK_NOTIFICATIONS_FAIL",
-  changeEmployeeState: 'CHANGE_EMPLOYEE_STATE',
+  changeEmployeeState: "CHANGE_EMPLOYEE_STATE",
+
+  getCategoryById: "GET_CATEGORY_BY_ID",
+  previousCategoryPage: "PREVIOUS_CATEGORY_PAGE",
+  selectCategoryPage: "SELECT_CATEGORY_PAGE",
+  nextCategoryPage: "NEXT_CATEGORY_PAGE",
+  showCreateCategoryModal: "SHOW_CREATE_CATEGORY_MODAL",
+
+  listCategories: "LIST_CATEGORIES",
+  seeCategoryDetails: "SEE_CATEGORY_DETAILS",
+  updateCategories: "UPDATE_CATEGORIES",
+  showUpdateCategoryModal: "SHOW_UPDATE_CATEGORY_MODAL",
+  loadCategoriesSuccessful: "LOAD_CATEGORIES_SUCCESSFULLY",
+  loadCategoriesFail: "LOAD_CATEGORIES_FAIL",
+  createCategory: "CREATE_CATEGORY",
+  updateCategory: "UPDATE_CATEGORY",
+
+  listBrands: "LIST_BRANDS",
+  showCreateBrandModal: "SHOW_CREATE_BRAND_MODAL",
+  previousBrandsPage: "PREVIOUS_BRANDS_PAGE",
+  selectBrandPage: "SELECT_BRAND_PAGE",
+  nextBrandPage: "NEXT_BRAND_PAGE",
+  updateBrands: "UPDATE_BRANDS",
+  createBrands: "CREATE_BRANDS",
+  loadBrandsSuccessful: "LOAD_BRANDS_SUCCESSFULLY",
+  loadBrandsFail: "LOAD_BRANDS_FAIL"
 };

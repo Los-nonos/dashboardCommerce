@@ -6,8 +6,10 @@ import searchReducer from "./reducers/SearchReducer";
 import productsReducer from "./reducers/ProductsReducer";
 import employeeReducer from "./reducers/EmployeeReducer";
 import ordersReducer from "./reducers/OrdersReducer";
-import customerReducer from "./reducers/customersReducer";
+import customerReducer from "./reducers/CustomersReducer";
 import notificationsReducer from "./reducers/NotificationsReducer";
+import categoriesReducer from "./reducers/CategoriesReducer";
+import brandsReducer from "./reducers/BrandsReducer";
 
 export default {
   login,
@@ -19,5 +21,7 @@ export default {
   employeeReducer,
   ordersReducer,
   customerReducer,
-  notificationsReducer
+  notificationsReducer,
+  categoriesReducer,
+  brandsReducer
 };
