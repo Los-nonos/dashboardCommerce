@@ -38,6 +38,15 @@ const brandsReducer = (state = defaultState, action) => {
       return { ...state };
     case actionNames.updateBrandFail:
       return { ...state };
+    case actionNames.showCreateBrandModal:
+      return { ...state, modalShow: { createModal: true, updateModal: false } };
+    case actionNames.showUpdateBrandModal:
+      return { ...state, modalShow: { createModal: false, updateModal: true } };
+    case actionNames.closeModal:
+      return {
+        ...state,
+        modalShow: { createModal: false, updateModal: false }
+      };
     default:
       return state;
   }

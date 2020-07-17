@@ -65,11 +65,16 @@ class FormProducts extends React.Component {
       }))
       .reduce((current, next) => ({ ...current, ...next }));
 
+    const brands = [];
+    brands.push(this.state.brand);
+    const categories = [];
+    categories.push(this.state.category);
+
     dataProducts = {
       ...dataProducts,
       providerId: this.state.provider,
-      brands: Array(this.state.brand),
-      categories: Array(this.state.category),
+      brands,
+      categories,
       characteristics: this.state.characteristics
     };
 
@@ -126,7 +131,7 @@ class FormProducts extends React.Component {
 
   assignCharacteristicToProduct = (name, value) => {
     const characteristics = this.state.characteristics;
-    characteristics.push({ [name]: value });
+    characteristics.push({ name, value });
     this.setState({ characteristics });
   };
 
@@ -352,7 +357,7 @@ class FormProducts extends React.Component {
                     }}
                     required
                     error={this.props.formErrors.brand !== undefined}
-                    value={this.state.category}
+                    value={this.state.brand}
                     onChange={this.handleSelectorChange}
                     inputProps={{
                       name: "brand",

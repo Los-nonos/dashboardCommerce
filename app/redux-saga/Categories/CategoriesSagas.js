@@ -23,6 +23,53 @@ export function* listCategories(_action) {
   }
 }
 
-export function* createCategory(action) {}
+export function* createCategory(action) {
+  const { dataCategory } = action;
+  yield all([put({ type: actionNames.loadingToggle })]);
+  const res = yield call(category.createCategory, dataCategory);
 
-export function* updateCategory(action) {}
+  if (res.error) {
+    if (res.error.code === 401 || res.error.code === 403) {
+      yield all([put({ type: actionNames.handleError, error: res.error })]);
+      redirectTo(pages.error);
+    }
+    yield all([
+      put(res),
+      put({ type: actionNames.loadingToggle }),
+      put({ type: actionNames.showNotification, error: res.error })
+    ]);
+  } else {
+    yield all([
+      put(res),
+      put({ type: actionNames.loadingToggle }),
+      put({ type: actionNames.showNotification, message: res.message }),
+      put({ type: actionNames.closeModal })
+    ]);
+  }
+}
+
+export function* updateCategory(action) {
+  const { dataCategory } = action;
+  yield all([put({ type: actionNames.loadingToggle })]);
+  const res = yield call(category.updateCategory, dataCategory);
+
+  if (res.error) {
+    if (res.error.code === 401 || res.error.code === 403) {
+      yield all([put({ type: actionNames.handleError, error: res.error })]);
+      redirectTo(pages.error);
+    }
+    yield all([
+      put(res),
+      put({ type: actionNames.loadingToggle }),
+      put({ type: actionNames.showNotification, error: res.error })
+    ]);
+  } else {
+    yield all([
+      put(res),
+      put({ type: actionNames.loadingToggle }),
+      put({ type: actionNames.showNotification, message: res.message }),
+      put({ type: actionNames.closeModal }),
+      put({ type: actionNames.listCategories })
+    ]);
+  }
+}

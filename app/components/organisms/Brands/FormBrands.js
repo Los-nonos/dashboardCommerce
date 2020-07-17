@@ -9,6 +9,7 @@ import GridItem from "../../atoms/Grid/GridItem";
 import CustomInput from "../../atoms/CustomInput/CustomInput";
 import Button from "@material-ui/core/Button";
 import LoadingButton from "../../atoms/CustomButtons/LoadingButton";
+import styles from "../../../styles/dashboard/components/organisms/formProductStyles";
 
 class FormBrands extends React.Component {
   constructor(props) {
@@ -95,8 +96,8 @@ class FormBrands extends React.Component {
           className={classes.modalBody}
         >
           <form onSubmit={this.createBrand}>
-            <GridContainer>
-              <GridItem xs={12} sm={12} md={4}>
+            <GridContainer justify={"center"}>
+              <GridItem xs={12} sm={12} md={6}>
                 <CustomInput
                   labelText="Name"
                   id="name"
@@ -152,4 +153,4 @@ const mapStateToProps = state => {
   return state.brandsReducer;
 };
 
-export default connect(mapStateToProps)(withStyles({})(FormBrands));
+export default connect(mapStateToProps)(withStyles(styles)(FormBrands));

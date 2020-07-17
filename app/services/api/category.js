@@ -12,6 +12,30 @@ class Category {
 
     return categoryAdapter.listAdapt(response);
   };
+
+  createCategory = async body => {
+    let response;
+
+    try {
+      response = await Api.post("categories/", body);
+    } catch (err) {
+      response = err;
+    }
+
+    return categoryAdapter.createAdapt(response);
+  };
+
+  updateCategory = async body => {
+    let response;
+
+    try {
+      response = await Api.put(`categories/${body.id}`, body);
+    } catch (err) {
+      response = err;
+    }
+
+    return categoryAdapter.updateAdapt(response);
+  };
 }
 
 export default new Category();

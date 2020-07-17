@@ -5,6 +5,7 @@ import { pages, redirectTo } from "../../utils/helpers/redirectTo";
 
 export function* createProduct(action) {
   const { dataProduct } = action;
+  yield put({ type: actionNames.loadingToggle });
   const res = yield call(product.create, dataProduct);
 
   if (res.error) {
@@ -32,6 +33,7 @@ export function* createProduct(action) {
 
 export function* updateProduct(action) {
   const { dataProduct } = action;
+  yield put({ type: actionNames.loadingToggle });
   const res = yield call(product.update, dataProduct);
 
   if (res.error) {

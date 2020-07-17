@@ -104,6 +104,7 @@ export const actionNames = {
 
   listBrands: "LIST_BRANDS",
   showCreateBrandModal: "SHOW_CREATE_BRAND_MODAL",
+  showUpdateBrandModal: "SHOW_UPDATE_BRAND_MODAL",
   previousBrandsPage: "PREVIOUS_BRANDS_PAGE",
   selectBrandPage: "SELECT_BRAND_PAGE",
   nextBrandPage: "NEXT_BRAND_PAGE",
@@ -114,5 +115,9 @@ export const actionNames = {
   createBrandSuccessfully: "CREATE_BRAND_SUCCESSFULLY",
   createBrandFail: "CREATE_BRAND_FAIL",
   updateBrandSuccessfully: "UPDATE_BRAND_SUCCESSFULLY",
-  updateBrandFail: "UPDATE_BRAND_FAIL"
+  updateBrandFail: "UPDATE_BRAND_FAIL",
+  createCategorySuccessfully: "CREATE_CATEGORY_SUCCESSFULLY",
+  createCategoryFail: "CREATE_CATEGORY_FAIL",
+  updateCategorySuccessfully: "UPDATE_CATEGORY_SUCCESSFULLY",
+  updateCategoryFail: "UPDATE_CATEGORY_FAIL"
 };

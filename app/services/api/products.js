@@ -7,7 +7,7 @@ class Products {
 
     let response;
     try {
-      response = await Api.post("products", body);
+      response = await Api.post("products/", body);
     } catch (err) {
       response = err;
     }
@@ -20,7 +20,7 @@ class Products {
 
     let response;
     try {
-      response = await Api.put(`/products/${body.id}`, body);
+      response = await Api.put(`products/${body.id}`, body);
     } catch (err) {
       response = err;
     }
@@ -31,7 +31,7 @@ class Products {
   getById = async id => {
     let response;
     try {
-      response = await Api.get(`/products/${id}`);
+      response = await Api.get(`products/${id}`);
     } catch (err) {
       response = err;
     }

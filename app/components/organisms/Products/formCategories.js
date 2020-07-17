@@ -8,6 +8,7 @@ import GridItem from "../../atoms/Grid/GridItem";
 import CustomInput from "../../atoms/CustomInput/CustomInput";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core";
+import styles from "../../../styles/dashboard/components/organisms/formProductStyles";
 
 class FormCategories extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class FormCategories extends React.Component {
   createCategory = e => {
     e.preventDefault();
 
-    const fields = ["name", "description"];
+    const fields = ["name"];
 
     const formElements = e.target.elements;
 
@@ -38,10 +39,10 @@ class FormCategories extends React.Component {
       .reduce((current, next) => ({ ...current, ...next }));
 
     if (this.props.modalShow.createModal) {
-      this.dispatch(this.props.createEmployee(dataCategory));
+      this.dispatch(this.props.createCategory(dataCategory));
     } else {
       dataCategory.id = this.props.formData.id;
-      this.dispatch(this.props.updateEmployee(dataCategory));
+      this.dispatch(this.props.updateCategory(dataCategory));
     }
   };
 
@@ -136,4 +137,4 @@ const mapStateToProps = state => {
   return state.categoriesReducer;
 };
 
-export default connect(mapStateToProps)(withStyles({})(FormCategories));
+export default connect(mapStateToProps)(withStyles(styles)(FormCategories));

@@ -31,7 +31,7 @@ const categoriesReducer = (state = defaultState, action) => {
     case actionNames.showUpdateCategoryModal:
       return {
         ...state,
-        modalShow: { createModal: false, updateModal: false }
+        modalShow: { createModal: false, updateModal: true }
       };
     case actionNames.closeModal:
       return {
@@ -50,6 +50,8 @@ const categoriesReducer = (state = defaultState, action) => {
         return { ...state, page: state.page - 1 };
       }
       return { ...state, page: state.page };
+    case actionNames.getCategoryById:
+      return { ...state, formData: { id: action.id, name: action.name } };
     default:
       return state;
   }

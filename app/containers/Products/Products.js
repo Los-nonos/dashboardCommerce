@@ -32,7 +32,7 @@ class Products extends React.Component {
 
   handleLoadProducts = () => {
     this.dispatch(actions.checkRoles(["sales", "deposits"]));
-    this.dispatch(actions.loadFilters()); //TODO: load brands and providers
+    this.dispatch(actions.loadFilters());
     this.dispatch(
       actions.listProducts(
         this.state.page,
@@ -57,12 +57,15 @@ class Products extends React.Component {
   listProducts = () => {
     const products = [];
     for (const product of this.props.products) {
+      let characteristics = product.characteristics.toString();
+      characteristics = characteristics.replace(/,/gi, ", ");
+
       const dataProduct = {
         visibleData: [
           product.name,
           product.price,
-          product.description
-          //product.characteristics,
+          product.description,
+          characteristics
         ],
         uuid: product.uuid,
         id: product.id

@@ -1,14 +1,16 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
-export function createBrands() {
+export function createBrands(dataBrand) {
   return {
-    type: actionNames.createBrand
+    type: actionNames.createBrand,
+    dataBrand
   };
 }
 
-export function updateBrands() {
+export function updateBrands(dataBrand) {
   return {
-    type: actionNames.updateBrand
+    type: actionNames.updateBrand,
+    dataBrand
   };
 }
 

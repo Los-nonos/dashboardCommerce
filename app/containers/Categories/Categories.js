@@ -12,7 +12,7 @@ import CategoryTable from "../../components/molecules/Tables/CategoryTable";
 import Pagination from "../../components/molecules/Pagination/Pagination";
 import FormCategories from "../../components/organisms/Products/formCategories";
 import * as generalActions from "../../actions/GeneralActions";
-//import Button from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button";
 import Notification from "../../components/molecules/Notification/Notification";
 import { withStyles } from "@material-ui/core";
 
@@ -53,8 +53,7 @@ class Categories extends React.Component {
     const categories = [];
     for (const category of this.props.categories) {
       const dataCategory = {
-        visibleData: [category.name, category.description],
-        uuid: category.uuid,
+        visibleData: [category.name],
         id: category.id
       };
       categories.push(dataCategory);
@@ -122,11 +121,11 @@ class Categories extends React.Component {
               <CardBody>
                 <CategoryTable
                   tableHeaderColor={"primary"}
-                  tableHead={["Nombre", "Descripcion"]}
+                  tableHead={["Nombre"]}
                   tableData={categoriesData}
                   getCategoriesById={actions.getCategoryById}
                   completeCategory={actions.completeCategory}
-                  seeDetails={actions.seeDetails}
+                  showUpdateModal={actions.showUpdateModal}
                   listCategories={actions.listCategories}
                   changeOrderState={this.handleChangeOrderState}
                   page={this.state.page}
@@ -151,13 +150,13 @@ class Categories extends React.Component {
                 showNotification={generalActions.showNotification}
               />
             ) : null}
-            {/*<Button
+            <Button
               id={"createCategoryButton"}
               color={"primary"}
               onClick={this.handleClickCreateCategories}
             >
               Cargar nueva categoria
-            </Button>*/}
+            </Button>
             <Notification closeNotification={this.closeNotification} />
           </GridItem>
         </GridContainer>

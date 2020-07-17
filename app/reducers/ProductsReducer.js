@@ -54,7 +54,9 @@ const productsReducer = (state = stateDefault, action) => {
       return {
         ...state,
         filters: {
-          categoryName: []
+          categoryName: [],
+          brandName: [],
+          providerName: []
         }
       };
     case actionNames.loadProductsByFilterSuccesful:
@@ -107,8 +109,10 @@ const productsReducer = (state = stateDefault, action) => {
           description: action.productWithDetails.description,
           price: action.productWithDetails.price,
           taxes: action.productWithDetails.taxes,
-          category: action.productWithDetails.category.name,
-          characteristics: action.productWithDetails.characteristics
+          category: action.productWithDetails.category.id,
+          characteristics: action.productWithDetails.characteristics,
+          brand: action.productWithDetails.brand.id,
+          provider: action.productWithDetails.provider.id
         }
       };
     case actionNames.loadProductWithDetailsFail:

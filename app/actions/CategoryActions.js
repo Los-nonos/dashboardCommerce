@@ -1,47 +1,50 @@
-import {actionNames} from "../utils/constants/actionConstants";
+import { actionNames } from "../utils/constants/actionConstants";
+
+export function showUpdateModal() {
+  return {
+    type: actionNames.showUpdateCategoryModal
+  };
+}
 
 export function categoriesUpdated() {
   return {
     type: actionNames.updateCategories
-  }
+  };
 }
 
-
-export function createCategory() {
+export function createCategory(dataCategory) {
   return {
-    type: actionNames.createCategory
-  }
+    type: actionNames.createCategory,
+    dataCategory
+  };
 }
 
-
-export function updateCategory() {
+export function updateCategory(dataCategory) {
   return {
     type: actionNames.updateCategory,
-  }
+    dataCategory
+  };
 }
-
 
 export function closeModal() {
   return {
-    type: actionNames.closeModal,
-  }
+    type: actionNames.closeModal
+  };
 }
-
 
 export function completeCategory() {
   return {
-    type: actionNames.completeCategory,
-  }
+    type: actionNames.completeCategory
+  };
 }
 
-
-export function getCategoryById(id){
+export function getCategoryById(name, id) {
   return {
     type: actionNames.getCategoryById,
+    name,
     id
-  }
+  };
 }
-
 
 export function previousPage() {
   return {
@@ -49,14 +52,12 @@ export function previousPage() {
   };
 }
 
-
 export function selectPage(index) {
   return {
     type: actionNames.selectCategoryPage,
-    index,
+    index
   };
 }
-
 
 export function nextPage() {
   return {
@@ -64,13 +65,11 @@ export function nextPage() {
   };
 }
 
-
 export function closeNotification() {
   return {
-    type: actionNames.closeNotification,
+    type: actionNames.closeNotification
   };
 }
-
 
 export function showCreateModal() {
   return {
@@ -78,21 +77,19 @@ export function showCreateModal() {
   };
 }
 
-
 export function listCategories(page, orderBy, order) {
   return {
     type: actionNames.listCategories,
     page,
     orderBy,
-    order,
+    order
   };
 }
-
 
 export function checkRoles(roles) {
   return {
     type: actionNames.checkRoles,
-    roles,
+    roles
   };
 }
 
@@ -100,5 +97,5 @@ export function seeDetails(id) {
   return {
     type: actionNames.seeCategoryDetails,
     id
-  }
+  };
 }

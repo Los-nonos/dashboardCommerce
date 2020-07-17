@@ -16,14 +16,7 @@ export function loadFilters() {
 export function updateProduct(dataProduct) {
   return {
     type: actionNames.updateProduct,
-    dataProduct: {
-      name: dataProduct.name,
-      image: dataProduct.image,
-      price: dataProduct.price,
-      taxes: dataProduct.taxes,
-      description: dataProduct.description,
-      characteristics: dataProduct.characteristics
-    }
+    dataProduct
   };
 }
 
@@ -43,27 +36,14 @@ export function getProductsByUuid(uuid) {
 export function completeProduct(dataProduct) {
   return {
     type: actionNames.completeProduct,
-    dataProduct: {
-      name: dataProduct.name,
-      image: dataProduct.image,
-      price: dataProduct.price,
-      description: dataProduct.description,
-      characteristics: dataProduct.characteristics
-    }
+    dataProduct
   };
 }
 
 export function createProduct(dataProduct) {
   return {
     type: actionNames.createProduct,
-    dataProduct: {
-      name: dataProduct.name,
-      image: dataProduct.image,
-      price: dataProduct.price,
-      taxes: dataProduct.taxes,
-      description: dataProduct.description,
-      characteristics: dataProduct.characteristics
-    }
+    dataProduct
   };
 }
 

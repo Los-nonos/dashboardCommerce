@@ -22,6 +22,48 @@ class CategoryAdapter {
       }
     };
   };
+
+  createAdapt = response => {
+    const { status, data } = response;
+
+    if (!isError(status)) {
+      return {
+        type: actionNames.createCategorySuccessfully,
+        message: "Categoria creada satisfactoriamente"
+      };
+    }
+
+    const { details } = data.errors;
+    return {
+      type: actionNames.createCategoryFail,
+      error: {
+        code: status,
+        type: null,
+        errors: details
+      }
+    };
+  };
+
+  updateAdapt = response => {
+    const { status, data } = response;
+
+    if (!isError(status)) {
+      return {
+        type: actionNames.updateCategorySuccessfully,
+        message: "Categoria actualizada satisfactoriamente"
+      };
+    }
+
+    const { details } = data.errors;
+    return {
+      type: actionNames.updateCategoryFail,
+      error: {
+        code: status,
+        type: null,
+        errors: details
+      }
+    };
+  };
 }
 
 export default new CategoryAdapter();

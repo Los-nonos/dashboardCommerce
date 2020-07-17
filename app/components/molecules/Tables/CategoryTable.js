@@ -27,8 +27,9 @@ class CategoryTable extends React.Component {
   }
 
   handleClickUpdate = props => {
-    const { uuid } = props;
-    this.dispatch(this.props.getProductByUuid(uuid));
+    const { visibleData, id } = props;
+    this.dispatch(this.props.getCategoriesById(visibleData[0], id));
+    this.dispatch(this.props.showUpdateModal());
   };
 
   handleClickChangeState = () => {};
