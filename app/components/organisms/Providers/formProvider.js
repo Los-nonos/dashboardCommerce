@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core";
 import styles from "../../../styles/dashboard/components/organisms/formProductStyles";
 
-class FormOrder extends React.Component {
+class FormProvider extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,21 +25,24 @@ class FormOrder extends React.Component {
     await this.dispatch(this.props.closeModal());
   };
 
-  createOrder = e => {
+  createProvider = e => {
     e.preventDefault();
 
-    const fields = ["name", "numberSell"];
+    const fields = ["name", "direction"];
 
     const formElements = e.target.elements;
 
-    const dataOrder = fields
+    const dataProvider = fields
       .map(field => ({
         [field]: formElements.namedItem(field).value
       }))
       .reduce((current, next) => ({ ...current, ...next }));
 
     if (this.props.modalShow.createModal) {
-      this.dispatch(this.props.createOrder(dataOrder));
+      this.dispatch(this.props.createProvider(dataProvider));
+    } else {
+      dataProvider.id = this.props.formData.id;
+      this.dispatch(this.props.updateProvider(dataProvider));
     }
   };
 
@@ -85,14 +88,14 @@ class FormOrder extends React.Component {
           {this.props.formData.name ? (
             <h4 className={classes.modalTitle}>{this.props.formData.name}</h4>
           ) : (
-            <h4 className={classes.modalTitle}>{"Nueva Cliente"}</h4>
+            <h4 className={classes.modalTitle}>{"Nuevo Proveedor"}</h4>
           )}
         </DialogTitle>
         <DialogContent
           id="classic-modal-slide-description"
           className={classes.modalBody}
         >
-          <form onSubmit={this.createOrder}>
+          <form onSubmit={this.createProvider}>
             <GridContainer>
               <GridItem xs={12} sm={12} md={4}>
                 <CustomInput
@@ -107,6 +110,20 @@ class FormOrder extends React.Component {
                     required: true,
                     name: "name",
                     defaultValue: this.props.formData.name
+                  }}
+                />
+                <CustomInput
+                  labelText="Direccion"
+                  id="direction"
+                  required
+                  error={this.props.formErrors.direction !== undefined}
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    required: true,
+                    name: "direction",
+                    defaultValue: this.props.formData.direction
                   }}
                 />
               </GridItem>
@@ -131,7 +148,7 @@ class FormOrder extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { ...state.login, ...state.ordersReducer };
+  return state.providersReducer;
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(FormOrder));
+export default connect(mapStateToProps)(withStyles(styles)(FormProvider));

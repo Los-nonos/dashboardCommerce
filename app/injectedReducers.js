@@ -10,6 +10,7 @@ import customerReducer from "./reducers/CustomersReducer";
 import notificationsReducer from "./reducers/NotificationsReducer";
 import categoriesReducer from "./reducers/CategoriesReducer";
 import brandsReducer from "./reducers/BrandsReducer";
+import providersReducer from "./reducers/ProvidersReducer";
 
 export default {
   login,
@@ -23,5 +24,6 @@ export default {
   customerReducer,
   notificationsReducer,
   categoriesReducer,
-  brandsReducer
+  brandsReducer,
+  providersReducer
 };

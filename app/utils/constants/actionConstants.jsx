@@ -136,5 +136,15 @@ export const actionNames = {
   loadCustomersSuccessfully: "LOAD_CUSTOMERS_SUCCESSFULLY",
   loadCustomersFail: "LOAD_CUSTOMERS_FAIL",
   loadOrdersSuccessful: "LOAD_ORDERS_SUCCESSFULLY",
-  loadOrdersFail: "LOAD_ORDERS_FAIL"
+  loadOrdersFail: "LOAD_ORDERS_FAIL",
+  listProviders: "LIST_PROVIDERS",
+  showCreateProvidersModal: "SHOW_CREATE_PROVIDER_MODAL",
+  previousProvidersPage: "PREVIOUS_PROVIDERS_PAGE",
+  selectProvidersPage: "SELECT_PROVIDERS_PAGE",
+  nextProvidersPage: "NEXT_PROVIDERS_PAGE",
+  getProviderById: "GET_PROVIDER_BY_ID",
+  completeProvider: "COMPLETE_PROVIDER",
+  createProvider: "CREATE_PROVIDER",
+  updateProvider: "UPDATE_PROVIDER",
+  showUpdateProvidersModal: "SHOW_UPDATE_PROVIDERS_MODAL"
 };

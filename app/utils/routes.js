@@ -6,6 +6,7 @@ import {
   BusinessCenterSharp,
   Category,
   Dashboard,
+  LocalShipping,
   People,
   Person
 } from "@material-ui/icons";
@@ -21,6 +22,7 @@ import Categories from "../containers/Categories/Categories";
 import Brands from "../containers/Brands/Brands";
 import Customers from "../containers/Customers/Customers";
 import Orders from "../containers/Orders/Orders";
+import Providers from "../containers/Providers/Providers";
 
 const dashboardRoutes = [
   {
@@ -94,6 +96,14 @@ const dashboardRoutes = [
     component: Orders,
     layout: "/dashboard",
     rol: "sales"
+  },
+  {
+    path: "/providers",
+    name: "PROVEEDORES",
+    icon: LocalShipping,
+    component: Providers,
+    layout: "/dashboard",
+    rol: "deposits"
   }
 ];
 
