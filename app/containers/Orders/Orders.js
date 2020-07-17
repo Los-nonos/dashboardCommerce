@@ -13,6 +13,8 @@ import FormOrder from "../../components/organisms/Orders/formOrder";
 import * as generalActions from "../../actions/GeneralActions";
 import Button from "@material-ui/core/Button";
 import Notification from "../../components/molecules/Notification/Notification";
+import { withStyles } from "@material-ui/core";
+import styles from "../../styles/dashboard/containers/Orders/OrdersStyles";
 
 class Orders extends React.Component {
   constructor(props) {
@@ -163,4 +165,4 @@ const mapStateToProps = state => {
   return state.ordersReducer;
 };
 
-export default connect(mapStateToProps)(Orders);
+export default connect(mapStateToProps)(withStyles(styles)(Orders));

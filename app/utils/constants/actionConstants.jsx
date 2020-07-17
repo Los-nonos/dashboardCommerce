@@ -134,5 +134,7 @@ export const actionNames = {
   completeOrder: "COMPLETE_ORDER",
   createOrder: "CREATE_ORDER",
   loadCustomersSuccessfully: "LOAD_CUSTOMERS_SUCCESSFULLY",
-  loadCustomersFail: "LOAD_CUSTOMERS_FAIL"
+  loadCustomersFail: "LOAD_CUSTOMERS_FAIL",
+  loadOrdersSuccessful: "LOAD_ORDERS_SUCCESSFULLY",
+  loadOrdersFail: "LOAD_ORDERS_FAIL"
 };

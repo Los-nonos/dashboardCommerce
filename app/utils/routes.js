@@ -2,6 +2,7 @@ import Login from "@material-ui/icons/LockOpen";
 import Settings from "@material-ui/icons/Settings";
 import IconSearch from "@material-ui/icons/Search";
 import {
+  AttachMoney,
   BusinessCenterSharp,
   Category,
   Dashboard,
@@ -19,6 +20,7 @@ import Employees from "../containers/Users/Employees";
 import Categories from "../containers/Categories/Categories";
 import Brands from "../containers/Brands/Brands";
 import Customers from "../containers/Customers/Customers";
+import Orders from "../containers/Orders/Orders";
 
 const dashboardRoutes = [
   {
@@ -82,6 +84,14 @@ const dashboardRoutes = [
     name: "CLIENTES",
     icon: People,
     component: Customers,
+    layout: "/dashboard",
+    rol: "sales"
+  },
+  {
+    path: "/orders",
+    name: "COMPRAS",
+    icon: AttachMoney,
+    component: Orders,
     layout: "/dashboard",
     rol: "sales"
   }
