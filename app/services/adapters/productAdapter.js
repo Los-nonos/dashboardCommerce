@@ -5,7 +5,7 @@ import { errorProducts } from "../../utils/presenter/errorPresenter";
 class ProductAdapter {
   createAdapt = (createResponse, body) => {
     const { status, data } = createResponse;
-    console.log(createResponse);
+
     if (!isError(status)) {
       return {
         type: actionNames.productCreatedSuccessfully,
@@ -14,7 +14,12 @@ class ProductAdapter {
       };
     }
 
-    return errorProducts(data, status, body, actionNames.productCreatedFail);
+    return errorProducts(
+      data.data,
+      status,
+      body,
+      actionNames.productCreatedFail
+    );
   };
 
   updateAdapt = (updateResponse, body) => {

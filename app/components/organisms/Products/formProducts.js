@@ -29,7 +29,10 @@ class FormProducts extends React.Component {
       firstLoad: true,
       selectedImage: null,
       categoryFilters: null,
-      characteristics: []
+      characteristics: [],
+      provider: "",
+      category: "",
+      brand: ""
     };
     this.dispatch = props.dispatch;
   }
@@ -50,6 +53,7 @@ class FormProducts extends React.Component {
       "description",
       "price",
       "taxes",
+      "stock",
       "productImage",
       "purchaseOrderNumber"
     ];
@@ -61,12 +65,13 @@ class FormProducts extends React.Component {
       }))
       .reduce((current, next) => ({ ...current, ...next }));
 
-    console.log(this.state);
-
-    dataProducts.providerId = this.state.provider;
-    dataProducts.brands = [this.state.brand];
-    dataProducts.categories = [this.state.category];
-    dataProducts.characteristics = this.state.characteristics;
+    dataProducts = {
+      ...dataProducts,
+      providerId: this.state.provider,
+      brands: Array(this.state.brand),
+      categories: Array(this.state.category),
+      characteristics: this.state.characteristics
+    };
 
     if (this.props.modalShow.createModal) {
       this.dispatch(this.props.createProduct(dataProducts));

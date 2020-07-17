@@ -1,10 +1,10 @@
 export const errorProducts = (data, status, body, type) => {
-  const { code, details } = data.errors;
+  const { code, details } = data;
   const fields = ["name", "description", "characteristics", "price", "taxes"];
 
   let res = {};
   fields.forEach(field => {
-    if (details.errors[field]) {
+    if (details.error[field]) {
       res = {
         type,
         error: {
