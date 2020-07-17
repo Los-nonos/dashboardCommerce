@@ -1,7 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
-import { CategoryOrderBy } from "../../../types/CategoryOrderBy";
+import { CustomersOrderBy } from "../../../types/CustomersOrderBy";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import Table from "@material-ui/core/Table";
@@ -13,9 +12,9 @@ import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
-import { Close, Done, Edit, Grade, Visibility } from "@material-ui/icons";
+import { Close, Edit } from "@material-ui/icons";
 
-class CategoryTable extends React.Component {
+class CustomerTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,9 +26,8 @@ class CategoryTable extends React.Component {
   }
 
   handleClickUpdate = props => {
-    const { visibleData, id } = props;
-    this.dispatch(this.props.getCategoriesById(visibleData[0], id));
-    this.dispatch(this.props.showUpdateModal());
+    const { id } = props;
+    this.dispatch(this.props.getCustomerById(id));
   };
 
   handleClickChangeState = () => {};
@@ -49,7 +47,7 @@ class CategoryTable extends React.Component {
 
       this.props.changeOrderState(orderBy, order);
 
-      this.dispatch(this.props.listCategories(this.props.page, orderBy, order));
+      this.dispatch(this.props.listCustomer(this.props.page, orderBy, order));
     }
   };
 
@@ -59,7 +57,7 @@ class CategoryTable extends React.Component {
       ? orderBy[0] + orderBy[1][0].toUpperCase() + orderBy[1].slice(1)
       : orderBy[0];
 
-    return Object.values(CategoryOrderBy).indexOf(orderBy) > -1
+    return Object.values(CustomersOrderBy).indexOf(orderBy) > -1
       ? orderBy
       : null;
   };
@@ -76,11 +74,6 @@ class CategoryTable extends React.Component {
     } else {
       return <ArrowDropUpIcon className={classes.tableActionButtonIcon} />;
     }
-  };
-
-  handleClickDetails = props => {
-    const { uuid } = props;
-    this.dispatch(this.props.seeDetails(uuid));
   };
 
   render() {
@@ -131,26 +124,6 @@ class CategoryTable extends React.Component {
                         );
                       })}
                       <TableCell className={classes.tableActions}>
-                        <Tooltip
-                          id="tooltip-top"
-                          title="Ver detalles"
-                          placement="top"
-                          classes={{ tooltip: classes.tooltip }}
-                        >
-                          <IconButton
-                            aria-label="See details"
-                            className={classes.tableActionButton}
-                            onClick={this.handleClickDetails.bind(this, prop)}
-                          >
-                            <Visibility
-                              className={
-                                classes.tableActionButtonIcon +
-                                " " +
-                                classes.edit
-                              }
-                            />
-                          </IconButton>
-                        </Tooltip>
                         <Tooltip
                           id="tooltip-top"
                           title="Edit"
@@ -206,8 +179,4 @@ class CategoryTable extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return state.categoriesReducer;
-};
-
-export default connect(mapStateToProps)(withStyles()(CategoryTable));
+export default withStyles({})(CustomerTable);

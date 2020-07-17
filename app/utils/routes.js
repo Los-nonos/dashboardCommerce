@@ -5,6 +5,7 @@ import {
   BusinessCenterSharp,
   Category,
   Dashboard,
+  People,
   Person
 } from "@material-ui/icons";
 
@@ -17,11 +18,12 @@ import Products from "../containers/Products/Products";
 import Employees from "../containers/Users/Employees";
 import Categories from "../containers/Categories/Categories";
 import Brands from "../containers/Brands/Brands";
+import Customers from "../containers/Customers/Customers";
 
 const dashboardRoutes = [
   {
     path: "/user-account",
-    name: "User account",
+    name: "CUENTA",
     icon: Settings,
     component: UserAccount,
     layout: "/dashboard",
@@ -74,6 +76,14 @@ const dashboardRoutes = [
     component: Brands,
     layout: "/dashboard",
     rol: "admin"
+  },
+  {
+    path: "/customers",
+    name: "CLIENTES",
+    icon: People,
+    component: Customers,
+    layout: "/dashboard",
+    rol: "sales"
   }
 ];
 

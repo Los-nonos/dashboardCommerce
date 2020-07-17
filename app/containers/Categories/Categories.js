@@ -10,7 +10,7 @@ import CardHeader from "../../components/molecules/Card/CardHeader";
 import CardBody from "../../components/molecules/Card/CardBody";
 import CategoryTable from "../../components/molecules/Tables/CategoryTable";
 import Pagination from "../../components/molecules/Pagination/Pagination";
-import FormCategories from "../../components/organisms/Products/formCategories";
+import FormCategories from "../../components/organisms/Categories/formCategories";
 import * as generalActions from "../../actions/GeneralActions";
 import Button from "@material-ui/core/Button";
 import Notification from "../../components/molecules/Notification/Notification";

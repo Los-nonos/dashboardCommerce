@@ -119,5 +119,20 @@ export const actionNames = {
   createCategorySuccessfully: "CREATE_CATEGORY_SUCCESSFULLY",
   createCategoryFail: "CREATE_CATEGORY_FAIL",
   updateCategorySuccessfully: "UPDATE_CATEGORY_SUCCESSFULLY",
-  updateCategoryFail: "UPDATE_CATEGORY_FAIL"
+  updateCategoryFail: "UPDATE_CATEGORY_FAIL",
+  listCustomers: "LIST_CUSTOMERS",
+  showCreateCustomersModal: "SHOW_CREATE_CUSTOMER_MODAL",
+  previousCustomerPage: "PREVIOUS_CUSTOMER_PAGE",
+  selectCustomerPage: "SELECT_CUSTOMER_PAGE",
+  nextCustomerPage: "NEXT_CUSTOMER_PAGE",
+  showUpdateCustomerModal: "SHOW_UPDATE_CUSTOMER_MODAL",
+  listOrders: "LIST_ORDERS",
+  showCreateOrdersModal: "SHOW_CREATE_ORDER_MODAL",
+  previousOrderPage: "PREVIOUS_ORDER_PAGE",
+  selectOrderPage: "SELECT_ORDER_PAGE",
+  nextOrderPage: "NEXT_ORDER_PAGE",
+  completeOrder: "COMPLETE_ORDER",
+  createOrder: "CREATE_ORDER",
+  loadCustomersSuccessfully: "LOAD_CUSTOMERS_SUCCESSFULLY",
+  loadCustomersFail: "LOAD_CUSTOMERS_FAIL"
 };
