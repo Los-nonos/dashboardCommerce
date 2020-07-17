@@ -6,7 +6,7 @@ class ProductAdapter {
   createAdapt = (createResponse, body) => {
     const { status, data } = createResponse;
 
-    if (!isError(status)) {
+""    if (!isError(status)) {
       return {
         type: actionNames.productCreatedSuccessfully,
         message: "Producto creado satisfactoriamente",
