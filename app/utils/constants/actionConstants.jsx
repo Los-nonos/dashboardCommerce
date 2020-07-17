@@ -107,8 +107,12 @@ export const actionNames = {
   previousBrandsPage: "PREVIOUS_BRANDS_PAGE",
   selectBrandPage: "SELECT_BRAND_PAGE",
   nextBrandPage: "NEXT_BRAND_PAGE",
-  updateBrands: "UPDATE_BRANDS",
-  createBrands: "CREATE_BRANDS",
-  loadBrandsSuccessful: "LOAD_BRANDS_SUCCESSFULLY",
-  loadBrandsFail: "LOAD_BRANDS_FAIL"
+  updateBrand: "UPDATE_BRAND",
+  createBrand: "CREATE_BRAND",
+  loadBrandsSuccessfully: "LOAD_BRANDS_SUCCESSFULLY",
+  loadBrandsFail: "LOAD_BRANDS_FAIL",
+  createBrandSuccessfully: "CREATE_BRAND_SUCCESSFULLY",
+  createBrandFail: "CREATE_BRAND_FAIL",
+  updateBrandSuccessfully: "UPDATE_BRAND_SUCCESSFULLY",
+  updateBrandFail: "UPDATE_BRAND_FAIL"
 };

@@ -45,7 +45,9 @@ const productsReducer = (state = stateDefault, action) => {
       return {
         ...state,
         filters: {
-          categoryName: action.body.categories
+          categoryName: action.body.categories,
+          brandName: action.body.brands,
+          providerName: action.body.providers
         }
       };
     case actionNames.loadFiltersFail:

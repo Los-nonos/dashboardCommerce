@@ -28,7 +28,8 @@ class FormProducts extends React.Component {
       isAvailable: false,
       firstLoad: true,
       selectedImage: null,
-      categoryFilters: null
+      categoryFilters: null,
+      characteristics: []
     };
     this.dispatch = props.dispatch;
   }
@@ -40,25 +41,32 @@ class FormProducts extends React.Component {
   createProduct = e => {
     e.preventDefault();
 
+    e.target.elements.namedItem(
+      "productImage"
+    ).value = this.props.formData.productImage;
+
     const fields = [
       "name",
       "description",
       "price",
       "taxes",
-      "category",
-      "productImage"
+      "productImage",
+      "purchaseOrderNumber"
     ];
 
-    e.target.elements.namedItem(
-      "productImage"
-    ).value = this.props.formData.productImage;
-
     const formElements = e.target.elements;
-    const dataProducts = fields
+    let dataProducts = fields
       .map(field => ({
         [field]: formElements.namedItem(field).value
       }))
       .reduce((current, next) => ({ ...current, ...next }));
+
+    console.log(this.state);
+
+    dataProducts.providerId = this.state.provider;
+    dataProducts.brands = [this.state.brand];
+    dataProducts.categories = [this.state.category];
+    dataProducts.characteristics = this.state.characteristics;
 
     if (this.props.modalShow.createModal) {
       this.dispatch(this.props.createProduct(dataProducts));
@@ -69,15 +77,6 @@ class FormProducts extends React.Component {
   };
 
   handleSelectorChange = event => {
-    if (event.target.name === "category") {
-      const category = this.props.filters.categoryName.map(categoryName => {
-        if (categoryName.name === event.target.value) {
-          return categoryName;
-        }
-      });
-      this.setState({ categoryFilters: category[0] });
-      //this.dispatch(this.props.selectedCategory(category[0]));
-    }
     this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -118,6 +117,12 @@ class FormProducts extends React.Component {
       selectedImage: event.target.files[0]
     });
     this.showButtonUploadImage();
+  };
+
+  assignCharacteristicToProduct = (name, value) => {
+    const characteristics = this.state.characteristics;
+    characteristics.push({ [name]: value });
+    this.setState({ characteristics });
   };
 
   updateValues() {
@@ -316,7 +321,7 @@ class FormProducts extends React.Component {
                           className={{
                             color: "#fff"
                           }}
-                          value={category.name}
+                          value={category.id}
                         >
                           {category.name}
                         </MenuItem>
@@ -330,10 +335,7 @@ class FormProducts extends React.Component {
                     color: "#fff"
                   }}
                 >
-                  <InputLabel
-                    htmlFor="category"
-                    className={classes.selectLabel}
-                  >
+                  <InputLabel htmlFor="brand" className={classes.selectLabel}>
                     Marca
                   </InputLabel>
                   <Select
@@ -491,17 +493,15 @@ class FormProducts extends React.Component {
               </GridItem>
             </GridContainer>
             <GridContainer>
-              {this.state.categoryFilters ? (
-                <CompleteProduct
-                  customFilters={this.state.categoryFilters}
-                  productsUpdated={this.props.productsUpdated}
-                  changeTabSelected={this.props.changeTabSelected}
-                  showNotification={this.props.showNotification}
-                  assignCharacteristicToProduct={
-                    this.props.assignCharacteristicToProduct
-                  }
-                />
-              ) : null}
+              <CompleteProduct
+                customFilters={this.state.categoryFilters}
+                productsUpdated={this.props.productsUpdated}
+                changeTabSelected={this.props.changeTabSelected}
+                showNotification={this.props.showNotification}
+                assignCharacteristicToProduct={
+                  this.assignCharacteristicToProduct
+                }
+              />
             </GridContainer>
             <div className={classes.customSubmitButton}>
               <LoadingButton

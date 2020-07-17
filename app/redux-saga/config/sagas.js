@@ -24,7 +24,7 @@ import {
   listCategories,
   updateCategory
 } from "../Categories/CategoriesSagas";
-import { listBrands } from "../Brands/BrandsSagas";
+import { createBrand, listBrands, updateBrand } from "../Brands/BrandsSagas";
 // import { signUp } from "../Auth/signUpSagas";
 
 function* sagas() {
@@ -57,6 +57,8 @@ function* sagas() {
   yield takeEvery(actionNames.updateCategory, updateCategory);
 
   yield takeEvery(actionNames.listBrands, listBrands);
+  yield takeEvery(actionNames.createBrand, createBrand);
+  yield takeEvery(actionNames.updateBrand, updateBrand);
   // yield takeEvery(actionNames.signUp, signUp);
 }
 

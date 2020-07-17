@@ -6,7 +6,7 @@ class BrandAdapter {
     const { status, data } = listResponse;
     if (!isError(status)) {
       return {
-        type: actionNames.loadBrandsSuccessful,
+        type: actionNames.loadBrandsSuccessfully,
         brands: data.data.brands,
         totalPages: data.pageCount
       };

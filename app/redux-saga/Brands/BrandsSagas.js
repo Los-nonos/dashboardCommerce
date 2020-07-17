@@ -25,3 +25,7 @@ export function* listBrands(action) {
     yield put({ type: actionNames.loadingToggle });
   }
 }
+
+export function* createBrand(action) {}
+
+export function* updateBrand(action) {}

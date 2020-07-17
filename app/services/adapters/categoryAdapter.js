@@ -7,7 +7,7 @@ class CategoryAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.loadCategoriesSuccessful,
-        categories: data.data.categories,
+        categories: data.data,
         totalPages: data.pageCount
       };
     }

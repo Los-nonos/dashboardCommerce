@@ -9,14 +9,11 @@ class CompleteProduct extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      characteristics: this.props.productWithDetails.characteristics,
-      filters: this.props.customFilters.filters
+      characteristics: this.props.productWithDetails.characteristics
     };
   }
 
   getFilters = filters => {
-    console.log(filters);
-    console.log(this.props.customFilters);
     return filters.map(filter => {
       return filter.name;
     });
@@ -31,8 +28,7 @@ class CompleteProduct extends React.Component {
             columns={[
               {
                 title: "Caracteristica",
-                field: "characteristic",
-                lookup: this.getFilters(this.props.customFilters.filters)
+                field: "characteristic"
               },
               {
                 title: "Valor",

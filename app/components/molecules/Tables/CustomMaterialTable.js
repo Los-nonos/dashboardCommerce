@@ -18,7 +18,7 @@ class CustomMaterialTable extends React.Component {
 
   addAction = (title, newData) => {
     switch (title) {
-      case "Characteristics":
+      case "Caracteristicas":
         const characteristics = newData.characteristics
           ? prepareCharacteristics(
               newData.characteristics,
@@ -26,11 +26,9 @@ class CustomMaterialTable extends React.Component {
             )
           : [];
         newData.characteristics = characteristics;
-        this.dispatch(
-          this.props.assignCharacteristicToProduct(
-            newData,
-            this.props.formData.id
-          )
+        this.props.assignCharacteristicToProduct(
+          newData.characteristic,
+          newData.value
         );
         break;
       default:

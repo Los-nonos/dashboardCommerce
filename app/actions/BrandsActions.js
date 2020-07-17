@@ -2,13 +2,13 @@ import { actionNames } from "../utils/constants/actionConstants";
 
 export function createBrands() {
   return {
-    type: actionNames.createBrands
+    type: actionNames.createBrand
   };
 }
 
 export function updateBrands() {
   return {
-    type: actionNames.updateBrands
+    type: actionNames.updateBrand
   };
 }
 

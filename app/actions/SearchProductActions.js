@@ -1,9 +1,12 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
-export function searchProducts(filters) {
+export function searchProducts(filters, page, orderBy, order) {
   return {
     type: actionNames.search,
-    filters
+    filters,
+    page,
+    orderBy,
+    order
   };
 }
 
