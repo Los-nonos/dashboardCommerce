@@ -126,6 +126,7 @@ class Providers extends React.Component {
                   tableHead={["Nombre proveedor", "direccion"]}
                   tableData={providersData}
                   getProviderById={actions.getProviderById}
+                  deleteProvider={actions.deleteProvider}
                   completeProvider={actions.completeProvider}
                   listProviders={actions.listProviders}
                   page={this.state.page}

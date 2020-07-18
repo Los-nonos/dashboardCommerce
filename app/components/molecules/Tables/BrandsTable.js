@@ -13,7 +13,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 import { Close, Edit, Visibility } from "@material-ui/icons";
 import { withStyles } from "@material-ui/core";
-import { ProductsOrderBy } from "../../../types/ProductsOrderBy";
+import { BrandsOrderBy } from "../../../types/BrandsOrderBy";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 
@@ -29,11 +29,14 @@ class BrandsTable extends React.Component {
   }
 
   handleClickUpdate = props => {
-    const { uuid } = props;
-    this.dispatch(this.props.getProductByUuid(uuid));
+    const { id } = props;
+    this.dispatch(this.props.getBrandById(id));
   };
 
-  handleClickDelete = () => {};
+  handleClickDelete = props => {
+    const { id } = props;
+    this.dispatch(this.props.deleteBrand(id));
+  };
 
   handleOrderBy = props => {
     const orderBy = this.orderBySanitized(props);
@@ -60,9 +63,7 @@ class BrandsTable extends React.Component {
       ? orderBy[0] + orderBy[1][0].toUpperCase() + orderBy[1].slice(1)
       : orderBy[0];
 
-    return Object.values(ProductsOrderBy).indexOf(orderBy) > -1
-      ? orderBy
-      : null;
+    return Object.values(BrandsOrderBy).indexOf(orderBy) > -1 ? orderBy : null;
   };
 
   changeArrowOrderBy = (props, classes) => {

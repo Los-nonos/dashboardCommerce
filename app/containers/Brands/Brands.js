@@ -139,6 +139,7 @@ class Brands extends React.Component {
             this.props.modalShow.updateModal ? (
               <FormBrands
                 closeModal={actions.closeModal}
+                deleteBrand={actions.deleteBrand}
                 updateBrands={actions.updateBrands}
                 createBrands={actions.createBrands}
                 Transition={Transition}

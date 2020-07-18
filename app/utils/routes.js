@@ -26,14 +26,6 @@ import Providers from "../containers/Providers/Providers";
 
 const dashboardRoutes = [
   {
-    path: "/user-account",
-    name: "CUENTA",
-    icon: Settings,
-    component: UserAccount,
-    layout: "/dashboard",
-    rol: ""
-  },
-  {
     path: "/search",
     name: "BUSCADOR",
     icon: IconSearch,
@@ -104,6 +96,14 @@ const dashboardRoutes = [
     component: Providers,
     layout: "/dashboard",
     rol: "deposits"
+  },
+  {
+    path: "/user-account",
+    name: "CUENTA",
+    icon: Settings,
+    component: UserAccount,
+    layout: "/dashboard",
+    rol: ""
   }
 ];
 

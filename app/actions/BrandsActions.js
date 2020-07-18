@@ -1,5 +1,12 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
+export function deleteBrand(id) {
+  return {
+    type: actionNames.deleteBrand,
+    id
+  };
+}
+
 export function createBrands(dataBrand) {
   return {
     type: actionNames.createBrand,

@@ -146,5 +146,13 @@ export const actionNames = {
   completeProvider: "COMPLETE_PROVIDER",
   createProvider: "CREATE_PROVIDER",
   updateProvider: "UPDATE_PROVIDER",
-  showUpdateProvidersModal: "SHOW_UPDATE_PROVIDERS_MODAL"
+  showUpdateProvidersModal: "SHOW_UPDATE_PROVIDERS_MODAL",
+  loadProvidersSuccessful: "LOAD_PROVIDERS_SUCCESSFULLY",
+  loadProvidersFail: "LOAD_PROVIDERS_FAIL",
+  createProviderSuccessful: "CREATE_PROVIDER_SUCCESSFULLY",
+  createProviderFail: "CREATE_PROVIDER_FAIL",
+  updateProviderSuccessful: "UPDATE_PROVIDER_SUCCESSFULLY",
+  updateProviderFail: "UPDATE_PROVIDER_FAIL",
+  deleteBrand: "DELETE_BRAND",
+  deleteProvider: "DELETE_PROVIDER"
 };

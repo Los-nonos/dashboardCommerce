@@ -96,7 +96,7 @@ class FormProvider extends React.Component {
           className={classes.modalBody}
         >
           <form onSubmit={this.createProvider}>
-            <GridContainer>
+            <GridContainer justify={"center"}>
               <GridItem xs={12} sm={12} md={4}>
                 <CustomInput
                   labelText="Nombre"
@@ -124,6 +124,36 @@ class FormProvider extends React.Component {
                     required: true,
                     name: "direction",
                     defaultValue: this.props.formData.direction
+                  }}
+                />
+              </GridItem>
+              <GridItem xs={12} md={4} sm={12}>
+                <CustomInput
+                  labelText="Razón social"
+                  id="socialReason"
+                  required
+                  error={this.props.formErrors.socialReason !== undefined}
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    required: true,
+                    name: "socialReason",
+                    defaultValue: this.props.formData.socialReason
+                  }}
+                />
+                <CustomInput
+                  labelText="Código postal"
+                  id="zipCode"
+                  required
+                  error={this.props.formErrors.zipCode !== undefined}
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    required: true,
+                    name: "zipCode",
+                    defaultValue: this.props.formData.zipCode
                   }}
                 />
               </GridItem>

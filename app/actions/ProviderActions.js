@@ -1,5 +1,12 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
+export function deleteProvider(id) {
+  return {
+    type: actionNames.deleteProvider,
+    id
+  };
+}
+
 export function updateProvider(dataProvider) {
   return {
     type: actionNames.updateProvider,
