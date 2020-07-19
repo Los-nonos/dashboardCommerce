@@ -15,6 +15,7 @@ import Button from "@material-ui/core/Button";
 import Notification from "../../components/molecules/Notification/Notification";
 import { withStyles } from "@material-ui/core";
 import styles from "../../styles/dashboard/containers/Orders/OrdersStyles";
+import FormSearchCustomers from "../../components/organisms/Orders/formSearchCustomers";
 
 class Orders extends React.Component {
   constructor(props) {
@@ -137,13 +138,22 @@ class Orders extends React.Component {
         </GridContainer>
         <GridContainer>
           <GridItem>
-            {this.props.modalShow.createModal ? (
+            {this.props.modalShow.createModal &&
+            this.props.modalShow.searchCustomer === false ? (
               <FormOrder
                 closeModal={actions.closeModal}
                 createOrder={actions.createOrder}
+                showSearchCustomerModal={actions.showSearchCustomerModal}
                 searchCustomer={actions.searchCustomer}
                 Transition={Transition}
                 showNotification={generalActions.showNotification}
+              />
+            ) : null}
+            {this.props.modalShow.searchCustomer ? (
+              <FormSearchCustomers
+                closeModalCustomer={actions.closeModalCustomer}
+                searchCustomer={actions.searchCustomer}
+                selectUser={actions.selectUser}
               />
             ) : null}
             <Button

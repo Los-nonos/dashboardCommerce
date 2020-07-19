@@ -129,6 +129,7 @@ class Customers extends React.Component {
                   listCustomer={actions.listCustomers}
                   changeOrderState={this.handleChangeOrderState}
                   page={this.state.page}
+                  selectUser={false}
                 />
               </CardBody>
             </Card>

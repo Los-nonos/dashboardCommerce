@@ -154,5 +154,11 @@ export const actionNames = {
   updateProviderSuccessful: "UPDATE_PROVIDER_SUCCESSFULLY",
   updateProviderFail: "UPDATE_PROVIDER_FAIL",
   deleteBrand: "DELETE_BRAND",
-  deleteProvider: "DELETE_PROVIDER"
+  deleteProvider: "DELETE_PROVIDER",
+  showSearchCustomerModal: "SHOW_SEARCH_CUSTOMER_MODAL",
+  closeModalCustomer: "CLOSE_MODAL_SEARCH_CUSTOMER",
+  searchCustomer: "SEARCH_CUSTOMERS",
+  selectedUser: "SELECTED_USER",
+  getCustomerByOrderSuccessfully: "GET_CUSTOMER_BY_ORDER_SUCCESSFULLY",
+  getCustomerByOrderFail: "GET_CUSTOMER_BY_ORDER_FAIL"
 };

@@ -7,6 +7,25 @@ export function searchCustomer(filters) {
   };
 }
 
+export function selectUser(id) {
+  return {
+    type: actionNames.selectedUser,
+    id
+  };
+}
+
+export function closeModalCustomer() {
+  return {
+    type: actionNames.closeModalCustomer
+  };
+}
+
+export function showSearchCustomerModal() {
+  return {
+    type: actionNames.showSearchCustomerModal
+  };
+}
+
 export function createOrder(dataOrder) {
   return {
     type: actionNames.createOrder,

@@ -25,6 +25,12 @@ class FormOrder extends React.Component {
     await this.dispatch(this.props.closeModal());
   };
 
+  searchCustomer = e => {
+    e.preventDefault();
+
+    this.dispatch(this.props.showSearchCustomerModal());
+  };
+
   createOrder = e => {
     e.preventDefault();
 
@@ -37,6 +43,9 @@ class FormOrder extends React.Component {
         [field]: formElements.namedItem(field).value
       }))
       .reduce((current, next) => ({ ...current, ...next }));
+
+    dataOrder.customerId = this.props.formData.customer.id;
+    dataOrder.employeeId = this.props.userData.id;
 
     if (this.props.modalShow.createModal) {
       this.dispatch(this.props.createOrder(dataOrder));
@@ -66,9 +75,7 @@ class FormOrder extends React.Component {
           root: classes.modalRoot,
           paper: classes.modal
         }}
-        open={
-          this.props.modalShow.createModal || this.props.modalShow.updateModal
-        }
+        open={this.props.modalShow.createModal}
         className={{
           backgroundColor: "#090809"
         }}
@@ -94,21 +101,40 @@ class FormOrder extends React.Component {
         >
           <form onSubmit={this.createOrder}>
             <GridContainer>
-              <GridItem xs={12} sm={12} md={4}>
+              <GridItem xs={11} sm={11} md={4}>
                 <CustomInput
-                  labelText="Nombre"
+                  labelText="Cliente"
                   id="name"
                   required
-                  error={this.props.formErrors.name !== undefined}
+                  error={this.props.formErrors.customer !== undefined}
                   formControlProps={{
                     fullWidth: true
                   }}
                   inputProps={{
                     required: true,
-                    name: "name",
-                    defaultValue: this.props.formData.name
+                    name: "customer",
+                    defaultValue: this.props.formData.customer.name
                   }}
                 />
+                <CustomInput
+                  labelText="Número de compra"
+                  id="numberSell"
+                  required
+                  error={this.props.formErrors.numberSell !== undefined}
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    required: true,
+                    name: "numberSell",
+                    defaultValue: this.props.formData.numberSell
+                  }}
+                />
+              </GridItem>
+              <GridItem xs={1} sm={1} md={1}>
+                <Button onClick={this.searchCustomer} color={"primary"}>
+                  Search
+                </Button>
               </GridItem>
             </GridContainer>
             <div className={classes.customSubmitButton}>
@@ -131,7 +157,8 @@ class FormOrder extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { ...state.login, ...state.ordersReducer };
+  const { userData } = state.login;
+  return { userData, ...state.ordersReducer };
 };
 
 export default connect(mapStateToProps)(withStyles(styles)(FormOrder));

@@ -22,6 +22,26 @@ class OrdersAdapter {
       }
     };
   };
+
+  getCustomerAdapt = response => {
+    const { status, data } = response;
+    if (!isError(status)) {
+      return {
+        type: actionNames.getCustomerByOrderSuccessfully,
+        customer: data.data
+      };
+    }
+
+    const { code, details } = data.errors;
+    return {
+      type: actionNames.getCustomerByOrderFail,
+      error: {
+        code: status,
+        type: code,
+        errors: details
+      }
+    };
+  };
 }
 
 export default new OrdersAdapter();

@@ -12,7 +12,7 @@ import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
-import { Close, Edit } from "@material-ui/icons";
+import { Close, Edit, Visibility } from "@material-ui/icons";
 
 class CustomerTable extends React.Component {
   constructor(props) {
@@ -31,6 +31,11 @@ class CustomerTable extends React.Component {
   };
 
   handleClickChangeState = () => {};
+
+  handleClickSelect = props => {
+    const { id } = props;
+    this.props.selectedUser(id);
+  };
 
   handleOrderBy = props => {
     const orderBy = this.orderBySanitized(props);
@@ -124,49 +129,77 @@ class CustomerTable extends React.Component {
                         );
                       })}
                       <TableCell className={classes.tableActions}>
-                        <Tooltip
-                          id="tooltip-top"
-                          title="Edit"
-                          placement="top"
-                          classes={{ tooltip: classes.tooltip }}
-                        >
-                          <IconButton
-                            aria-label="Editar"
-                            className={classes.tableActionButton}
-                            onClick={this.handleClickUpdate.bind(this, prop)}
+                        {this.props.selectUser ? (
+                          <Tooltip
+                            id={"tooltip-top"}
+                            title={"Seleccionar"}
+                            placement={"top"}
+                            classes={{ tooltip: classes.tooltip }}
                           >
-                            <Edit
-                              className={
-                                classes.tableActionButtonIcon +
-                                " " +
-                                classes.edit
-                              }
-                            />
-                          </IconButton>
-                        </Tooltip>
-                        <Tooltip
-                          id="tooltip-top-start"
-                          title={"Eliminar"}
-                          placement="top"
-                          classes={{ tooltip: classes.tooltip }}
-                        >
-                          <IconButton
-                            aria-label={"Close"}
-                            className={classes.tableActionButton}
-                            onClick={this.handleClickChangeState.bind(
-                              this,
-                              prop
-                            )}
-                          >
-                            <Close
-                              className={
-                                classes.tableActionButtonIcon +
-                                " " +
-                                classes.close
-                              }
-                            />
-                          </IconButton>
-                        </Tooltip>
+                            <IconButton
+                              aria-label={"Seleccionar"}
+                              className={classes.tableActionButton}
+                              onClick={this.handleClickSelect.bind(this, prop)}
+                            >
+                              <Visibility
+                                className={
+                                  classes.tableActionButtonIcon +
+                                  " " +
+                                  classes.edit
+                                }
+                              />
+                            </IconButton>
+                          </Tooltip>
+                        ) : (
+                          <>
+                            <Tooltip
+                              id="tooltip-top"
+                              title="Editar"
+                              placement="top"
+                              classes={{ tooltip: classes.tooltip }}
+                            >
+                              <IconButton
+                                aria-label="Editar"
+                                className={classes.tableActionButton}
+                                onClick={this.handleClickUpdate.bind(
+                                  this,
+                                  prop
+                                )}
+                              >
+                                <Edit
+                                  className={
+                                    classes.tableActionButtonIcon +
+                                    " " +
+                                    classes.edit
+                                  }
+                                />
+                              </IconButton>
+                            </Tooltip>
+                            <Tooltip
+                              id="tooltip-top-start"
+                              title={"Eliminar"}
+                              placement="top"
+                              classes={{ tooltip: classes.tooltip }}
+                            >
+                              <IconButton
+                                aria-label={"Close"}
+                                className={classes.tableActionButton}
+                                onClick={this.handleClickChangeState.bind(
+                                  this,
+                                  prop
+                                )}
+                              >
+                                <Close
+                                  className={
+                                    classes.tableActionButtonIcon +
+                                    " " +
+                                    classes.close
+                                  }
+                                />
+                              </IconButton>
+                            </Tooltip>
+                          </>
+                        )}
                       </TableCell>
                     </TableRow>
                   );
