@@ -35,11 +35,12 @@ class ViewProduct extends React.Component {
 
   render() {
     const { classes, Transition } = this.props;
-    const isImage = this.checkIfUrlIsImage(this.props.formData.productImage);
-    this.props.formData.productImage = isImage
-      ? this.props.formData.productImage
-      : ""; // TODO: change from image product default
+    // const isImage = this.checkIfUrlIsImage(this.props.formData.productImage);
+    // this.props.formData.productImage = isImage
+    //   ? this.props.formData.productImage
+    //   : ""; // TODO: change from image product default
 
+    //TODO: change this grap
     if (this.props.modalShow.updateModal && this.state.firstLoad) {
       this.updateValues();
     }
@@ -63,30 +64,31 @@ class ViewProduct extends React.Component {
           disableTypography
           className={classes.modalHeader}
         >
-          {this.props.formData.name !== "" ? (
-            <h4 className={classes.modalTitle}>{this.props.formData.name}</h4>
-          ) : null}
+          {this.props.formData.title !== "" ? (
+            <h4 className={classes.modalTitle}>{this.props.formData.title}</h4>
+          ) : (
+            <h4>{this.props.formData.title}</h4>
           )}
         </DialogTitle>
         <DialogContent
           id="classic-modal-slide-description"
           className={classes.modalBody}
         >
-          <form onSubmit={this.createProduct}>
+          <form>
             <GridContainer>
               <GridItem xs={12} sm={12} md={4}>
                 <CustomInput
                   labelText="Name"
                   id="name"
                   disabled
-                  error={this.props.formErrors.name !== undefined}
+                  error={this.props.formErrors.title !== undefined}
                   formControlProps={{
                     fullWidth: true
                   }}
                   inputProps={{
                     required: true,
-                    name: "name",
-                    value: this.state.product.name,
+                    name: "title",
+                    defaultValue: this.props.formData.title,
                     disabled: true
                   }}
                 />
@@ -173,13 +175,6 @@ class ViewProduct extends React.Component {
               />
             </GridContainer>
             <div className={classes.customSubmitButton}>
-              <LoadingButton
-                type="submit"
-                color="primary"
-                loading={this.props.loading}
-              >
-                Ok
-              </LoadingButton>
               <Button color="secondary" onClick={this.toggleModal}>
                 Close
               </Button>

@@ -62,7 +62,7 @@ class Products extends React.Component {
 
       const dataProduct = {
         visibleData: [
-          product.name,
+          product.title,
           product.price,
           product.description,
           characteristics

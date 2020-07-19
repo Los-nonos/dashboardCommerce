@@ -30,8 +30,8 @@ class ProductsTable extends React.Component {
   }
 
   handleClickUpdate = props => {
-    const { uuid } = props;
-    this.dispatch(this.props.getProductByUuid(uuid));
+    const { id } = props;
+    this.dispatch(this.props.getProductByUuid(id));
   };
 
   handleClickChangeState = () => {};
@@ -81,8 +81,8 @@ class ProductsTable extends React.Component {
   };
 
   handleClickDetails = props => {
-    const { uuid } = props;
-    this.dispatch(this.props.seeDetails(uuid));
+    const { id } = props;
+    this.dispatch(this.props.seeDetails(id));
   };
 
   handleClickShowOnWebsite = props => {

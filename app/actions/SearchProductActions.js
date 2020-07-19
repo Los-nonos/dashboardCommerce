@@ -1,5 +1,11 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
+export function closeNotification() {
+  return {
+    type: actionNames.closeNotification
+  };
+}
+
 export function searchProducts(filters, page, orderBy, order) {
   return {
     type: actionNames.search,

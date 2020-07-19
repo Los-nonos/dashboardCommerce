@@ -28,9 +28,9 @@ export function* searchProducts(action) {
 
   let queryFilters = "";
 
-  Object.keys(filters.currentFilters).forEach(key => {
+  Object.keys(filters).forEach(key => {
     const filterName = key;
-    const value = filters.currentFilters[key];
+    const value = filters[key];
 
     if (filters === "" && value !== "" && value !== []) {
       queryFilters = `${filterName}=${value}`;
@@ -64,10 +64,10 @@ export function* searchProducts(action) {
 }
 
 export function* seeDetails(action) {
-  const { slug } = action;
+  const { id } = action;
 
   yield all([put({ type: actionNames.loadingToggle })]);
-  const res = yield call(search.seeDetails, slug);
+  const res = yield call(search.seeDetails, id);
 
   if (res.error) {
     if (res.error.code === 401 || res.error.code === 403) {

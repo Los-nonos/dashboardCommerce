@@ -52,9 +52,9 @@ class SearchProducts extends React.Component {
       }
       let listOfCharacteristics = characteristics.toString();
       listOfCharacteristics = listOfCharacteristics.replace(/,/gi, ", ");
-
+      console.log(product);
       const dataProduct = {
-        visibleData: [product.name, product.price, listOfCharacteristics],
+        visibleData: [product.title, product.price, listOfCharacteristics],
         uuid: product.uuid,
         id: product.id
       };
@@ -109,6 +109,10 @@ class SearchProducts extends React.Component {
       }
     });
     return pages;
+  };
+
+  closeNotification = () => {
+    this.dispatch(searchActions.closeNotification());
   };
 
   render() {

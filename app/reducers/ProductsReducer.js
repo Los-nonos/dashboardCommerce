@@ -105,14 +105,14 @@ const productsReducer = (state = stateDefault, action) => {
         ...state,
         formData: {
           id: action.productWithDetails.id,
-          name: action.productWithDetails.name,
+          title: action.productWithDetails.name,
           description: action.productWithDetails.description,
           price: action.productWithDetails.price,
-          taxes: action.productWithDetails.taxes,
-          category: action.productWithDetails.category.id,
-          characteristics: action.productWithDetails.characteristics,
-          brand: action.productWithDetails.brand.id,
-          provider: action.productWithDetails.provider.id
+          taxes: action.productWithDetails.taxes
+          //category: action.productWithDetails.category.id,
+          //characteristics: action.productWithDetails.characteristics,
+          //brand: action.productWithDetails.brand.id,
+          //provider: action.productWithDetails.provider.id
         }
       };
     case actionNames.loadProductWithDetailsFail:
