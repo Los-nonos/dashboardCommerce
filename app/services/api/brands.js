@@ -14,6 +14,17 @@ class Brands {
 
     return brandAdapter.listAdapt(response);
   };
+
+  create = async body => {
+    let response;
+    try {
+      response = await Api.post(`/brands`, body);
+    } catch (err) {
+      response = err;
+    }
+
+    return brandAdapter.createAdapt(response);
+  };
 }
 
 export default new Brands();

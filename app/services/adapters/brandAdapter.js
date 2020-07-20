@@ -7,7 +7,7 @@ class BrandAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.loadBrandsSuccessfully,
-        brands: data.data.brands,
+        brands: data.data,
         totalPages: data.pageCount
       };
     }
@@ -18,6 +18,26 @@ class BrandAdapter {
       error: {
         code: status,
         type: code,
+        errors: details
+      }
+    };
+  };
+
+  createAdapt = response => {
+    const { status, data } = response;
+    if (!isError(status)) {
+      return {
+        type: actionNames.createBrandSuccessfully,
+        message: data.data
+      };
+    }
+
+    const { details } = data.errors;
+    return {
+      type: actionNames.createBrandFail,
+      error: {
+        code: status,
+        type: "",
         errors: details
       }
     };

@@ -115,13 +115,11 @@ class FormBrands extends React.Component {
                 <CustomInput
                   labelText="Description"
                   id="description"
-                  required
                   error={this.props.formErrors.description !== undefined}
                   formControlProps={{
                     fullWidth: true
                   }}
                   inputProps={{
-                    required: true,
                     name: "description",
                     multiline: true,
                     rows: "5",
