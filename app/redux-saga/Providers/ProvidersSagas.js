@@ -41,6 +41,7 @@ export function* createProvider(action) {
   } else {
     yield put(res);
     yield put({ type: actionNames.loadingToggle });
+    yield put({ type: actionNames.closeModal });
     yield put({ type: actionNames.listProviders });
   }
 }

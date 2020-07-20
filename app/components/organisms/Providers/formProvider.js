@@ -28,7 +28,14 @@ class FormProvider extends React.Component {
   createProvider = e => {
     e.preventDefault();
 
-    const fields = ["name", "direction"];
+    const fields = [
+      "name",
+      "businessName",
+      "address",
+      "zipCode",
+      "phoneNumber",
+      "observations"
+    ];
 
     const formElements = e.target.elements;
 
@@ -72,6 +79,7 @@ class FormProvider extends React.Component {
         open={
           this.props.modalShow.createModal || this.props.modalShow.updateModal
         }
+        onClose={this.toggleModal}
         className={{
           backgroundColor: "#090809"
         }}
@@ -113,47 +121,67 @@ class FormProvider extends React.Component {
                   }}
                 />
                 <CustomInput
-                  labelText="Direccion"
-                  id="direction"
+                  labelText="Nombre Legal"
+                  id="businessName"
                   required
-                  error={this.props.formErrors.direction !== undefined}
+                  error={this.props.formErrors.businessName !== undefined}
                   formControlProps={{
                     fullWidth: true
                   }}
                   inputProps={{
                     required: true,
-                    name: "direction",
+                    name: "businessName",
+                    defaultValue: this.props.formData.businessName
+                  }}
+                />
+                <CustomInput
+                  labelText="Direccion"
+                  id="direction"
+                  error={this.props.formErrors.direction !== undefined}
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    name: "address",
                     defaultValue: this.props.formData.direction
                   }}
                 />
               </GridItem>
               <GridItem xs={12} md={4} sm={12}>
                 <CustomInput
-                  labelText="Razón social"
-                  id="socialReason"
-                  required
-                  error={this.props.formErrors.socialReason !== undefined}
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    required: true,
-                    name: "socialReason",
-                    defaultValue: this.props.formData.socialReason
-                  }}
-                />
-                <CustomInput
                   labelText="Código postal"
                   id="zipCode"
-                  required
                   error={this.props.formErrors.zipCode !== undefined}
                   formControlProps={{
                     fullWidth: true
                   }}
                   inputProps={{
-                    required: true,
                     name: "zipCode",
                     defaultValue: this.props.formData.zipCode
+                  }}
+                />
+                <CustomInput
+                  labelText="Número de telefono"
+                  id="phoneNumber"
+                  error={this.props.formErrors.phoneNumber !== undefined}
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    name: "phoneNumber",
+                    defaultValue: this.props.formData.phoneNumber
+                  }}
+                />
+                <CustomInput
+                  labelText="Observaciones"
+                  id="observations"
+                  error={this.props.formErrors.observations !== undefined}
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    name: "observations",
+                    defaultValue: this.props.formData.observations
                   }}
                 />
               </GridItem>
