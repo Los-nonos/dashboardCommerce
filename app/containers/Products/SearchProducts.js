@@ -160,6 +160,7 @@ class SearchProducts extends React.Component {
                   changeOrder={searchActions.searchProducts}
                   changeOrderState={this.handleChangeOrderState}
                   searchRooftopperState={this.state}
+                  addToCart={searchActions.addToCart}
                 />
               </CardBody>
             </Card>

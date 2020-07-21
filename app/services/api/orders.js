@@ -36,6 +36,18 @@ class Orders {
 
     return ordersAdapter.getCustomerAdapt(response);
   };
+
+  getProductsFromShoppingCart = async products => {
+    let response;
+
+    try {
+      response = await Api.post("payments/products", { products });
+    } catch (err) {
+      response = err;
+    }
+
+    return ordersAdapter.getProductsFromCartAdapt(response);
+  };
 }
 
 export default new Orders();

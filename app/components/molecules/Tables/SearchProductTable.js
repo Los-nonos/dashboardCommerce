@@ -91,6 +91,12 @@ class SearchProductTable extends React.Component {
     this.dispatch(this.props.seeDetails(slug));
     redirectTo("products");
   };
+
+  handleClickAddToCart = props => {
+    const { id } = props;
+    this.dispatch(this.props.addToCart(id));
+  };
+
   render() {
     const { classes, tableHead, tableData, tableHeaderColor } = this.props;
     return (
@@ -152,6 +158,26 @@ class SearchProductTable extends React.Component {
                             aria-label="See details"
                             className={classes.tableActionButton}
                             onClick={this.handleClickDetails.bind(this, prop)}
+                          >
+                            <Visibility
+                              className={
+                                classes.tableActionButtonIcon +
+                                " " +
+                                classes.edit
+                              }
+                            />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip
+                          id="tooltip-top"
+                          title="Agregar a una compra"
+                          placement="top"
+                          classes={{ tooltip: classes.tooltip }}
+                        >
+                          <IconButton
+                            aria-label="Add to cart"
+                            className={classes.tableActionButton}
+                            onClick={this.handleClickAddToCart.bind(this, prop)}
                           >
                             <Visibility
                               className={

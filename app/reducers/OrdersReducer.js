@@ -6,7 +6,9 @@ export const defaultState = {
   page: 1,
   totalPages: 1,
   formData: {
-    customer: {}
+    customer: {},
+    productsSaved: [],
+    products: []
   },
   formErrors: {},
   modalShow: {
@@ -45,6 +47,25 @@ const ordersReducer = (state = defaultState, action) => {
       return { ...state, formData: { customer: action.customer } };
     case actionNames.getCustomerByOrderFail:
       return { ...state, formData: { customer: {} } };
+    case actionNames.addProductToCartSuccessfully:
+      return {
+        ...state,
+        formData: {
+          productsSaved: action.productsSaved,
+          products: action.products
+        }
+      };
+    case actionNames.addProductQuantityFromCartSuccessfully:
+      return { ...state, formData: { productsSaved: action.products } };
+    case actionNames.loadProductsFromShoppingCartSuccessfully:
+      return { ...state, formData: { products: action.products } };
+    case actionNames.loadProductsFromShoppingCartFail:
+      return {
+        ...state,
+        formData: Object.assign(state.formData, { products: [] })
+      };
+    case actionNames.removeProductQuantityFromCartSuccessfully:
+      return { ...state, formData: { productsSaved: action.products } };
     default:
       return state;
   }

@@ -1,5 +1,33 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
+export function loadProducts(products) {
+  return {
+    type: actionNames.loadProductsFromShoppingCart,
+    products
+  };
+}
+
+export function removeProduct(id) {
+  return {
+    type: actionNames.removeProductFromCart,
+    id
+  };
+}
+
+export function addProductQuantityFromShoppingCart(id) {
+  return {
+    type: actionNames.addProductQuantityFromCart,
+    id
+  };
+}
+
+export function removeProductQuantityFromShoppingCart(id) {
+  return {
+    type: actionNames.removeProductQuantityFromCart,
+    id
+  };
+}
+
 export function searchCustomer(filters) {
   return {
     type: actionNames.searchCustomer,

@@ -26,7 +26,16 @@ import {
 } from "../Categories/CategoriesSagas";
 import { createBrand, listBrands, updateBrand } from "../Brands/BrandsSagas";
 import { listCustomers } from "../Customers/CustomerSagas";
-import { listOrders, searchCustomers, selectUser } from "../Orders/OrderSagas";
+import {
+  addProductInShoppingCart,
+  addProductQuantityFromCart,
+  getProductsFromShoppingCart,
+  listOrders,
+  removeProductFromCart,
+  removeProductQuantityFromCart,
+  searchCustomers,
+  selectUser
+} from "../Orders/OrderSagas";
 import {
   createProvider,
   listProviders,
@@ -77,6 +86,22 @@ function* sagas() {
 
   yield takeEvery(actionNames.searchCustomer, searchCustomers);
   yield takeEvery(actionNames.selectedUser, selectUser);
+
+  yield takeEvery(actionNames.addProductToCart, addProductInShoppingCart);
+  yield takeEvery(
+    actionNames.removeProductQuantityFromCart,
+    removeProductQuantityFromCart
+  );
+  yield takeEvery(
+    actionNames.addProductQuantityFromCart,
+    addProductQuantityFromCart
+  );
+  yield takeEvery(actionNames.removeProductFromCart, removeProductFromCart);
+  yield takeEvery(
+    actionNames.loadProductsFromShoppingCart,
+    getProductsFromShoppingCart
+  );
+
   // yield takeEvery(actionNames.signUp, signUp);
 }
 

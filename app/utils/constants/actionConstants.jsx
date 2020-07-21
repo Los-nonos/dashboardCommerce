@@ -160,5 +160,19 @@ export const actionNames = {
   searchCustomer: "SEARCH_CUSTOMERS",
   selectedUser: "SELECTED_USER",
   getCustomerByOrderSuccessfully: "GET_CUSTOMER_BY_ORDER_SUCCESSFULLY",
-  getCustomerByOrderFail: "GET_CUSTOMER_BY_ORDER_FAIL"
+  getCustomerByOrderFail: "GET_CUSTOMER_BY_ORDER_FAIL",
+
+  addProductToCart: "ADD_PRODUCT_TO_CART",
+  removeProductFromCart: "REMOVE_PRODUCT_FROM_CART",
+  addProductQuantityFromCart: "ADD_PRODUCT_QUANTITY_FROM_CART",
+  removeProductQuantityFromCart: "REMOVE_PRODUCT_QUANTITY_FROM_CART",
+  addProductQuantityFromCartSuccessfully:
+    "ADD_PRODUCT_QUANTITY_FROM_CART_SUCCESSFULLY",
+  removeProductQuantityFromCartSuccessfully:
+    "REMOVE_PRODUCT_QUANTITY_FROM_CART_SUCCESSFULLY",
+  addProductToCartSuccessfully: "ADD_PRODUCT_TO_CART_SUCCESSFULLY",
+  loadProductsFromShoppingCart: "LOAD_PRODUCTS_FROM_CART",
+  loadProductsFromShoppingCartSuccessfully:
+    "LOAD_PRODUCTS_FROM_CART_SUCCESSFULLY",
+  loadProductsFromShoppingCartFail: "LOAD_PRODUCTS_FROM_CART_FAIL"
 };

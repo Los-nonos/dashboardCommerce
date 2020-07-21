@@ -57,7 +57,10 @@ class Products extends React.Component {
   listProducts = () => {
     const products = [];
     for (const product of this.props.products) {
-      let characteristics = product.characteristics.toString();
+      let characteristics = product.characteristics.map(characteristic => {
+        return characteristic.value;
+      });
+      characteristics = characteristics.toString();
       characteristics = characteristics.replace(/,/gi, ", ");
 
       const dataProduct = {

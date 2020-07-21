@@ -16,6 +16,13 @@ export function searchProducts(filters, page, orderBy, order) {
   };
 }
 
+export function addToCart(id) {
+  return {
+    type: actionNames.addProductToCart,
+    id
+  };
+}
+
 export function loadFilters() {
   return {
     type: actionNames.loadFilters
