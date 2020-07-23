@@ -91,43 +91,8 @@ class FormProducts extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  imageUploadHandler = async () => {
-    const formDataImage = new FormData();
-    const { selectedImage } = this.state;
-    formDataImage.append("file", selectedImage, selectedImage.name);
-    const imageResponse = await productUploadImage.imageUpload(formDataImage);
-    this.props.formData.productImage = imageResponse.data.location;
-    this.refreshImage();
-    this.hiddenButtonUploadImage();
-  };
-
-  refreshImage = () => {
-    document.getElementById(
-      "productImage"
-    ).value = this.props.formData.productImage;
-    document.getElementById(
-      "profileImageShow"
-    ).src = this.props.formData.productImage;
-  };
-
-  showButtonUploadImage = () => {
-    document.getElementById("uploadImageButton").style.display = "inline-block";
-  };
-
-  hiddenButtonUploadImage = () => {
-    document.getElementById("uploadImageButton").style.display = "none";
-  };
-
-  checkIfUrlIsImage = url => {
-    url = url ? url : "";
-    return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
-  };
-
-  imageSelectedHandler = event => {
-    this.setState({
-      selectedImage: event.target.files[0]
-    });
-    this.showButtonUploadImage();
+  resolveImage = image_url => {
+    this.dispatch(this.props.resolveImage(image_url));
   };
 
   assignCharacteristicToProduct = (name, value) => {
@@ -145,10 +110,6 @@ class FormProducts extends React.Component {
 
   render() {
     const { classes, Transition } = this.props;
-    const isImage = this.checkIfUrlIsImage(this.props.formData.productImage);
-    this.props.formData.productImage = isImage
-      ? this.props.formData.productImage
-      : ""; // TODO: change from image product default
 
     if (this.props.modalShow.updateModal && this.state.firstLoad) {
       this.updateValues();
@@ -457,7 +418,7 @@ class FormProducts extends React.Component {
                     className={`${classes.customAvatarPlaceholder}`}
                   />
                 </CardAvatar>
-                <ImageUploader />
+                <ImageUploader getImage={this.resolveImage} />
               </GridItem>
             </GridContainer>
             <GridContainer>

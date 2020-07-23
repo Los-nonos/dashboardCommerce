@@ -165,6 +165,7 @@ class Products extends React.Component {
             {this.props.modalShow.createModal ||
             this.props.modalShow.updateModal ? (
               <FormProducts
+                resolveImage={actions.updateProductImage}
                 closeModal={actions.closeModal}
                 updateProduct={actions.updateProduct}
                 createProduct={actions.createProduct}

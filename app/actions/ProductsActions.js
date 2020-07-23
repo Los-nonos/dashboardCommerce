@@ -1,5 +1,12 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
+export function updateProductImage(image_url) {
+  return {
+    type: actionNames.updateProductImage,
+    image_url
+  };
+}
+
 export function selectedCategory(category) {
   return {
     type: actionNames.selectedCategory,

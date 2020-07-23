@@ -13,7 +13,7 @@ export const stateDefault = {
     id: 0,
     name: "",
     description: "",
-    productImage: "",
+    productImage: [],
     characteristics: []
   },
   productWithDetails: {
@@ -137,6 +137,13 @@ const productsReducer = (state = stateDefault, action) => {
       return { ...state, formErrors: action.errors };
     case actionNames.productCreatedSuccessfully:
       return { ...state };
+    case actionNames.updateProductImage:
+      const images = state.formData.productImage;
+      images.push(action.image_url);
+      return {
+        ...state,
+        formData: { productImage: images }
+      };
     default:
       return state;
   }

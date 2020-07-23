@@ -174,5 +174,6 @@ export const actionNames = {
   loadProductsFromShoppingCart: "LOAD_PRODUCTS_FROM_CART",
   loadProductsFromShoppingCartSuccessfully:
     "LOAD_PRODUCTS_FROM_CART_SUCCESSFULLY",
-  loadProductsFromShoppingCartFail: "LOAD_PRODUCTS_FROM_CART_FAIL"
+  loadProductsFromShoppingCartFail: "LOAD_PRODUCTS_FROM_CART_FAIL",
+  updateProductImage: "UPDATE_PRODUCT_IMAGE"
 };

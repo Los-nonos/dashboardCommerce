@@ -7,18 +7,17 @@ class ImageUploader extends React.Component {
 
   checkUploadResult = resultEvent => {
     if (resultEvent.event === "success") {
-      console.log(resultEvent.info.secure_url);
+      this.props.getImage(resultEvent.info.secure_url);
     }
   };
 
   render() {
     this.widget = window.cloudinary.createUploadWidget(
       {
-        cloudName: "dhbwfcydx",
+        cloudName: "dhbwfcydx", //TODO: change for environment variables
         uploadPreset: "dfxe94d1"
       },
       (error, result) => {
-        console.log(error);
         this.checkUploadResult(result);
       }
     );
