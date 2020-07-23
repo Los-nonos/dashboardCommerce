@@ -19,6 +19,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
+import ImageUploader from "../../molecules/Images/ImageUploader";
 
 class FormProducts extends React.Component {
   constructor(props) {
@@ -452,54 +453,11 @@ class FormProducts extends React.Component {
                   <img
                     id="productImageShow"
                     alt={"productImageShow"}
-                    src={this.props.formData.productImage}
+                    src={this.props.formData.productImage[0]}
                     className={`${classes.customAvatarPlaceholder}`}
                   />
                 </CardAvatar>
-                <input
-                  onChange={this.imageSelectedHandler}
-                  accept="image/*"
-                  className={classes.input}
-                  style={{ display: "none" }}
-                  id="raised-button-file"
-                  multiple
-                  type="file"
-                />
-                <label htmlFor="raised-button-file">
-                  <Button
-                    variant="raised"
-                    component="span"
-                    size="sm"
-                    className={classes.button}
-                  >
-                    Upload Image
-                  </Button>
-                </label>
-                <Button
-                  id="uploadImageButton"
-                  onClick={this.imageUploadHandler}
-                  color="primary"
-                  variant="raised"
-                  component="span"
-                  className={classes.button}
-                  style={{ display: "none" }}
-                  size="sm"
-                >
-                  Apply
-                </Button>
-                <CustomInput
-                  id="productImage"
-                  error={this.props.formErrors.productImage !== undefined}
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    required: false,
-                    defaultValue: this.props.formData.productImage,
-                    name: "productImage",
-                    type: "hidden"
-                  }}
-                />
+                <ImageUploader />
               </GridItem>
             </GridContainer>
             <GridContainer>
