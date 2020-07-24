@@ -34,7 +34,7 @@ class Products extends React.Component {
     this.dispatch(actions.checkRoles(["sales", "deposits"]));
     this.dispatch(actions.loadFilters());
     this.dispatch(
-      actions.listProductsWithLowerStock(
+      actions.listProducts(
         this.state.page,
         this.state.orderBy,
         this.state.order

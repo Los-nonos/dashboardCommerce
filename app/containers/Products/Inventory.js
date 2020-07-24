@@ -13,6 +13,7 @@ import * as generalActions from "../../actions/GeneralActions";
 import ViewProduct from "../../components/organisms/Products/viewProduct";
 import Notification from "../../components/molecules/Notification/Notification";
 import { withStyles } from "@material-ui/core";
+import styles from "../../styles/dashboard/containers/Products/ProductContainerStyles";
 
 class Inventory extends React.Component {
   constructor(props) {
@@ -28,7 +29,8 @@ class Inventory extends React.Component {
     this.dispatch(actions.checkRoles(["sales", "deposits"]));
     this.dispatch(actions.loadFilters());
     this.dispatch(
-      actions.listProducts(
+      actions.listProductsWithLowerStock(
+        //TODO: add input in view and sent to backend a number for filter
         this.state.page,
         this.state.orderBy,
         this.state.order
@@ -171,4 +173,4 @@ const mapStateToProps = state => {
   return state.productsReducer;
 };
 
-export default connect(mapStateToProps)(withStyles({})(Inventory));
+export default connect(mapStateToProps)(withStyles(styles)(Inventory));
