@@ -51,6 +51,20 @@ class Products {
 
     return productAdapter.listAdapt(response);
   };
+
+  listWithStock = async (page, orderBy, order) => {
+    let response;
+
+    try {
+      response = await Api.get(
+        `/stock?page=${page}&orderBy=${orderBy}:${order}`
+      );
+    } catch (err) {
+      response = err;
+    }
+
+    return productAdapter.listWithStockAdapt(response);
+  };
 }
 
 export default new Products();

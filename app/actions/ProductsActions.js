@@ -1,5 +1,14 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
+export function listProductsWithLowerStock(page, orderBy, order) {
+  return {
+    type: actionNames.listProductsWithLowerStock,
+    page,
+    order,
+    orderBy
+  };
+}
+
 export function updateProductImage(image_url) {
   return {
     type: actionNames.updateProductImage,

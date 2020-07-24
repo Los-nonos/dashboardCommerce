@@ -1,26 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
+import Slide from "@material-ui/core/Slide";
 import GridContainer from "../../components/atoms/Grid/GridContainer";
-import { withStyles } from "@material-ui/core";
-import * as actions from "../../actions/ProductsActions";
-import * as generalActions from "../../actions/GeneralActions";
-import Button from "@material-ui/core/Button";
 import GridItem from "../../components/atoms/Grid/GridItem";
-import Notification from "../../components/molecules/Notification/Notification";
 import Card from "../../components/molecules/Card/Card";
 import CardHeader from "../../components/molecules/Card/CardHeader";
 import CardBody from "../../components/molecules/Card/CardBody";
-import Pagination from "../../components/molecules/Pagination/Pagination";
-import Slide from "@material-ui/core/Slide";
 import ProductsTable from "../../components/molecules/Tables/ProductsTable";
-
-import styles from "../../styles/dashboard/containers/Products/ProductContainerStyles";
-import FormProducts from "../../components/organisms/Products/formProducts";
+import * as actions from "../../actions/ProductsActions";
+import Pagination from "../../components/molecules/Pagination/Pagination";
+import * as generalActions from "../../actions/GeneralActions";
 import ViewProduct from "../../components/organisms/Products/viewProduct";
+import Notification from "../../components/molecules/Notification/Notification";
+import { withStyles } from "@material-ui/core";
 
-class Products extends React.Component {
+class Inventory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +28,7 @@ class Products extends React.Component {
     this.dispatch(actions.checkRoles(["sales", "deposits"]));
     this.dispatch(actions.loadFilters());
     this.dispatch(
-      actions.listProductsWithLowerStock(
+      actions.listProducts(
         this.state.page,
         this.state.orderBy,
         this.state.order
@@ -44,10 +38,6 @@ class Products extends React.Component {
 
   handleChangeOrderState = (orderBy, order) => {
     this.setState({ orderBy, order });
-  };
-
-  handleClickCreateProducts = () => {
-    this.dispatch(actions.showCreateModal());
   };
 
   closeNotification = () => {
@@ -66,9 +56,10 @@ class Products extends React.Component {
       const dataProduct = {
         visibleData: [
           product.title,
-          product.price,
+          product.price.amount,
           product.description,
-          characteristics
+          characteristics,
+          product.stock
         ],
         uuid: product.uuid,
         id: product.id
@@ -132,7 +123,7 @@ class Products extends React.Component {
               <CardHeader color={"primary"}>
                 <h4 className={classes.cardTitleWhite}>Productos</h4>
                 <p className={classes.cardCategoryWhite}>
-                  Todos los productos están listados aquí
+                  Todos los productos con bajo stock están listados aquí
                 </p>
               </CardHeader>
               <CardBody>
@@ -142,14 +133,13 @@ class Products extends React.Component {
                     "Nombre",
                     "Precio",
                     "Descripción",
-                    "Caracteristicas"
+                    "Caracteristicas",
+                    "Cantidad"
                   ]}
                   tableData={productsData}
                   getProductByUuid={actions.getProductsByUuid}
-                  completeProduct={actions.completeProduct}
                   seeDetails={actions.seeDetails}
                   listProducts={actions.listProducts}
-                  showOnWebsite={actions.showProductOnWebsite}
                   changeOrderState={this.handleChangeOrderState}
                   page={this.state.page}
                 />
@@ -162,19 +152,6 @@ class Products extends React.Component {
         </GridContainer>
         <GridContainer>
           <GridItem>
-            {this.props.modalShow.createModal ||
-            this.props.modalShow.updateModal ? (
-              <FormProducts
-                resolveImage={actions.updateProductImage}
-                closeModal={actions.closeModal}
-                updateProduct={actions.updateProduct}
-                createProduct={actions.createProduct}
-                selectedCategory={actions.selectedCategory}
-                Transition={Transition}
-                productsUpdated={actions.productsUpdated}
-                showNotification={generalActions.showNotification}
-              />
-            ) : null}
             {this.props.modalShow.viewModal ? (
               <ViewProduct
                 closeModal={actions.closeModal}
@@ -182,13 +159,6 @@ class Products extends React.Component {
                 showNotification={generalActions.showNotification}
               />
             ) : null}
-            <Button
-              id={"createProductButton"}
-              color={"primary"}
-              onClick={this.handleClickCreateProducts}
-            >
-              Cargar nuevo producto
-            </Button>
             <Notification closeNotification={this.closeNotification} />
           </GridItem>
         </GridContainer>
@@ -197,19 +167,8 @@ class Products extends React.Component {
   }
 }
 
-Products.propTypes = {
-  dispatch: PropTypes.func,
-  page: PropTypes.number,
-  totalPages: PropTypes.number,
-  updateModal: PropTypes.bool,
-  createModal: PropTypes.bool,
-  notification: PropTypes.bool,
-  message: PropTypes.string,
-  products: PropTypes.array
-};
-
 const mapStateToProps = state => {
-  return { ...state.productsReducer, ...state.generalReducer };
+  return state.productsReducer;
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(Products));
+export default connect(mapStateToProps)(withStyles({})(Inventory));

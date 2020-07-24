@@ -9,6 +9,7 @@ export const stateDefault = {
     query: ""
   },
   products: [],
+  productsWithStock: [],
   formData: {
     id: 0,
     name: "",
@@ -36,7 +37,8 @@ export const stateDefault = {
   },
   formErrors: {},
   page: 1,
-  totalPages: 1
+  totalPages: 1,
+  totalPagesInventory: 1
 };
 
 const productsReducer = (state = stateDefault, action) => {
@@ -143,6 +145,18 @@ const productsReducer = (state = stateDefault, action) => {
       return {
         ...state,
         formData: { productImage: images }
+      };
+    case actionNames.loadProductsWithLowerStockSuccessful:
+      return {
+        ...state,
+        productsWithStock: action.products,
+        totalPagesInventory: action.totalPages
+      };
+    case actionNames.loadProductsWithLowerStockFail:
+      return {
+        ...state,
+        productsWithStock: [],
+        totalPagesInventory: 1
       };
     default:
       return state;

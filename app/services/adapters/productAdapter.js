@@ -78,6 +78,28 @@ class ProductAdapter {
       }
     };
   };
+
+  listWithStockAdapt = response => {
+    const { status, data } = response;
+
+    if (!isError(status)) {
+      return {
+        type: actionNames.loadProductsWithLowerStockSuccessful,
+        products: data.items,
+        totalPages: data.pageCount
+      };
+    }
+
+    const { code, details } = data.errors;
+    return {
+      type: actionNames.loadProductsWithLowerStockFail,
+      error: {
+        code: status,
+        type: code,
+        errors: details
+      }
+    };
+  };
 }
 
 export default new ProductAdapter();

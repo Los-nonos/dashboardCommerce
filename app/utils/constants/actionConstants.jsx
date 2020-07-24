@@ -175,5 +175,9 @@ export const actionNames = {
   loadProductsFromShoppingCartSuccessfully:
     "LOAD_PRODUCTS_FROM_CART_SUCCESSFULLY",
   loadProductsFromShoppingCartFail: "LOAD_PRODUCTS_FROM_CART_FAIL",
-  updateProductImage: "UPDATE_PRODUCT_IMAGE"
+  updateProductImage: "UPDATE_PRODUCT_IMAGE",
+  listProductsWithLowerStock: "LIST_PRODUCTS_WITH_LOWER_STOCK",
+  loadProductsWithLowerStockSuccessful:
+    "LOAD_PRODUCTS_WITH_LOWER_STOCK_SUCCESSFUL",
+  loadProductsWithLowerStockFail: "LOAD_PRODUCTS_WITH_LOWER_STOCK_FAIL"
 };
