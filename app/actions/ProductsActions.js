@@ -1,11 +1,12 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
-export function listProductsWithLowerStock(page, orderBy, order) {
+export function listProductsWithLowerStock(page, orderBy, order, minValue) {
   return {
     type: actionNames.listProductsWithLowerStock,
     page,
     order,
-    orderBy
+    orderBy,
+    minValue
   };
 }
 

@@ -103,11 +103,11 @@ export function* getProductByUuid(action) {
 }
 
 export function* listProductsWithLowerStock(action) {
-  let { page, order, orderBy } = action;
+  let { page, order, orderBy, minValue } = action;
   orderBy = orderBy ? orderBy : "registrationDate";
   order = order ? order : "asc";
   yield put({ type: actionNames.loadingToggle });
-  const res = yield call(product.listWithStock, page, orderBy, order);
+  const res = yield call(product.listWithStock, page, orderBy, order, minValue);
 
   if (res.error) {
     if (res.error.code === 401 || res.error.code === 403) {

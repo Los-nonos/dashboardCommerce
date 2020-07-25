@@ -52,12 +52,12 @@ class Products {
     return productAdapter.listAdapt(response);
   };
 
-  listWithStock = async (page, orderBy, order) => {
+  listWithStock = async (page, orderBy, order, minValue) => {
     let response;
 
     try {
       response = await Api.get(
-        `/stock?page=${page}&orderBy=${orderBy}:${order}`
+        `/inventory/?page=${page}&orderBy=${orderBy}:${order}&minValue=${minValue}`
       );
     } catch (err) {
       response = err;

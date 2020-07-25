@@ -14,12 +14,17 @@ import ViewProduct from "../../components/organisms/Products/viewProduct";
 import Notification from "../../components/molecules/Notification/Notification";
 import { withStyles } from "@material-ui/core";
 import styles from "../../styles/dashboard/containers/Products/ProductContainerStyles";
+import CustomInput from "../../components/atoms/CustomInput/CustomInput";
+import LoadingButton from "../../components/atoms/CustomButtons/LoadingButton";
 
 class Inventory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 1
+      page: 1,
+      order: "name",
+      orderBy: "asc",
+      minValue: 5
     };
     this.dispatch = props.dispatch;
     this.handleLoadProducts();
@@ -30,10 +35,10 @@ class Inventory extends React.Component {
     this.dispatch(actions.loadFilters());
     this.dispatch(
       actions.listProductsWithLowerStock(
-        //TODO: add input in view and sent to backend a number for filter
         this.state.page,
         this.state.orderBy,
-        this.state.order
+        this.state.order,
+        this.state.minValue
       )
     );
   };
@@ -48,20 +53,13 @@ class Inventory extends React.Component {
 
   listProducts = () => {
     const products = [];
-    for (const product of this.props.products) {
-      let characteristics = product.characteristics.map(characteristic => {
-        return characteristic.value;
-      });
-      characteristics = characteristics.toString();
-      characteristics = characteristics.replace(/,/gi, ", ");
-
+    for (const product of this.props.productsWithStock) {
       const dataProduct = {
         visibleData: [
-          product.title,
-          product.price.amount,
-          product.description,
-          characteristics,
-          product.stock
+          product.product.title,
+          product.product.price.amount,
+          product.product.description,
+          product.quantity
         ],
         uuid: product.uuid,
         id: product.id
@@ -102,24 +100,43 @@ class Inventory extends React.Component {
     return pages;
   };
 
+  changeMinValueInventory = e => {
+    this.setState({ minValue: e.target.value });
+  };
+
   render() {
     if (this.state.page !== this.props.page) {
       this.setState({ page: this.props.page });
       this.handleLoadProducts();
     }
+
     const { classes } = this.props;
     const Transition = React.forwardRef(function Transition(props, ref) {
       return <Slide direction="down" ref={ref} {...props} />;
     });
 
     let productsData = [];
-    if (this.props.products[0]) {
+    if (this.props.productsWithStock[0]) {
       productsData = this.listProducts();
     }
 
     return (
       <>
         <GridContainer>
+          <GridItem xs={12} sm={12} md={12}>
+            <CustomInput
+              labelText={"Cantidad Minima"}
+              id={"minValue"}
+              inputProps={{
+                onChange: this.changeMinValueInventory,
+                value: this.state.minValue,
+                type: "number"
+              }}
+            />
+            <LoadingButton color={"primary"} onClick={this.handleLoadProducts}>
+              Buscar
+            </LoadingButton>
+          </GridItem>
           <GridItem xs={12} sm={12} md={12}>
             <Card>
               <CardHeader color={"primary"}>
@@ -131,13 +148,7 @@ class Inventory extends React.Component {
               <CardBody>
                 <ProductsTable
                   tableHeaderColor={"primary"}
-                  tableHead={[
-                    "Nombre",
-                    "Precio",
-                    "Descripción",
-                    "Caracteristicas",
-                    "Cantidad"
-                  ]}
+                  tableHead={["Nombre", "Precio", "Descripción", "Cantidad"]}
                   tableData={productsData}
                   getProductByUuid={actions.getProductsByUuid}
                   seeDetails={actions.seeDetails}

@@ -10,6 +10,7 @@ import {
   createProduct,
   getProductByUuid,
   listProducts,
+  listProductsWithLowerStock,
   updateProduct
 } from "../Products/ProductsSagas";
 import {
@@ -102,6 +103,10 @@ function* sagas() {
     getProductsFromShoppingCart
   );
 
+  yield takeEvery(
+    actionNames.listProductsWithLowerStock,
+    listProductsWithLowerStock
+  );
   // yield takeEvery(actionNames.signUp, signUp);
 }
 
