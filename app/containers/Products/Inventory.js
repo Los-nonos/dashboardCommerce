@@ -62,7 +62,7 @@ class Inventory extends React.Component {
           product.quantity
         ],
         uuid: product.uuid,
-        id: product.id
+        id: product.product.id
       };
       products.push(dataProduct);
     }
