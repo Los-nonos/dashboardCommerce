@@ -2,6 +2,7 @@ import { all, call, put } from "redux-saga/effects";
 import general from "../../services/api/general";
 import { actionNames } from "../../utils/constants/actionConstants";
 import { pages, redirectTo } from "../../utils/helpers/redirectTo";
+import { showNotification } from "../../actions/GeneralActions";
 
 export function* checkNotifications(action) {
   const { id } = action;
@@ -30,11 +31,11 @@ export function* deleteUser(action) {
       redirectTo(pages.error);
     }
     yield all([
-      put(res)
-      //put({ type: actionNames.loadingToggle }),
-      //put({ type: actionNames.showNotification, error: res.error })
+      put(res),
+      put({ type: actionNames.loadingToggle }),
+      put({ type: actionNames.showNotification, error: res.error })
     ]);
   } else {
-    yield put(res);
+    yield put({ type: actionNames.showNotification, message: res.message });
   }
 }
