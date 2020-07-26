@@ -1,25 +1,23 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
-export function changeEmployeeState() {
+export function changeEmployeeState(id) {
   return {
-    type: actionNames.changeEmployeeState
-  }
+    type: actionNames.changeEmployeeState,
+    id
+  };
 }
-
 
 export function employeeUpdated() {
   return {
-    type: actionNames.employeeUpdated,
-  }
+    type: actionNames.employeeUpdated
+  };
 }
-
 
 export function closeModal() {
   return {
-    type: actionNames.closeModal,
-  }
+    type: actionNames.closeModal
+  };
 }
-
 
 export function seeDetails(id) {
   return {

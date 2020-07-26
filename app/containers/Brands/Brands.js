@@ -123,6 +123,7 @@ class Brands extends React.Component {
                   tableData={brandsData}
                   getBrandById={actions.getBrandById}
                   listBrands={actions.listBrands}
+                  deleteBrand={actions.deleteBrand}
                   changeOrderState={this.handleChangeOrderState}
                   page={this.state.page}
                 />

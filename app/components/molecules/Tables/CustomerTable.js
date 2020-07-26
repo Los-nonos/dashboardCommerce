@@ -30,7 +30,10 @@ class CustomerTable extends React.Component {
     this.dispatch(this.props.getCustomerById(id));
   };
 
-  handleClickChangeState = () => {};
+  handleClickChangeState = props => {
+    const { id } = props;
+    this.dispatch(this.props.deleteCustomer(id));
+  };
 
   handleClickSelect = props => {
     const { id } = props;

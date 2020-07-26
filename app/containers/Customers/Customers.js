@@ -125,6 +125,7 @@ class Customers extends React.Component {
                   tableData={customersData}
                   getCustomerById={actions.getCustomerById}
                   completeCustomer={actions.completeCustomer}
+                  deleteCustomer={actions.deleteCustomer}
                   showUpdateModal={actions.showUpdateModal}
                   listCustomer={actions.listCustomers}
                   changeOrderState={this.handleChangeOrderState}

@@ -19,7 +19,7 @@ import {
   seeEmployeeDetails,
   updateEmployee
 } from "../User/EmployeeSagas";
-import { checkNotifications } from "../General/GeneralSagas";
+import { checkNotifications, deleteUser } from "../General/GeneralSagas";
 import {
   createCategory,
   listCategories,
@@ -107,6 +107,9 @@ function* sagas() {
     actionNames.listProductsWithLowerStock,
     listProductsWithLowerStock
   );
+
+  yield takeEvery(actionNames.deleteUser, deleteUser);
+  yield takeEvery(actionNames.changeEmployeeState, deleteUser);
   // yield takeEvery(actionNames.signUp, signUp);
 }
 

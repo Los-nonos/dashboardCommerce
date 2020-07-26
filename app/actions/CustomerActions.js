@@ -1,5 +1,12 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
+export function deleteCustomer(id) {
+  return {
+    type: actionNames.deleteUser,
+    id
+  };
+}
+
 export function createCustomer(dataCustomer) {
   return {
     type: actionNames.createCustomer,

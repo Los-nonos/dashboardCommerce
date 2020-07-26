@@ -20,3 +20,21 @@ export function* checkNotifications(action) {
     yield put(res);
   }
 }
+
+export function* deleteUser(action) {
+  const { id } = action;
+  const res = yield call(general.changeUserState, id);
+  if (res.error) {
+    if (res.error.code === 401 || res.error.code === 403) {
+      yield all([put({ type: actionNames.handleError, error: res.error })]);
+      redirectTo(pages.error);
+    }
+    yield all([
+      put(res)
+      //put({ type: actionNames.loadingToggle }),
+      //put({ type: actionNames.showNotification, error: res.error })
+    ]);
+  } else {
+    yield put(res);
+  }
+}
