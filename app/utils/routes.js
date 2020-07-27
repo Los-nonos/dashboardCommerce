@@ -33,7 +33,7 @@ const dashboardRoutes = [
     icon: IconSearch,
     component: SearchProducts,
     layout: "/dashboard",
-    rol: "sales"
+    rol: ["sales", "admin", "root"]
   },
   {
     path: "/products",
@@ -41,7 +41,7 @@ const dashboardRoutes = [
     icon: Dashboard,
     component: Products,
     layout: "/dashboard",
-    rol: "sales"
+    rol: ["sales", "admin", "root"]
   },
   {
     path: "/error",
@@ -49,7 +49,7 @@ const dashboardRoutes = [
     icon: Login,
     component: ErrorPage,
     layout: "/auth",
-    rol: ""
+    rol: []
   },
   {
     path: "/employees",
@@ -57,7 +57,7 @@ const dashboardRoutes = [
     icon: Person,
     component: Employees,
     layout: "/dashboard",
-    rol: "admin"
+    rol: ["admin", "root"]
   },
   {
     path: "/categories",
@@ -65,7 +65,7 @@ const dashboardRoutes = [
     icon: Category,
     component: Categories,
     layout: "/dashboard",
-    rol: "admin"
+    rol: ["admin", "root"]
   },
   {
     path: "/brands",
@@ -73,7 +73,7 @@ const dashboardRoutes = [
     icon: BusinessCenterSharp,
     component: Brands,
     layout: "/dashboard",
-    rol: "admin"
+    rol: ["admin", "root"]
   },
   {
     path: "/customers",
@@ -81,7 +81,7 @@ const dashboardRoutes = [
     icon: People,
     component: Customers,
     layout: "/dashboard",
-    rol: "sales"
+    rol: ["sales", "admin", "root"]
   },
   {
     path: "/orders",
@@ -89,7 +89,7 @@ const dashboardRoutes = [
     icon: AttachMoney,
     component: Orders,
     layout: "/dashboard",
-    rol: "sales"
+    rol: ["sales", "admin", "root"]
   },
   {
     path: "/providers",
@@ -97,7 +97,7 @@ const dashboardRoutes = [
     icon: LocalShipping,
     component: Providers,
     layout: "/dashboard",
-    rol: "deposits"
+    rol: ["deposits", "admin", "root"]
   },
   {
     path: "/inventory",
@@ -105,7 +105,7 @@ const dashboardRoutes = [
     icon: Assignment,
     component: Inventory,
     layout: "/dashboard",
-    rol: "deposits"
+    rol: ["deposits", "admin", "root"]
   },
   {
     path: "/user-account",
@@ -113,7 +113,7 @@ const dashboardRoutes = [
     icon: Settings,
     component: UserAccount,
     layout: "/dashboard",
-    rol: ""
+    rol: []
   }
 ];
 

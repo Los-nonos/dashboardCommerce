@@ -19,14 +19,26 @@ const Sidebar = ({ ...props }) => {
   function activeRoute(routeName) {
     return props.location.pathname.indexOf(routeName) > -1;
   }
+
+  function isRoleValid(roles, userRoles) {
+    if (roles === []) {
+      return true;
+    }
+
+    for (const rol of roles) {
+      if (userRoles.include(rol)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   const { classes, color, logo, image, logoText, routes, userRoles } = props;
   let links = (
     <List className={classes.list}>
       {routes.map((prop, key) => {
-        if (
-          (userRoles.includes(prop.rol) || prop.rol === "") &&
-          prop.layout === "/dashboard"
-        ) {
+        if (isRoleValid(prop.rol, userRoles) && prop.layout === "/dashboard") {
           let activePro = " ";
           let listItemClasses;
           if (prop.path === "/upgrade-to-pro") {
