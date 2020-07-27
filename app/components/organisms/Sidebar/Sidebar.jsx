@@ -26,7 +26,7 @@ const Sidebar = ({ ...props }) => {
     }
 
     for (const rol of roles) {
-      if (userRoles.include(rol)) {
+      if (userRoles.includes(rol)) {
         return true;
       }
     }
