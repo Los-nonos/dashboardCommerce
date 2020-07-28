@@ -182,5 +182,8 @@ export const actionNames = {
   loadProductsWithLowerStockFail: "LOAD_PRODUCTS_WITH_LOWER_STOCK_FAIL",
   deleteUser: "DELETE_USER",
   changeUserStateSuccessfully: "CHANGE_USER_STATE_SUCCESSFULLY",
-  changeUserStateFail: "CHANGE_USER_STATE_FAIL"
+  changeUserStateFail: "CHANGE_USER_STATE_FAIL",
+  deleteProduct: "DELETE_PRODUCT",
+  deleteProductSuccessfully: "DELETE_PRODUCT_SUCCESSFULLY",
+  deleteProductFail: "DELETE_PRODUCT_FAIL"
 };

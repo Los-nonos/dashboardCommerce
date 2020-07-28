@@ -1,5 +1,12 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
+export function deleteProduct(id) {
+  return {
+    type: actionNames.deleteProduct,
+    id
+  };
+}
+
 export function listProductsWithLowerStock(page, orderBy, order, minValue) {
   return {
     type: actionNames.listProductsWithLowerStock,

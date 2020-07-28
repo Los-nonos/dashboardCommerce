@@ -100,6 +100,27 @@ class ProductAdapter {
       }
     };
   };
+
+  deleteAdapt = response => {
+    const { status, data } = response;
+
+    if (!isError(status)) {
+      return {
+        type: actionNames.deleteProductSuccessfully,
+        message: "Producto eliminado correctamente"
+      };
+    }
+
+    const { code, details } = data.errors;
+    return {
+      type: actionNames.deleteProductFail,
+      error: {
+        code: status,
+        type: code,
+        errors: details
+      }
+    };
+  };
 }
 
 export default new ProductAdapter();

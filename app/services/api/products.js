@@ -65,6 +65,17 @@ class Products {
 
     return productAdapter.listWithStockAdapt(response);
   };
+
+  delete = async id => {
+    let response;
+    try {
+      response = await Api.delete(`products/${id}`);
+    } catch (err) {
+      response = err;
+    }
+
+    return productAdapter.deleteAdapt(response);
+  };
 }
 
 export default new Products();

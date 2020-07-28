@@ -11,7 +11,8 @@ import {
   getProductByUuid,
   listProducts,
   listProductsWithLowerStock,
-  updateProduct
+  updateProduct,
+  deleteProduct
 } from "../Products/ProductsSagas";
 import {
   createEmployee,
@@ -110,6 +111,7 @@ function* sagas() {
 
   yield takeEvery(actionNames.deleteUser, deleteUser);
   yield takeEvery(actionNames.changeEmployeeState, deleteUser);
+  yield takeEvery(actionNames.deleteProduct, deleteProduct);
   // yield takeEvery(actionNames.signUp, signUp);
 }
 

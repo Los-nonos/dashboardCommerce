@@ -34,7 +34,10 @@ class ProductsTable extends React.Component {
     this.dispatch(this.props.getProductByUuid(id));
   };
 
-  handleClickChangeState = () => {};
+  handleClickChangeState = prop => {
+    const { id } = prop;
+    this.dispatch(this.props.deleteProduct(id));
+  };
 
   handleOrderBy = props => {
     const orderBy = this.orderBySanitized(props);

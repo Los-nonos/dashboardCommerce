@@ -147,6 +147,7 @@ class Products extends React.Component {
                   tableData={productsData}
                   getProductByUuid={actions.getProductsByUuid}
                   completeProduct={actions.completeProduct}
+                  deleteProduct={actions.deleteProduct}
                   seeDetails={actions.seeDetails}
                   listProducts={actions.listProducts}
                   showOnWebsite={actions.showProductOnWebsite}
