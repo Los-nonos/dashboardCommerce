@@ -45,17 +45,12 @@ class FormProducts extends React.Component {
   createProduct = e => {
     e.preventDefault();
 
-    e.target.elements.namedItem(
-      "productImage"
-    ).value = this.props.formData.productImage;
-
     const fields = [
       "name",
       "description",
       "price",
       "taxes",
       "stock",
-      "productImage",
       "purchaseOrderNumber"
     ];
 
@@ -76,7 +71,8 @@ class FormProducts extends React.Component {
       providerId: this.state.provider,
       brands,
       categories,
-      characteristics: this.state.characteristics
+      characteristics: this.state.characteristics,
+      images: this.props.formData.productImage
     };
 
     if (this.props.modalShow.createModal) {
