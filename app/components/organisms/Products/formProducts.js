@@ -277,12 +277,18 @@ class FormProducts extends React.Component {
                     }}
                     required
                     error={this.props.formErrors.category !== undefined}
-                    value={this.state.formData.category.id}
+                    value={
+                      this.state.formData.category
+                        ? this.state.formData.category.id
+                        : null
+                    }
                     onChange={this.handleSelectorChange}
                     inputProps={{
                       name: "category",
                       id: "category",
-                      defaultValue: this.state.formData.category.id
+                      defaultValue: this.state.formData.category
+                        ? this.state.formData.category.id
+                        : null
                     }}
                   >
                     <MenuItem
@@ -329,12 +335,18 @@ class FormProducts extends React.Component {
                     }}
                     required
                     error={this.props.formErrors.brand !== undefined}
-                    value={this.state.formData.brand.id}
+                    value={
+                      this.state.formData.brand
+                        ? this.state.formData.brand.id
+                        : null
+                    }
                     onChange={this.handleSelectorChange}
                     inputProps={{
                       name: "brand",
                       id: "brand",
-                      defaultValue: this.state.formData.brand.id
+                      defaultValue: this.state.formData.brand
+                        ? this.state.formData.brand.id
+                        : null
                     }}
                   >
                     <MenuItem
