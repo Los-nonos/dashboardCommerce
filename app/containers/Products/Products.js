@@ -66,7 +66,7 @@ class Products extends React.Component {
       const dataProduct = {
         visibleData: [
           product.title,
-          product.price,
+          product.price.amount,
           product.description,
           characteristics
         ],

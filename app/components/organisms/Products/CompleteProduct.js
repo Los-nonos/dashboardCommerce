@@ -9,7 +9,7 @@ class CompleteProduct extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      characteristics: this.props.productWithDetails.characteristics
+      characteristics: this.props.formData.characteristics
     };
   }
 
@@ -28,7 +28,7 @@ class CompleteProduct extends React.Component {
             columns={[
               {
                 title: "Caracteristica",
-                field: "characteristic"
+                field: "name"
               },
               {
                 title: "Valor",

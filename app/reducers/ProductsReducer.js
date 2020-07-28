@@ -14,7 +14,7 @@ export const stateDefault = {
     id: 0,
     name: "",
     description: "",
-    productImage: [],
+    images: [],
     characteristics: []
   },
   productWithDetails: {
@@ -124,13 +124,14 @@ const productsReducer = (state = stateDefault, action) => {
         ...state,
         formData: {
           id: action.product.id,
-          name: action.product.name,
+          name: action.product.title,
           description: action.product.description,
+          brand: action.product.brand[0],
+          category: action.product.categories[0],
+          images: action.product.images,
           price: action.product.price,
-          category: action.product.category,
-          characteristics: action.product.characteristics,
           taxes: action.product.taxes,
-          productImage: action.product.image
+          characteristics: action.product.characteristics
         }
       };
     case actionNames.loadProductFail:
@@ -144,7 +145,7 @@ const productsReducer = (state = stateDefault, action) => {
       images.push(action.image_url);
       return {
         ...state,
-        formData: { productImage: images }
+        formData: { images: images }
       };
     case actionNames.loadProductsWithLowerStockSuccessful:
       return {

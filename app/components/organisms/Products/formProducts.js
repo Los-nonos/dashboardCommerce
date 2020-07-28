@@ -33,7 +33,8 @@ class FormProducts extends React.Component {
       characteristics: [],
       provider: "",
       category: "",
-      brand: ""
+      brand: "",
+      formData: props.formData
     };
     this.dispatch = props.dispatch;
   }
@@ -72,7 +73,7 @@ class FormProducts extends React.Component {
       brands,
       categories,
       characteristics: this.state.characteristics,
-      images: this.props.formData.productImage
+      images: this.props.formData.images
     };
 
     if (this.props.modalShow.createModal) {
@@ -84,7 +85,10 @@ class FormProducts extends React.Component {
   };
 
   handleSelectorChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    const formData = this.state.formData;
+    this.setState({
+      formData: { ...formData, [event.target.name]: event.target.value }
+    });
   };
 
   resolveImage = image_url => {
@@ -156,8 +160,9 @@ class FormProducts extends React.Component {
                   }}
                   inputProps={{
                     required: true,
+                    onChange: this.handleSelectorChange,
                     name: "name",
-                    defaultValue: this.props.formData.name
+                    defaultValue: this.state.formData.name
                   }}
                 />
                 <CustomInput
@@ -171,9 +176,10 @@ class FormProducts extends React.Component {
                   inputProps={{
                     required: true,
                     name: "description",
+                    onChange: this.handleSelectorChange,
                     multiline: true,
                     rows: "5",
-                    defaultValue: this.props.formData.description
+                    defaultValue: this.state.formData.description
                   }}
                 />
               </GridItem>
@@ -190,7 +196,10 @@ class FormProducts extends React.Component {
                     required: true,
                     name: "price",
                     type: "number",
-                    defaultValue: this.props.formData.price
+                    onChange: this.handleSelectorChange,
+                    defaultValue: this.state.formData.price
+                      ? this.state.formData.price.amount
+                      : null
                   }}
                 />
                 <CustomInput
@@ -205,7 +214,10 @@ class FormProducts extends React.Component {
                     required: true,
                     name: "taxes",
                     type: "number",
-                    defaultValue: this.props.formData.taxes
+                    onChange: this.handleSelectorChange,
+                    defaultValue: this.state.formData.taxes
+                      ? this.state.formData.taxes.amount
+                      : null
                   }}
                 />
                 <CustomInput
@@ -220,7 +232,8 @@ class FormProducts extends React.Component {
                     required: true,
                     name: "stock",
                     type: "number",
-                    defaultValue: this.props.formData.stock
+                    onChange: this.handleSelectorChange,
+                    defaultValue: this.state.formData.stock
                   }}
                 />
                 <CustomInput
@@ -237,7 +250,8 @@ class FormProducts extends React.Component {
                     required: true,
                     name: "purchaseOrderNumber",
                     type: "text",
-                    defaultValue: this.props.formData.purchaseOrderNumber
+                    onChange: this.handleSelectorChange,
+                    defaultValue: this.state.formData.purchaseOrderNumber
                   }}
                 />
               </GridItem>
@@ -263,12 +277,12 @@ class FormProducts extends React.Component {
                     }}
                     required
                     error={this.props.formErrors.category !== undefined}
-                    value={this.state.category}
+                    value={this.state.formData.category.id}
                     onChange={this.handleSelectorChange}
                     inputProps={{
                       name: "category",
                       id: "category",
-                      defaultValue: this.props.formData.category
+                      defaultValue: this.state.formData.category.id
                     }}
                   >
                     <MenuItem
@@ -315,12 +329,12 @@ class FormProducts extends React.Component {
                     }}
                     required
                     error={this.props.formErrors.brand !== undefined}
-                    value={this.state.brand}
+                    value={this.state.formData.brand.id}
                     onChange={this.handleSelectorChange}
                     inputProps={{
                       name: "brand",
                       id: "brand",
-                      defaultValue: this.props.formData.brand
+                      defaultValue: this.state.formData.brand.id
                     }}
                   >
                     <MenuItem
@@ -370,12 +384,18 @@ class FormProducts extends React.Component {
                     }}
                     required
                     error={this.props.formErrors.provider !== undefined}
-                    value={this.state.provider}
+                    value={
+                      this.state.formData.provider
+                        ? this.state.formData.provider.id
+                        : null
+                    }
                     onChange={this.handleSelectorChange}
                     inputProps={{
                       name: "provider",
                       id: "provider",
-                      defaultValue: this.props.formData.provider
+                      defaultValue: this.state.formData.provider
+                        ? this.state.formData.provider.id
+                        : null
                     }}
                   >
                     <MenuItem
@@ -410,7 +430,7 @@ class FormProducts extends React.Component {
                   <img
                     id="productImageShow"
                     alt={"productImageShow"}
-                    src={this.props.formData.productImage[0]}
+                    src={this.state.formData.images[0]}
                     className={`${classes.customAvatarPlaceholder}`}
                   />
                 </CardAvatar>

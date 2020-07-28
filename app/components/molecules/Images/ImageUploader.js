@@ -1,7 +1,9 @@
 import React from "react";
 
 class ImageUploader extends React.Component {
-  showWidget = () => {
+  showWidget = e => {
+    e.preventDefault();
+
     this.widget.open();
   };
 
