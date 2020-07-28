@@ -63,13 +63,13 @@ class FormProducts extends React.Component {
       .reduce((current, next) => ({ ...current, ...next }));
 
     const brands = [];
-    brands.push(this.state.brand);
+    brands.push(this.state.brand.id);
     const categories = [];
-    categories.push(this.state.category);
+    categories.push(this.state.category.id);
 
     dataProducts = {
       ...dataProducts,
-      providerId: this.state.provider,
+      providerId: this.state.provider.id,
       brands,
       categories,
       characteristics: this.state.characteristics,
@@ -279,7 +279,7 @@ class FormProducts extends React.Component {
                     error={this.props.formErrors.category !== undefined}
                     value={
                       this.state.formData.category
-                        ? this.state.formData.category.id
+                        ? this.state.formData.category
                         : null
                     }
                     onChange={this.handleSelectorChange}
@@ -309,7 +309,7 @@ class FormProducts extends React.Component {
                           className={{
                             color: "#fff"
                           }}
-                          value={category.id}
+                          value={category}
                         >
                           {category.name}
                         </MenuItem>
@@ -337,16 +337,13 @@ class FormProducts extends React.Component {
                     error={this.props.formErrors.brand !== undefined}
                     value={
                       this.state.formData.brand
-                        ? this.state.formData.brand.id
+                        ? this.state.formData.brand
                         : null
                     }
                     onChange={this.handleSelectorChange}
                     inputProps={{
                       name: "brand",
-                      id: "brand",
-                      defaultValue: this.state.formData.brand
-                        ? this.state.formData.brand.id
-                        : null
+                      id: "brand"
                     }}
                   >
                     <MenuItem
@@ -367,7 +364,7 @@ class FormProducts extends React.Component {
                           className={{
                             color: "#fff"
                           }}
-                          value={brand.id}
+                          value={brand}
                         >
                           {brand.name}
                         </MenuItem>
@@ -398,7 +395,7 @@ class FormProducts extends React.Component {
                     error={this.props.formErrors.provider !== undefined}
                     value={
                       this.state.formData.provider
-                        ? this.state.formData.provider.id
+                        ? this.state.formData.provider
                         : null
                     }
                     onChange={this.handleSelectorChange}
@@ -428,7 +425,7 @@ class FormProducts extends React.Component {
                           className={{
                             color: "#fff"
                           }}
-                          value={provider.id}
+                          value={provider}
                         >
                           {provider.name}
                         </MenuItem>
