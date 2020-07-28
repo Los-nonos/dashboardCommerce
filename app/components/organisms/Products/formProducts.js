@@ -63,13 +63,13 @@ class FormProducts extends React.Component {
       .reduce((current, next) => ({ ...current, ...next }));
 
     const brands = [];
-    brands.push(this.state.brand.id);
+    brands.push(this.state.formData.brand.id);
     const categories = [];
-    categories.push(this.state.category.id);
+    categories.push(this.state.formData.category.id);
 
     dataProducts = {
       ...dataProducts,
-      providerId: this.state.provider.id,
+      providerId: this.state.formData.provider.id,
       brands,
       categories,
       characteristics: this.state.characteristics,

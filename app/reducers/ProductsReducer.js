@@ -141,11 +141,11 @@ const productsReducer = (state = stateDefault, action) => {
     case actionNames.productCreatedSuccessfully:
       return { ...state };
     case actionNames.updateProductImage:
-      const images = state.formData.productImage;
+      const images = state.formData.images;
       images.push(action.image_url);
       return {
         ...state,
-        formData: { images: images }
+        formData: { ...state.formData, images: images }
       };
     case actionNames.loadProductsWithLowerStockSuccessful:
       return {
