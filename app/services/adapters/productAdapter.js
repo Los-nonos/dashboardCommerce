@@ -9,8 +9,7 @@ class ProductAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.productCreatedSuccessfully,
-        message: "Producto creado satisfactoriamente",
-        product: data.data
+        message: "Producto creado satisfactoriamente"
       };
     }
 
@@ -28,8 +27,7 @@ class ProductAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.productUpdatedSuccessfully,
-        message: "Producto actualizado satisfactoriamente",
-        product: data.data
+        message: "Producto actualizado satisfactoriamente"
       };
     }
 

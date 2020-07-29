@@ -19,14 +19,11 @@ export function* createProduct(action) {
       put({ type: actionNames.showNotification, error: res.error })
     ]);
   } else {
-    const response = yield call(product.getById, res.product.id);
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),
       put({ type: actionNames.showNotification, message: res.message }),
-      put({ type: actionNames.closeModal }),
-      put(response),
-      put({ type: actionNames.showUpdateProductModal })
+      put({ type: actionNames.closeModal })
     ]);
   }
 }
