@@ -21,15 +21,12 @@ class CustomMaterialTable extends React.Component {
       case "Caracteristicas":
         const characteristics = newData.characteristics
           ? prepareCharacteristics(
-              newData.characteristics,
+              newData.name,
               this.props.completeProduct.characteristics
             )
           : [];
         newData.characteristics = characteristics;
-        this.props.assignCharacteristicToProduct(
-          newData.characteristic,
-          newData.value
-        );
+        this.props.assignCharacteristicToProduct(newData.name, newData.value);
         break;
       default:
         break;
