@@ -49,4 +49,26 @@ export function* createBrand(action) {
   }
 }
 
-export function* updateBrand(action) {}
+export function* updateBrand(action) {
+  let { dataBrand } = action;
+  yield put({ type: actionNames.loadingToggle });
+  const res = yield call(brands.update, dataBrand);
+
+  if (res.error) {
+    if (res.error.code === 401 || res.error.code === 403) {
+      yield all([put({ type: actionNames.handleError, error: res.error })]);
+      redirectTo(pages.error);
+    }
+    yield all([
+      put(res),
+      put({ type: actionNames.loadingToggle }),
+      put({ type: actionNames.showNotification, error: res.error })
+    ]);
+  } else {
+    yield put(res);
+    yield put({ type: actionNames.loadingToggle });
+    yield put({ type: actionNames.showNotification, message: res.message })
+    yield put({ type: actionNames.closeModal });
+    yield put({ type: actionNames.listBrands });
+  }
+}

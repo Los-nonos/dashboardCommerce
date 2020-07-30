@@ -22,6 +22,7 @@ export function* createProduct(action) {
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),
+      put({ type: actionNames.listProducts }),
       put({ type: actionNames.showNotification, message: res.message }),
       put({ type: actionNames.closeModal })
     ]);
@@ -48,6 +49,7 @@ export function* updateProduct(action) {
       put(res),
       put({ type: actionNames.loadingToggle }),
       put({ type: actionNames.closeModal }),
+      put({ type: actionNames.listProducts }),
       put({ type: actionNames.showNotification, message: res.message })
     ]);
     //redirectTo(pages.closeModal);
@@ -95,7 +97,6 @@ export function* getProductByUuid(action) {
   } else {
     yield put(res);
     yield put({ type: actionNames.loadingToggle });
-    yield put({ type: actionNames.showUpdateProductModal });
   }
 }
 

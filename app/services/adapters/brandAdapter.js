@@ -28,7 +28,7 @@ class BrandAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.createBrandSuccessfully,
-        message: data.data
+        message: 'Marca creada satisfactoriamente'
       };
     }
 
@@ -42,6 +42,26 @@ class BrandAdapter {
       }
     };
   };
+
+  updateAdapt = response => {
+    const { status, data } = response;
+    if (!isError(status)) {
+      return {
+        type: actionNames.updateBrandSuccessfully,
+        message: 'Marca actualizada satisfactoriamente'
+      };
+    }
+
+    const { details } = data.errors;
+    return {
+      type: actionNames.updateBrandFail,
+      error: {
+        code: status,
+        type: "",
+        errors: details
+      }
+    };
+  }
 }
 
 export default new BrandAdapter();

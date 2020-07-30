@@ -25,6 +25,17 @@ class Brands {
 
     return brandAdapter.createAdapt(response);
   };
+
+  update = async body => {
+    let response;
+    try {
+      response = await Api.put(`/brands/${body.id}`, body);
+    }catch (err) {
+      response = err;
+    }
+
+    return brandAdapter.updateAdapt(response);
+  }
 }
 
 export default new Brands();

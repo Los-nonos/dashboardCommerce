@@ -19,14 +19,12 @@ export function* createEmployee(action) {
       put({ type: actionNames.showNotification, error: res.error })
     ]);
   } else {
-    const response = yield call(employee.seeDetails, res.employee.id);
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),
       put({ type: actionNames.showNotification, message: res.message }),
       put({ type: actionNames.closeModal }),
-      put(response),
-      put({ type: actionNames.showUpdateEmployeeModal })
+      put({ type: actionNames.listEmployees })
     ]);
   }
 }
@@ -51,7 +49,8 @@ export function* updateEmployee(action) {
       put(res),
       put({ type: actionNames.loadingToggle }),
       put({ type: actionNames.showNotification, message: res.message }),
-      put({ type: actionNames.closeModal })
+      put({ type: actionNames.closeModal }),
+      put({ type: actionNames.listEmployees })
     ]);
   }
 }
