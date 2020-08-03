@@ -31,7 +31,7 @@ class Inventory extends React.Component {
   }
 
   handleLoadProducts = () => {
-    this.dispatch(actions.checkRoles(["sales", "deposits"]));
+    this.dispatch(actions.checkRoles(["sales", "deposits", "admin"]));
     this.dispatch(actions.loadFilters());
     this.dispatch(
       actions.listProductsWithLowerStock(
