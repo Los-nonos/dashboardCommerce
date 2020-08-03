@@ -27,7 +27,7 @@ class Brands extends React.Component {
   }
 
   handleLoadBrands = () => {
-    this.dispatch(actions.checkRoles(["sales", "deposits"]));
+    this.dispatch(actions.checkRoles(["sales", "deposits", "admin"]));
     this.dispatch(actions.loadFilters());
     this.dispatch(
       actions.listBrands(this.state.page, this.state.orderBy, this.state.order)
